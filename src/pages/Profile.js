@@ -8,7 +8,7 @@ import "../styles/Profile.css";
 import blankAva from "../assets/blank-avatar.png";
 
 //component import
-import MyShopCard from '../component'
+import MyShopCard from '../components'
 
 function Profile() {
   function alertClicked() {
