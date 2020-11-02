@@ -7,6 +7,9 @@ import "../styles/Profile.css";
 //pic import
 import blankAva from "../assets/blank-avatar.png";
 
+//component import
+import MyShopCard from '../component'
+
 function Profile() {
   function alertClicked() {
     alert("You clicked the third ListGroupItem");
