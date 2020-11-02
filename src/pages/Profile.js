@@ -1,55 +1,61 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 
-
 // styling
-import '../styles/Profile.css'
+import "../styles/Profile.css";
 
 //pic import
-import blankAva from '../assets/blank-avatar.png'
+import blankAva from "../assets/blank-avatar.png";
 
 function Profile() {
-    function alertClicked() {
-        alert('You clicked the third ListGroupItem');
-      }
-
-
-
+  function alertClicked() {
+    alert("You clicked the third ListGroupItem");
+  }
 
   return (
-    <div >
-      <Container className='profileContainer-profile'>
+    <div>
+      <Container className="profileContainer-profile ">
         <Row className="m-5">
           <Col lg={3}>
-            <Row >
-                <img 
-                src={blankAva}
-                className="blankAva-profile"
-                />
-                </Row>
-                <Row className='rowAva-profile'>
-                <div>
-                    xxx@mail.com
-                    <br />
-                    id : xxxxxxx
-                </div>
-                </Row>
-
-            <Row >
-                <Col lg={12}>
-              <ListGroup defaultActiveKey="#link1" variant='flush' mt={5}>
-                <ListGroup.Item action onClick={alertClicked} disabled >
-                  My Profile
-                </ListGroup.Item>
-                <ListGroup.Item action onClick={alertClicked}>
-                  My Shop
-                </ListGroup.Item>
-              </ListGroup>
-                </Col>
+            <Container>
+            <Row>
+              <img src={blankAva} className="blankAva-profile" />
             </Row>
+            <Row className='rowAva-profile'>
+              <ul className="listAva-profile">
+                <li>
+                  hi! username
+                </li>
+                <li>
+                  xxxx@mail.com
+                </li>
+                <li>
+                  id :12345678
+                </li>
+              </ul>
+            </Row>
+
+            <Row>
+              
+                <ListGroup
+                  defaultActiveKey="#link1"
+                  variant="flush"
+                  mt={5}
+                  className='listTab-profile'
+                >
+                  <ListGroup.Item action onClick={alertClicked} className='subListTab-profile'>
+                    My Profile
+                  </ListGroup.Item>
+                  <ListGroup.Item action onClick={alertClicked} className='subListTab-profile'>
+                    My Shop
+                  </ListGroup.Item>
+                </ListGroup>
+            </Row>
+            </Container>
           </Col>
           <Col lg={9}>
-            <Form>
+            <Form className='form-profile'>
+              <Container>
               <Form.Group controlId="username" as={Row}>
                 <Form.Label>username</Form.Label>
                 <Form.Control type="text" name="username" />
@@ -85,9 +91,22 @@ function Profile() {
                 <Form.Control type="password" name="newPassword" />
               </Form.Group>
 
+              <Form.Group  as={Row}>
               <Button type="submit">Save Changes</Button>
+
+              </Form.Group>
+              </Container>
+
             </Form>
           </Col>
+        </Row>
+      </Container>
+
+      <Container className='myShop-profile'>
+        <Row>
+          <div>
+            asdasd
+          </div>
         </Row>
       </Container>
     </div>

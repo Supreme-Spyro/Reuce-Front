@@ -1,14 +1,24 @@
 .profileContainer-profile{
-    background-color: grey;
-    padding: 5px;
+    background-color: #e0dcce;
+    padding: 2px;
     margin-top: 5%;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 
 .listTab-profile{
-    width: 100px;
+    width: 100%;
+    background-color: transparent;
 }
+
+.subListTab-profile{
+    width: 100%;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
 
 .blankAva-profile{
     width: 50%;
@@ -17,6 +27,25 @@
 }
 
 .rowAva-profile{
-    margin-bottom: 50px;
+    padding: 20px;
+
+    border-bottom: black 0.5px solid;
+}
+
+.listAva-profile{
+    list-style-type: none;
     text-align: center;
+    margin: auto;
+    padding: 0;
+    font-size: 20px;
+}
+
+
+.form-profile{
+    margin-top: 15%;
+}
+
+.myShop-profile{
+    margin-top: 10px;
+    background-color: #e0dcce;
 }
