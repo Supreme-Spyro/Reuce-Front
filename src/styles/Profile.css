@@ -1,0 +1,22 @@
+.profileContainer-profile{
+    background-color: grey;
+    padding: 5px;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+
+
+.listTab-profile{
+    width: 100px;
+}
+
+.blankAva-profile{
+    width: 50%;
+    height: 50%;
+    margin: auto;
+}
+
+.rowAva-profile{
+    margin-bottom: 50px;
+    text-align: center;
+}
