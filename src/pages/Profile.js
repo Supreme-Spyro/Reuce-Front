@@ -8,7 +8,7 @@ import "../styles/Profile.css";
 import blankAva from "../assets/blank-avatar.png";
 
 //component import
-import MyShopCard from '../components'
+import MyShopCard from '../components/web-elements/MyshopCard'
 
 function Profile() {
   function alertClicked() {
@@ -107,9 +107,22 @@ function Profile() {
 
       <Container className='myShop-profile'>
         <Row>
-          <div>
-            asdasd
-          </div>
+          <Col lg={12} className='myShopTitle-profile'>
+          Your selling item
+          </Col>
+        </Row>
+        <Row className='rowMyShop-profile'>
+          <Col className='colMyShop-profile' lg={12}>
+          <MyShopCard />
+          <MyShopCard />
+          <MyShopCard />
+          <MyShopCard />
+          </Col>
+        </Row>
+        <Row className='addMoreItem-profile'>
+          <Col lg={12} className='colAddMoreItem-profile'>
+          <Button className='addMoreItemButton-profile'>Add more item</Button>
+          </Col>
         </Row>
       </Container>
     </div>

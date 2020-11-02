@@ -48,4 +48,45 @@
 .myShop-profile{
     margin-top: 10px;
     background-color: #e0dcce;
+    padding:5px;
+    border-radius: 10px;
+}
+
+.myShopTitle-profile{
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.rowMyShop-profile{
+    padding: 10px;
+}
+
+.colMyShop-profile{
+    display: flex;
+    flex-direction: row;
+}
+
+.addMoreItem-Profile{
+    padding: 10px
+}
+
+.colAddMoreItem-profile{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.addMoreItemButton-profile{
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+    color: black;
+}
+
+.addMoreItemButton-profile:hover{
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+    color: blue;
 }
