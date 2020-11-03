@@ -1,0 +1,17 @@
+.carouselPic-articles{
+    width:1400px;
+    height:875px;
+    
+}
+
+.arouselRow-articles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.carousel-articles{
+    margin-top: 15%;
+}
+

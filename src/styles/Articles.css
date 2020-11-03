@@ -1,0 +1,20 @@
+.featuredRow-articles{
+    padding: 50px 5px 5px 5px;
+
+}
+
+.featuredContainer-articles{
+    display: flex;
+    flex-direction: row;
+}
+
+.featuredRow-articles{
+    display: flex;
+    flex-direction: row;
+}
+
+.featuredRowTitle-articles{
+    text-align: center;
+    font-size: 30px;
+    padding: 5px;
+}

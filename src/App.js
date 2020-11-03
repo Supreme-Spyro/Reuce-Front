@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Profile from './pages/Profile'
+import Articles from "./pages/Articles";
+
 
 import "./styles/App.css";
 function App() {
@@ -14,6 +16,9 @@ function App() {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/articles">
+          <Articles />
         </Route>
       </Switch>
     </Router>
