@@ -2,9 +2,12 @@ import React from "react";
 import { Col, Row, Carousel, Container } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 import FeaturedCard from "../components/web-elements/FeaturedCard";
-
+import NewsTabList from '../components/web-elements/NewsTabList'
+import ArticleGuide from '../components/web-elements/ArticleGuide'
 //styling
 import "../styles/Articles.css";
+
+
 
 function Articles() {
   return (
@@ -22,8 +25,21 @@ function Articles() {
               <FeaturedCard />
         </Container>
       </Row>
-
-      <Row className="editorPickerRow-articles"></Row>
+      <Row className="editorPickerRow-articles">
+          <Container className="editorPickerContainer-articles">
+          <Col lg={9}>
+          <NewsTabList />
+          <NewsTabList />
+          </Col>
+          <Col lg={3}>
+              <Container>
+                  Guide on buy and sell in Reuce
+              </Container>
+              <ArticleGuide />
+          
+          </Col>
+          </Container>
+      </Row>
     </div>
   );
 }
