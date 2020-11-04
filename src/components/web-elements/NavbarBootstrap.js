@@ -26,9 +26,9 @@ export default function NavbarBootstrap() {
   const dispatch = useDispatch();
 
   const userToken = localStorage.getItem("token");
-  const decodedToken = userToken ? jwtDecode(userToken) : "none";
+  const decodedToken = userToken ? jwtDecode(userToken) : null;
 
-  const userData = useSelector((state) => state.userProfileReducer);
+  // const userData = useSelector((state) => state.userProfileReducer);
   // console.log("userId", userData);
 
   const [searchState, setSearchState] = useState({
@@ -108,7 +108,7 @@ export default function NavbarBootstrap() {
                   </InputGroup.Prepend>
                   <FormControl
                     size="sm"
-                    className="input-search"
+                    className="input-search nunito"
                     name="name"
                     type="text"
                     placeholder=""
@@ -120,20 +120,23 @@ export default function NavbarBootstrap() {
               </Form>
             </Nav>
             <Nav>
-              {userData ? (
-                <Nav>
+              {decodedToken ? (
+                <Nav className="lato">
                   <NavDropdown
-                    title={`${userData.username}`}
+                    title={`${decodedToken.username}`}
                     id="profile-nav-dropdown"
+                    
                   >
                     <NavDropdown.Item
                       as={Link}
-                      to={`/profile/${userData._id}`}
+                      to={`/profile/${decodedToken._id}`}
+                      className="nunito"
                       // onClick={(event)=>{dispatch(getUserRequestbyId(event,history))}}
                     >
                       My Profile
                     </NavDropdown.Item>
                     <NavDropdown.Item
+                    className="nunito"
                       onClick={(event) => {
                         logoutFunction(event, history);
                       }}

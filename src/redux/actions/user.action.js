@@ -50,14 +50,14 @@ export const registerActions = (value, event, history) => (dispatch) => {
   event.preventDefault();
   console.log("register value", value);
 
-  const uriUsers = "";
+  const uriUsers = "https://reuce-back.herokuapp.com/user/register";
 
   return axios
     .post(uriUsers, value)
     .then((response) => {
       console.log("res", response);
       dispatch(registerFunct(response));
-      history.push("/signin");
+      history.push("/login");
     })
     .catch((error) => {
       console.log(error);
@@ -67,7 +67,7 @@ export const registerActions = (value, event, history) => (dispatch) => {
 export const loginActions = (value, event, history) => (dispatch) => {
   event.preventDefault();
   // console.log("value", value);
-  const uriLogin = "";
+  const uriLogin = "https://reuce-back.herokuapp.com/user/login";
 
   return axios
     .post(uriLogin, value)

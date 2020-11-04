@@ -1,0 +1,96 @@
+// color
+$color1: #00ceaf;
+$color2: #00a88f;
+$color3: #0d7377;
+$color4: #063a3cff;
+$color5: #212121;
+
+// font
+.lato {
+  font-family: "Lato", sans-serif;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+// main
+.here-link {
+  color: $color2;
+  text-decoration: none;
+}
+
+.here-link:hover {
+    color: $color1;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+.outer {
+  min-height: 100vh;
+  background-color: #ddfffa;
+}
+
+.border-20 {
+  border-radius: 20px;
+}
+
+.inner-box {
+  -webkit-box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.25);
+}
+
+.image-side {
+  width: 450px;
+  background-size: auto 100%;
+}
+
+.top-logo {
+  width: 180px;
+}
+
+// .img-left {
+//   border-radius: 20px 0 0 20px;
+// }
+
+// .here-link {
+//   color: $color1;
+// }
+
+/* media query */
+/* large screen */
+@media (max-width: 1200px) {
+}
+
+/* small screen */
+@media (max-width: 992px) {
+  .col-right {
+    border-radius: 20px 20px 20px 20px;
+  }
+  .top-logo {
+    width: 200px;
+  }
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  .col-right {
+    border-radius: 20px 20px 20px 20px;
+  }
+  .image-side {
+    display: none;
+  }
+  .top-logo {
+    width: 200px;
+  }
+}
+
+/* phone */
+@media (max-width: 576px) {
+  .top-logo {
+    width: 160px;
+  }
+}
