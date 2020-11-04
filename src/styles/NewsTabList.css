@@ -22,10 +22,11 @@
 }
 
 .guideListImage-articles{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 .guideListTitle-articles{
     font-size: 12px;
+    padding-left: 20px;
 }

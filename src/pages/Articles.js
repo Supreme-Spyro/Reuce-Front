@@ -31,9 +31,9 @@ function Articles() {
           <NewsTabList />
           <NewsTabList />
           </Col>
-          <Col lg={3}>
-              <Container>
-                  Guide on buy and sell in Reuce
+          <Col lg={3}  className='sellerGuideCol-articles'>
+              <Container className='sellerGuideContainer-articles'>
+                  Guide for seller and buyer
               </Container>
               <ArticleGuide />
           

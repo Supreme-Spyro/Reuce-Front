@@ -18,3 +18,12 @@
     font-size: 30px;
     padding: 5px;
 }
+
+.sellerGuideCol-articles{
+    border-top: gainsboro solid 1px;
+    padding-top: 10px;
+}
+
+.sellerGuideContainer-articles{
+    margin-top: 10px;
+}
