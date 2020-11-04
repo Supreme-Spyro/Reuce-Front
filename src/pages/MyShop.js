@@ -1,8 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
+import {useHistory} from 'react-router-dom'
 
 // styling
 import "../styles/Profile.css";
+import '../styles/MyShop.css'
 
 //pic import
 import blankAva from "../assets/blank-avatar.png";
@@ -11,8 +13,9 @@ import blankAva from "../assets/blank-avatar.png";
 import MyShopList from '../components/web-elements/MyShopList'
 
 function Profile() {
-  function alertClicked() {
-    alert("You clicked the third ListGroupItem");
+  let history = useHistory();
+  function goToProfile() {
+    history.push('/profile')
   }
 
   return (
@@ -46,10 +49,10 @@ function Profile() {
                   mt={5}
                   className='listTab-profile'
                 >
-                  <ListGroup.Item action onClick={alertClicked} className='subListTabMyProfile-profile'>
+                  <ListGroup.Item action onClick={goToProfile} className='subListTabMyProfile-MyShop'>
                     My Profile
                   </ListGroup.Item>
-                  <ListGroup.Item action onClick={alertClicked} className='subListTabMyShop-profile'>
+                  <ListGroup.Item  className='subListTabMyShop-MyShop'>
                     My Shop
                   </ListGroup.Item>
                 </ListGroup>
@@ -57,6 +60,7 @@ function Profile() {
             </Container>
           </Col>
           <Col lg={9}>
+            <MyShopList />
             <MyShopList />
           </Col>
         </Row>

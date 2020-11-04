@@ -13,22 +13,18 @@ function MyShopList() {
           <img className="ListImage-MyShopList" src={bottle} />
         </Col>
         <Col lg={8}>
-            <table>
+            <div className='productName-MyShopList'>Botol Pelastik Bekas</div>
+            <table className='table-MyShopList'>
                 <tr>
-                    
-                        Botol Pelastik Bekas Bukan Produk Perancis
-                    
-                </tr>
-                <tr>
-                    <td>
+                    <td className='tdTable-MyShopList'>
                         Satuan Produk
                     </td>
                     <td>
-                        Kiloan
+                        Kg
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td className='tdTable-MyShopList'>
                         Harga per satuan
                     </td>
                     <td>
@@ -36,7 +32,7 @@ function MyShopList() {
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td className='tdTable-MyShopList'>
                         Alamat Pengiriman
                     </td>
                     <td>
@@ -44,14 +40,11 @@ function MyShopList() {
                     </td>
                 </tr>
             </table>
-            <Row>
-                <Col lg={6}>
-            <Button variant='success'>Edit item</Button>
-                </Col>
-                <Col lg={6}>
-            <Button variant='danger'>Item Sold Out</Button>
-                </Col>
-            </Row>
+            
+
+            <Button className='buttonEdit-MyShopList' variant='success'>Edit item</Button>
+            <Button className='buttonSoldOut-MyShopList' variant='danger'>Item Sold Out</Button>
+            
         </Col>
       </Row>
     </div>

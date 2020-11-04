@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
-
+import {useHistory} from 'react-router-dom'
 // styling
 import "../styles/Profile.css";
 
@@ -11,8 +11,10 @@ import blankAva from "../assets/blank-avatar.png";
 import MyShopCard from '../components/web-elements/MyshopCard'
 
 function Profile() {
+  let history = useHistory()
+
   function alertClicked() {
-    alert("You clicked the third ListGroupItem");
+    history.push('/myshop')
   }
 
   return (

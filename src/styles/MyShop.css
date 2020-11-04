@@ -1,0 +1,20 @@
+.subListTabMyProfile-MyShop{
+    width: 100%;
+    background-color: transparent;
+    height: 20px;
+    display: flex;
+    align-items: center;
+
+}
+
+.subListTabMyShop-MyShop{
+    width: 100%;
+    background-color: #00CEAF;
+    color: white;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: #00CEAF 2px solid;
+    border-left: #00CEAF 2px solid;
+
+}

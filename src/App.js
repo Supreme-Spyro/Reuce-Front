@@ -13,6 +13,7 @@ import ProductDetails from "./pages/ProductDetails";
 import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
 import MyShop from './pages/MyShop'
+import EditItem from './pages/EditItem'
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -57,6 +58,10 @@ function App() {
         <Route path="/myshop">
           <NavbarBootstrap />
           <MyShop />
+        </Route>
+        <Route path="/edititem">
+          <NavbarBootstrap />
+          <EditItem />
         </Route>
       </Switch>
     </Router>

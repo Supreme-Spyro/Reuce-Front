@@ -1,11 +1,10 @@
 .MyShopListContainer {
   width: 100%;
-  height: 100%;
+  height: 250px;
   padding: 10px;
-  /* border: solid gray 1px; */
-  border-width: thin;
+  margin-bottom: 10px;
   background-color: #ececec;
-  border-radius: 5px;
+  border-radius: 10px;
   -webkit-box-shadow: -3px 3px 14px -2px rgba(0, 0, 0, 0.99);
   -moz-box-shadow: -3px 3px 14px -2px rgba(0, 0, 0, 0.99);
   box-shadow: -3px 3px 14px -2px rgba(0, 0, 0, 0.99);
@@ -14,4 +13,30 @@
 .ListImage-MyShopList {
   width: 100%;
   height: 100%;
+}
+
+.buttonEdit-MyShopList{
+    float: left;
+    position: absolute;
+    bottom: 0;
+}
+
+.buttonSoldOut-MyShopList{
+    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 30px;
+}
+
+.table-MyShopList{
+    margin-top: 10px;
+}
+
+.tdTable-MyShopList{
+    width: 60%
+}
+
+.productName-MyShopList{
+    font-size: 25px;
 }
