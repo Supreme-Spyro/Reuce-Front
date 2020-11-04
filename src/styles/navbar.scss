@@ -1,0 +1,51 @@
+// color
+$color1: #00ceaf;
+$color2: #00a88f;
+$color3: #0d7377;
+$color4: #063a3cff;
+$color5: #212121;
+
+// font
+.lato {
+  font-family: "Lato", sans-serif;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+// main
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// class
+.link-kategori {
+  font-size: 0.8em;
+}
+
+.search-group {
+  //     height: 40px;
+  width: 300px;
+}
+.input-search {
+  // background-color: ;
+  width: 300px;
+}
+
+.button-masuk {
+  font-size: 0.9em;
+}
+
+.button-daftar {
+  border: none;
+  background-color: $color1;
+}
+
+.button-daftar:hover {
+  background-color: $color2;
+}
