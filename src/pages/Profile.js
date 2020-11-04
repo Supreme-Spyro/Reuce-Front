@@ -46,10 +46,10 @@ function Profile() {
                   mt={5}
                   className='listTab-profile'
                 >
-                  <ListGroup.Item action onClick={alertClicked} className='subListTab-profile'>
+                  <ListGroup.Item action onClick={alertClicked} className='subListTabMyProfile-profile'>
                     My Profile
                   </ListGroup.Item>
-                  <ListGroup.Item action onClick={alertClicked} className='subListTab-profile'>
+                  <ListGroup.Item action onClick={alertClicked} className='subListTabMyShop-profile'>
                     My Shop
                   </ListGroup.Item>
                 </ListGroup>
@@ -95,7 +95,7 @@ function Profile() {
               </Form.Group>
 
               <Form.Group  as={Row}>
-              <Button type="submit">Save Changes</Button>
+              <Button type="submit" className='saveChangeButton-profile'>Save Changes</Button>
 
               </Form.Group>
               </Container>
@@ -108,7 +108,7 @@ function Profile() {
       <Container className='myShop-profile'>
         <Row>
           <Col lg={12} className='myShopTitle-profile'>
-          Your selling item
+          Your Shop
           </Col>
         </Row>
         <Row className='rowMyShop-profile'>

@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //pages
 import Home from "./pages/Home";
-import Profile from './pages/Profile';
+import Profile from "./pages/Profile";
 import Articles from "./pages/Articles";
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Search from './pages/Search';
-import Category from './pages/Category';
-import ProductDetails from './pages/ProductDetails';
-import ShoppingCart from './pages/ShoppingCart';
-import Checkout from './pages/Checkout';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Search from "./pages/Search";
+import Category from "./pages/Category";
+import ProductDetails from "./pages/ProductDetails";
+import ShoppingCart from "./pages/ShoppingCart";
+import Checkout from "./pages/Checkout";
+import MyShop from './pages/MyShop'
 
+//component
+import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
 
 import "./styles/App.css";
 function App() {
@@ -29,9 +32,11 @@ function App() {
           <Register />
         </Route>
         <Route path="/profile">
+          <NavbarBootstrap />
           <Profile />
         </Route>
         <Route path="/articles">
+          <NavbarBootstrap />
           <Articles />
         </Route>
         <Route path="/searchresult">
@@ -48,6 +53,10 @@ function App() {
         </Route>
         <Route path="/checkout">
           <Checkout />
+        </Route>
+        <Route path="/myshop">
+          <NavbarBootstrap />
+          <MyShop />
         </Route>
       </Switch>
     </Router>

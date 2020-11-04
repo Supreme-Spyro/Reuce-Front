@@ -1,5 +1,5 @@
 .profileContainer-profile{
-    background-color: #e0dcce;
+    background-color: #ececec;
     padding: 2px;
     margin-top: 5%;
     border-radius: 10px;
@@ -11,10 +11,24 @@
     background-color: transparent;
 }
 
-.subListTab-profile{
+
+.subListTabMyProfile-profile{
+    width: 100%;
+    background-color: #00CEAF;
+    color: white;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: #00CEAF 2px solid;
+    border-left: #00CEAF 2px solid;
+}
+
+
+
+.subListTabMyShop-profile{
     width: 100%;
     background-color: transparent;
-    height: 50px;
+    height: 20px;
     display: flex;
     align-items: center;
 }
@@ -29,7 +43,7 @@
 .rowAva-profile{
     padding: 20px;
 
-    border-bottom: black 0.5px solid;
+    border-bottom: #c4b6b6 0.5px solid;
 }
 
 .listAva-profile{
@@ -37,7 +51,7 @@
     text-align: center;
     margin: auto;
     padding: 0;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 
@@ -47,7 +61,7 @@
 
 .myShop-profile{
     margin-top: 10px;
-    background-color: #e0dcce;
+    background-color: #ececec;
     padding:5px;
     border-radius: 10px;
 }
@@ -81,12 +95,24 @@
     font-size: 50px;
     background-color: transparent;
     border: none;
-    color: black;
+    color:#0d7377;
 }
 
 .addMoreItemButton-profile:hover{
     font-size: 50px;
     background-color: transparent;
     border: none;
-    color: blue;
+    color: #00CEAF ;
+}
+
+.saveChangeButton-profile{
+    background-color: #00CEAF ;
+    border: none;
+    color: #212121;
+}
+
+.saveChangeButton-profile:hover{
+    background-color: #0d7377 ;
+    border: none;
+    color: #212121;
 }
