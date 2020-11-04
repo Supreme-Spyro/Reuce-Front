@@ -12,8 +12,9 @@ import Category from "./pages/Category";
 import ProductDetails from "./pages/ProductDetails";
 import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
-import MyShop from './pages/MyShop'
-import EditItem from './pages/EditItem'
+import MyShop from "./pages/MyShop";
+import EditItem from "./pages/EditItem";
+import NewsLetter from './pages/NewsLetter';
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -62,6 +63,10 @@ function App() {
         <Route path="/edititem">
           <NavbarBootstrap />
           <EditItem />
+        </Route>
+        <Route path="/newsletter">
+          <NavbarBootstrap />
+          <NewsLetter />
         </Route>
       </Switch>
     </Router>
