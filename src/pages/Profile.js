@@ -1,6 +1,11 @@
-import  React from "react";
+import  React, { useEffect } from "react";
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import jwtDecode from 'jwt-decode'
+
+import {getUserRequestById} from '../redux/actions/getUserData.action'
+
 // styling
 import "../styles/Profile.css";
 
@@ -11,11 +16,30 @@ import blankAva from "../assets/blank-avatar.png";
 import MyShopCard from '../components/web-elements/MyshopCard'
 
 function Profile() {
-  let history = useHistory()
+
+  //requirement
+  const history = useHistory()
+  const dispatch = useDispatch();
+
+  //select data
+  const userData = useSelector((state)=>state.getUserDataReducer.data)
+  console.log('userData',userData)
+
+  const userToken = localStorage.getItem("token");
+  const decodedToken = userToken ? jwtDecode(userToken) : "none";
+  console.log("decoded token", decodedToken);
+
+
+  //opbtaining user data from redux
+  useEffect(() => {
+    dispatch(getUserRequestById(decodedToken._id))
+  },[dispatch]);
 
   function alertClicked() {
     history.push('/myshop')
   }
+
+  
 
   return (
     <div>
@@ -29,13 +53,13 @@ function Profile() {
             <Row className='rowAva-profile'>
               <ul className="listAva-profile">
                 <li>
-                  hi! username
+                  {userData.username}
                 </li>
                 <li>
-                  xxxx@mail.com
+                  {userData.email}
                 </li>
                 <li>
-                  id :12345678
+                  id :{userData._id}
                 </li>
               </ul>
             </Row>

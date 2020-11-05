@@ -27,20 +27,14 @@ export const getUserDataFailed = (error) =>{
     };
 };
 
-export const getDataFromAPI = (value, event, id) => (dispatch) => {
-    event.preventDefault();
-    console.log('data sucessfully obtained');
-    const uriUsers = `https://reuce-back.herokuapp.com/user/${id}`
-    return axios
-    .get(uriUsers,value)
-    .then((response)=>{
-        console.log('res',response);
-        dispatch(getUserData(response.data));
-    })
-    .catch((error)=>{
-    console.log(console.log(error))
-    })
-}; 
+export const getUserRequestById = (id) => (dispatch) => {
+    console.log('id',id)
+    const uriUser = `https://reuce-back.herokuapp.com/user/${id}`;
+    axios
+    .get(`${uriUser}`)
+    .then((result)=> dispatch(getUserDataSuccess(result.data)))
+    .catch((error)=>dispatch(getUserDataFailed(error)))
+};
 
 export const editUserProfile = (value, event, id) => (dispatch) =>{
     event.preventDefault();

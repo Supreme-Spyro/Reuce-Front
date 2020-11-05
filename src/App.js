@@ -33,7 +33,7 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile/:id">
           <NavbarBootstrap />
           <Profile />
         </Route>
@@ -60,11 +60,11 @@ function App() {
           <NavbarBootstrap />
           <MyShop />
         </Route>
-        <Route path="/edititem">
+        <Route path="/edititem/:id">
           <NavbarBootstrap />
           <EditItem />
         </Route>
-        <Route path="/newsletter">
+        <Route path="/articles/:id">
           <NavbarBootstrap />
           <NewsLetter />
         </Route>
