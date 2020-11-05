@@ -1,4 +1,4 @@
-import  React, { useEffect } from "react";
+import  React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 import {useHistory, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
@@ -21,10 +21,11 @@ function Profile() {
   const history = useHistory()
   const dispatch = useDispatch();
 
-  //select data
+  //get data from reducer
   const userData = useSelector((state)=>state.getUserDataReducer.data)
-  console.log('userData',userData)
 
+  //get data from navbar redux
+  console.log('userData',userData)
   const userToken = localStorage.getItem("token");
   const decodedToken = userToken ? jwtDecode(userToken) : "none";
   console.log("decoded token", decodedToken);
@@ -39,7 +40,21 @@ function Profile() {
     history.push('/myshop')
   }
 
-  
+  //useState
+  const [profileState, setProfileState] = useState ({
+    username: `${userData.username}`,
+    fullname:`${userData.fullname}`,
+    email:`${userData.email}`,
+    password:`${userData.password}`,
+    address:`${userData.address}`
+  })
+
+  const handleChange = (event) => {
+    setProfileState({
+      ...profileState,
+      [event.target.name] : event.target.value,
+    })
+  }
 
   return (
     <div>
@@ -87,27 +102,51 @@ function Profile() {
               <Container>
               <Form.Group controlId="username" as={Row}>
                 <Form.Label>username</Form.Label>
-                <Form.Control type="text" name="username" />
+                <Form.Control 
+                type="text" 
+                name="username"
+                onChange={(event)=>handleChange(event)} 
+                value={profileState.username}/>
               </Form.Group>
 
               <Form.Group controlId="fullName" as={Row}>
                 <Form.Label>full name</Form.Label>
-                <Form.Control type="text" name="fullname" />
+                <Form.Control 
+                type="text" 
+                name="fullname"
+                onChange={(event)=>handleChange(event)} 
+                value={profileState.fullname}
+                 />
               </Form.Group>
 
               <Form.Group controlId="email" as={Row}>
                 <Form.Label>email</Form.Label>
-                <Form.Control type="email" name="email" />
+                <Form.Control 
+                type="email" 
+                name="email"
+                onChange={(event)=>handleChange(event)} 
+                value={profileState.email}
+                />
               </Form.Group>
 
               <Form.Group controlId="Address" as={Row}>
                 <Form.Label>Address</Form.Label>
-                <Form.Control type="text" name="Address" />
+                <Form.Control 
+                type="text" 
+                name="Address" 
+                onChange={(event)=>handleChange(event)} 
+                value={profileState.address}
+                />
               </Form.Group>
 
               <Form.Group controlId="currentPassword" as={Row}>
                 <Form.Label>current password</Form.Label>
-                <Form.Control type="password" name="currentPassword" />
+                <Form.Control 
+                type="password" 
+                name="currentPassword" 
+                onChange={(event)=>handleChange(event)} 
+                value={profileState.password}
+                />
               </Form.Group>
 
               <Form.Group controlId="newPassword" as={Row}>
