@@ -64,7 +64,7 @@ function App() {
           <NavbarBootstrap />
           <EditItem />
         </Route>
-        <Route path="/articles/:id">
+        <Route path="/newsletter">
           <NavbarBootstrap />
           <NewsLetter />
         </Route>

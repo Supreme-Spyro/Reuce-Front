@@ -1,9 +1,25 @@
-.featuredCard-articles{
-    width: 320px;
-    height: 351px;
-    margin: auto;
+.featuredCard-articles {
+  width: 400px;
+  height: 420px;
+  margin: 2px;
 }
 
-.featuredCardPic-articles{
+.featuredCardPic-articles {
+  width: 400px;
+}
+
+.newsLetterReview-articles {
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .featuredCardPic-articles {
     width: 100%;
+  }
+  .featuredCard-articles {
+    width: 95%;
+    height: 30%;
+    margin-top: 40px;
+  }
 }

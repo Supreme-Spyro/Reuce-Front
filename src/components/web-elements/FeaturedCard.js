@@ -10,7 +10,7 @@ function FeaturedCard() {
     <div className="featuredCard-articles">
           <img src={plasticStop} className="featuredCardPic-articles" />
           <div><a href='google.com'>link to proceed</a></div>
-          <div> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of t</div>
+          <div className='newsLetterReview-articles'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ... </div>
     </div>
   );
 }

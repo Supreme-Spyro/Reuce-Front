@@ -1,29 +1,36 @@
-.featuredRow-articles{
-    padding: 50px 5px 5px 5px;
-
+.featuredRow-articles {
+  padding: 50px 5px 5px 5px;
 }
 
-.featuredContainer-articles{
+.featuredContainer-articles {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+.featuredRow-articles {
+  display: flex;
+  flex-direction: row;
+}
+
+.featuredRowTitle-articles {
+  text-align: center;
+  font-size: 30px;
+  padding: 5px;
+}
+
+.sellerGuideCol-articles {
+  border-top: gainsboro solid 1px;
+  padding-top: 10px;
+}
+
+.sellerGuideContainer-articles {
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .featuredContainer-articles {
     display: flex;
-    flex-direction: row;
-}
-
-.featuredRow-articles{
-    display: flex;
-    flex-direction: row;
-}
-
-.featuredRowTitle-articles{
-    text-align: center;
-    font-size: 30px;
-    padding: 5px;
-}
-
-.sellerGuideCol-articles{
-    border-top: gainsboro solid 1px;
-    padding-top: 10px;
-}
-
-.sellerGuideContainer-articles{
-    margin-top: 10px;
+    flex-direction: column;
+  }
 }
