@@ -9,13 +9,13 @@ function NewsTabList() {
     return (
         <Container className='NewsTabList-articles'>
             <Row>
-                <Col lg={4} xs={12}>
+                <Col lg={4}>
                 <img 
                 src = {TabListExample}
                 className='tabListImage-articles'
                 />
-                </Col >
-                <Col lg={8} xs={12}>
+                </Col>
+                <Col lg={8}>
                 <Container className='tabListDateRelease-articles'>
                     Tips on November, 1st 2020
                 </Container>

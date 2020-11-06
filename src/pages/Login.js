@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Modal,
+} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "../styles/login.scss";
 
@@ -26,12 +34,34 @@ export default function Login() {
     });
   };
 
+  const loadingLogin = useSelector((state) => state.userReducer.isLoading);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
   return (
     <div className="outer align-item-center">
-      <Container classname="border-20">
+      <Container className="border-20">
         <br />
         <br />
         <br />
+        {/* loading modal */}
+        <Modal
+          style={{ position: "fixed", left: "25%", top: "25%" }}
+          show={show}
+          onHide={handleClose}
+          className="w-50"
+        >
+          <Modal.Header>
+            <Modal.Title className="text-center">Please Wait...</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <Spinner className="mx-auto " animation="border" variant="info" />
+          </Modal.Body>
+        </Modal>
+        {/* loading modal */}
         <Row className=" bg-light border-20 inner-box">
           {/* <Col xs={2} lg={2} className="col-left bg-light inner-box"></Col> */}
           <Col
@@ -54,6 +84,7 @@ export default function Login() {
             <div className="mx-sm-4 form-group pb-2">
               <Form
                 onSubmit={(event) => {
+                  setShow(true);
                   dispatch(loginActions(loginState, event, history));
                 }}
               >

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
 import { Search, Cart2 } from "react-bootstrap-icons";
 import {
@@ -14,6 +13,8 @@ import {
   Button,
   Container,
   InputGroup,
+  Modal,
+  Spinner,
 } from "react-bootstrap";
 
 import { getSearchActions } from "../../redux/actions/search.action";
@@ -55,11 +56,39 @@ export default function NavbarBootstrap() {
     document.location.href = "/";
   };
 
+  // loading modal variables
+  const [showLoading, setShowLoading] = useState(false);
+  const handleClose = () => setShowLoading(false);
+  const handleShow = () => setShowLoading(true);
+  // loading modal variables
+
   return (
     <div>
       <Navbar className="lato" fixed="top" bg="light" expand="lg">
+        {/* loading modal */}
+        <Modal
+          style={{ position: "fixed", left: "25%", top: "25%" }}
+          show={showLoading}
+          onHide={handleClose}
+          className="w-50"
+        >
+          <Modal.Header className="text-center">
+            <Modal.Title className="text-center">Please Wait...</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <Spinner className="mx-auto " animation="border" variant="info" />
+          </Modal.Body>
+        </Modal>
+        {/* loading modal */}
+
         <Container>
-          <Link to="/">
+          <Link
+            onClick={() => {
+              setShowLoading(true);
+              window.location.href=`/`
+            }}
+            // to="/"
+          >
             <Navbar.Brand>
               <img
                 src={reuceLogo}
@@ -96,6 +125,7 @@ export default function NavbarBootstrap() {
               <Form
                 autoComplete="off"
                 onSubmit={(event) => {
+                  setShowLoading(true);
                   dispatch(getSearchActions(searchState, event, history));
                 }}
                 inline
@@ -125,10 +155,12 @@ export default function NavbarBootstrap() {
                   <NavDropdown
                     title={`${decodedToken.username}`}
                     id="profile-nav-dropdown"
-                    
                   >
                     <NavDropdown.Item
                       as={Link}
+                      onClick={() => {
+                        setShowLoading(true);
+                      }}
                       to={`/profile/${decodedToken._id}`}
                       className="nunito"
                       // onClick={(event)=>{dispatch(getUserRequestbyId(event,history))}}
@@ -136,7 +168,7 @@ export default function NavbarBootstrap() {
                       My Profile
                     </NavDropdown.Item>
                     <NavDropdown.Item
-                    className="nunito"
+                      className="nunito"
                       onClick={(event) => {
                         logoutFunction(event, history);
                       }}
@@ -144,29 +176,37 @@ export default function NavbarBootstrap() {
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Link to="/shopcart">
+                  <NavLink to="/shopcart">
                     {/* {console.log("data order diluar:",dataOrder)} */}
                     {dataOrder !== undefined ? (
                       dataOrder.length > 0 ? (
-                        <span className="label label-info">
-                          <div className="popup-order">{dataOrder.length}</div>
+                        <Nav.Link>
+                          {/* <div className=""> */}
+                          {/* <span className=""> */}
+                          {dataOrder.length}
                           {/* {console.log("quantity data: ", dataOrder)} */}
-                        </span>
+                          {/* </span> */}
+                          {/* </div> */}
+                        </Nav.Link>
                       ) : null
                     ) : (
                       "loading"
                     )}
                     <Cart2 className="ml-1 text-dark" size={30} />
-                  </Link>
+                  </NavLink>
                 </Nav>
               ) : (
                 <Nav.Link className="button-masuk">
                   <Link className="text-dark" to="/login">
-                    <Button size="sm" variant="light">Masuk</Button>
+                    <Button size="sm" variant="light">
+                      Masuk
+                    </Button>
                   </Link>
                   &nbsp; &nbsp;
                   <Link className="text-dark " to="/register">
-                    <Button size="sm" className="button-daftar">Daftar</Button>
+                    <Button size="sm" className="button-daftar">
+                      Daftar
+                    </Button>
                   </Link>
                 </Nav.Link>
               )}
