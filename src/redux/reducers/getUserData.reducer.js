@@ -2,6 +2,7 @@ import {
   GET_USER_DATA_PROFILE,
   GET_USER_DATA_PROFILE_SUCCESS,
   GET_USER_DATA_PROFILE_FAILED,
+  EDIT_USER_DATA_PROFILE,
 } from "../actions/getUserData.action";
 
 
@@ -31,6 +32,11 @@ const getUserDataReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.error,
       };
+      case EDIT_USER_DATA_PROFILE:
+        return{
+          ...state,
+          data: action.payload,
+        }
       default:
           return state
   }
