@@ -36,10 +36,11 @@ export default function Login() {
 
   const loadingLogin = useSelector((state) => state.userReducer.isLoading);
 
+  // loading modal variables
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
+  // loading modal variables
 
   return (
     <div className="outer align-item-center">

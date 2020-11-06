@@ -64,7 +64,7 @@ export default function NavbarBootstrap() {
 
   return (
     <div>
-      <Navbar className="lato" fixed="top" bg="light" expand="lg">
+      <Navbar className="lato shadowNavbar" fixed="top" bg="light" expand="lg">
         {/* loading modal */}
         <Modal
           style={{ position: "fixed", left: "25%", top: "25%" }}
@@ -85,7 +85,7 @@ export default function NavbarBootstrap() {
           <Link
             onClick={() => {
               setShowLoading(true);
-              window.location.href=`/`
+              window.location.href = `/`;
             }}
             // to="/"
           >
@@ -170,6 +170,7 @@ export default function NavbarBootstrap() {
                     <NavDropdown.Item
                       className="nunito"
                       onClick={(event) => {
+                        setShowLoading(true);
                         logoutFunction(event, history);
                       }}
                     >
