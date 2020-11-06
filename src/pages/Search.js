@@ -38,7 +38,7 @@ export default function Search() {
                           onClick={() => {
                             history.push(`/productdetails/`);
                           }}
-                          className="search-card bg-dark text-light mb-3"
+                          className="search-card bg-light text-dark mb-3"
                         >
                           <Card.Img
                             className="card-img"

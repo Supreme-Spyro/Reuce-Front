@@ -39,12 +39,12 @@ export default function ProductDetails() {
               <div>
                   <h3>Detail Produk</h3>
                   <p>
-                    Grade: 
+                    Grade: A
                   </p>
                   <p>
                     Categories: botol plastik
                   </p>
-                <p>Conditon: Baik</p>
+                <p>Conditon: Bersih</p>
                 <p>Weight: 1kg</p>
                 </div>
             </Row>

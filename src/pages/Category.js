@@ -18,7 +18,7 @@ export default function Category() {
     const cardDataDummy = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10"];
 
     const history = useHistory();
-    
+
     return (
         <div>
             <Row>
@@ -36,7 +36,7 @@ export default function Category() {
                           onClick={() => {
                             history.push(`/productdetails/`);
                           }}
-                          className="search-card bg-dark text-light mb-3"
+                          className="search-card bg-light text-dark mb-3"
                         >
                           <Card.Img
                             className="card-img"
