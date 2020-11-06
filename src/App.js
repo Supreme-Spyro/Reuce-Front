@@ -42,15 +42,19 @@ function App() {
           <Articles />
         </Route>
         <Route path="/searchresult">
+          <NavbarBootstrap />
           <Search />
         </Route>
         <Route path="/category">
+          <NavbarBootstrap />
           <Category />
         </Route>
         <Route path="/productdetails">
+          <NavbarBootstrap />
           <ProductDetails />
         </Route>
         <Route path="/shoppingcart">
+          <NavbarBootstrap />
           <ShoppingCart />
         </Route>
         <Route path="/checkout">

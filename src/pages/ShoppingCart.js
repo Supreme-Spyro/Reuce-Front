@@ -70,6 +70,15 @@ export default function ShoppingCart() {
               </Form.Group>
             </Col>
           </Row>
+          <Row>
+          <Button
+                  className="buy-now"
+                  variant="success"
+                  type="submit"
+                >
+                  <strong>Beli</strong>
+                </Button>
+          </Row>
             </Container>
         </div>
     )

@@ -86,7 +86,7 @@ export default function ProductDetails() {
                   variant="success"
                   type="submit"
                 >
-                  <strong>Add to Cart</strong>
+                  <strong>Masukkan ke Keranjang</strong>
                 </Button>
                   </Row>
                 
