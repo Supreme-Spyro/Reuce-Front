@@ -1,0 +1,26 @@
+.container-counter-quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    width: 100px;
+    position: relative;
+    right: -67px;
+  }
+  
+  .button {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .num {
+    margin: 10px;
+  }
+  
+  .addtocart{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
