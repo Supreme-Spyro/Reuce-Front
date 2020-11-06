@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Button, Container, Row, Col, Card, Spinner } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
-import "../../styles/Font.scss";
+import "../../../styles/Font.scss";
+import "../../../styles/popularHome.scss";
 
-import trashSack from "../../assets/trash-sack.jpg";
-import ProductCard from "./ProductCard";
+import trashSack from "../../../assets/trash-sack.jpg";
+import ProductCard from "./ProductCardHome";
 
 export default function PopularHome() {
   const dummyPopular = [
@@ -16,34 +17,62 @@ export default function PopularHome() {
       buttonOnclick: ``,
       buttonVariant: `success`,
       buttonText: `+ Keranjang`,
+      productRole: "jual",
     },
     {
       image: trashSack,
       title: "Botol Plastik",
-      text: "text1",
+      text: "Rp 10.000/Kg",
       buttonOnclick: ``,
       buttonVariant: `success`,
       buttonText: `+ Keranjang`,
+      productRole: "beli",
     },
     {
       image: trashSack,
       title: "Botol Plastik",
-      text: "text1",
+      text: "Rp 10.000/Kg",
       buttonOnclick: ``,
       buttonVariant: `success`,
       buttonText: `+ Keranjang`,
+      productRole: "beli",
     },
     {
       image: trashSack,
       title: "Botol Plastik",
-      text: "text1",
+      text: "Rp 10.000/Kg",
       buttonOnclick: ``,
       buttonVariant: `success`,
       buttonText: `+ Keranjang`,
+      productRole: "jual",
+    },
+    {
+      image: trashSack,
+      title: "Botol Plastik",
+      text: "Rp 10.000/Kg",
+      buttonOnclick: ``,
+      buttonVariant: `success`,
+      buttonText: `+ Keranjang`,
+      productRole: "beli",
+    },
+    {
+      image: trashSack,
+      title: "Botol Plastik",
+      text: "Rp 10.000/Kg",
+      buttonOnclick: ``,
+      buttonVariant: `success`,
+      buttonText: `+ Keranjang`,
+      productRole: "beli",
     },
   ];
   return dummyPopular.map((item, index) => (
-    <Col xs={12} sm={6} md={3} key={index}>
+    <Col
+      className="colStyle align-item-center justify-content-center"
+      xs={8}
+      sm={8}
+      md={3}
+      key={index}
+    >
       <ProductCard
         imageSource={item.image}
         title={item.title}
@@ -51,6 +80,7 @@ export default function PopularHome() {
         buttonOnclick={item.buttonOnclick}
         buttonText={item.buttonText}
         variant={item.buttonVariant}
+        productRole={item.productRole}
       />
     </Col>
   ));

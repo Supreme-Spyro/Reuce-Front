@@ -54,3 +54,25 @@ a {
 .button-daftar:hover {
   background-color: $color2;
 }
+
+// media query
+// large screen
+@media (max-width: 1200px) {
+}
+
+/* small screen */
+@media (max-width: 992px) {
+  .link-kategori {
+    font-size: 1em;
+  }  
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  
+
+}
+
+/* phone */
+@media (max-width: 576px) {
+}

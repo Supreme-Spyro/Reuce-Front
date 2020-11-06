@@ -3,14 +3,18 @@ import React from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 
 import NavbarBootstrap from "../components/web-elements/NavbarBootstrap";
-import CarouselHome from "../components/web-elements/CarouselHome";
-import PopularHome from "../components/web-elements/PopularHome";
-import ProductCard from "../components/web-elements/ProductCard";
+import CarouselHome from "../components/web-elements/Home/CarouselHome";
+import PopularHome from "../components/web-elements/Home/PopularHome";
+import WhatsNewHome from "../components/web-elements/Home/WhatsNewHome";
+import ArticlesHome from "../components/web-elements/Home/ArticlesHome";
+import WhyUs from "../components/web-elements/Home/WhyUs";
+import Footer from "../components/web-elements/Footer";
 
 export default function Home() {
   return (
     <div>
       <NavbarBootstrap />
+      <br />
       <br />
       <br />
       <Container>
@@ -21,24 +25,37 @@ export default function Home() {
         <br />
         <div className="popularSection">
           <Row className="sectionTitle">
-            <h5 className="lato" >Populer Minggu ini</h5>
+            <h5 className="lato">Populer Minggu ini</h5>
           </Row>
-          <Row className="justify-content-center">
+          <Row className="flex-row flex-nowrap horizontalMenu">
             <PopularHome />
           </Row>
         </div>
         <div className="popularSection">
-          <Row className="">
+          <Row className="sectionTitle">
             <h5 className="lato">Baru Hadir</h5>
           </Row>
-          <Row className="justify-content-center">
-            <PopularHome />
+          <Row className="flex-row flex-nowrap horizontalMenu">
+            <WhatsNewHome />
           </Row>
         </div>
-        <br/>
-        <br/>
+        <Row>
+          <h5 className="ml-4 lato sectionTitle">Kenapa Kami?</h5>
+        </Row>
+        <div>
+          <WhyUs />
+        </div>
+        <div className="popularSection">
+          <Row className="sectionTitle">
+            <h5 className="lato">Artikel</h5>
+          </Row>
+          <Row className="flex-row flex-nowrap horizontalMenu">
+            <ArticlesHome />
+          </Row>
+        </div>
         {/* </Container> */}
       </Container>
+      <Footer />
     </div>
   );
 }

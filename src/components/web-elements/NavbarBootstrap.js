@@ -104,23 +104,9 @@ export default function NavbarBootstrap() {
             <Nav>
               <Nav.Link className="link-kategori">Kategori</Nav.Link>
             </Nav>
-            {/* <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav> */}
+            <Nav>
+              <Nav.Link className="link-kategori">Artikel</Nav.Link>
+            </Nav>
             <Nav className="mx-auto my-1 ">
               <Form
                 autoComplete="off"
@@ -155,6 +141,7 @@ export default function NavbarBootstrap() {
                   <NavDropdown
                     title={`${decodedToken.username}`}
                     id="profile-nav-dropdown"
+                    className="link-kategori"
                   >
                     <NavDropdown.Item
                       as={Link}
@@ -193,7 +180,7 @@ export default function NavbarBootstrap() {
                     ) : (
                       "loading"
                     )}
-                    <Cart2 className="ml-1 text-dark" size={30} />
+                    <Cart2 className="ml-1 text-dark mt-2" size={26} />
                   </NavLink>
                 </Nav>
               ) : (
@@ -205,7 +192,7 @@ export default function NavbarBootstrap() {
                   </Link>
                   &nbsp; &nbsp;
                   <Link className="text-dark " to="/register">
-                    <Button size="sm" className="button-daftar">
+                    <Button size="sm" className="button-daftar pb-lg-2">
                       Daftar
                     </Button>
                   </Link>
