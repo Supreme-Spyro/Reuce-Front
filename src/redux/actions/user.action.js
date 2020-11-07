@@ -1,24 +1,57 @@
 import axios from "axios";
 // import jwt from "jwt-decode";
 
-export const REGISTER = "REGISTER";
-export const LOGIN = "LOGIN";
+export const REGISTER_REQUEST = "REGISTER_REQUEST";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILED = "REGISTER_FAILED";
+
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
+
 export const GET_DATA_REQUEST = "GET_DATA_REQUEST";
 export const GET_DATA_SUCCESS = "GET_DATA_SUCCESS";
 export const GET_DATA_FAILED = "GET_DATA_FAILED";
-export const EDIT_PROFILE_USER = "EDIT_PROFILE_USER"
+export const EDIT_PROFILE_USER = "EDIT_PROFILE_USER";
 
-
-export const registerFunct = (value) => {
+export const registerRequest = (value) => {
   return {
-    type: REGISTER,
+    type: REGISTER_REQUEST,
     payload: value,
   };
 };
 
-export const loginFunct = (value) => {
+export const registerSuccess = (value) => {
   return {
-    type: LOGIN,
+    type: REGISTER_SUCCESS,
+    payload: value,
+  };
+};
+
+export const registerFailed = (value) => {
+  return {
+    type: REGISTER_FAILED,
+    payload: value,
+  };
+};
+
+export const loginRequest = (value) => {
+  return {
+    type: LOGIN_REQUEST,
+    payload: value,
+  };
+};
+
+export const loginSuccess = (value) => {
+  return {
+    type: LOGIN_SUCCESS,
+    payload: value,
+  };
+};
+
+export const loginFailed = (value) => {
+  return {
+    type: LOGIN_FAILED,
     payload: value,
   };
 };
@@ -43,9 +76,6 @@ export const getUserFailed = (error) => {
   };
 };
 
-
-
-
 export const registerActions = (value, event, history) => (dispatch) => {
   event.preventDefault();
   console.log("register value", value);
@@ -56,7 +86,7 @@ export const registerActions = (value, event, history) => (dispatch) => {
     .post(uriUsers, value)
     .then((response) => {
       console.log("res", response);
-      dispatch(registerFunct(response));
+      dispatch(registerSuccess(response));
       history.push("/login");
     })
     .catch((error) => {
@@ -75,7 +105,8 @@ export const loginActions = (value, event, history) => (dispatch) => {
       console.log(response);
       if (response.data.token !== undefined) {
         localStorage.setItem("token", response.data.token);
-        dispatch(loginFunct(response.data.token));
+        dispatch(loginRequest())
+        dispatch(loginSuccess(response.data.token));
         history.push("/");
       }
     })

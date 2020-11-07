@@ -24,6 +24,11 @@ a {
 }
 
 // class
+.shadowNavbar {
+  -webkit-box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
+}
+
 .link-kategori {
   font-size: 0.8em;
 }
@@ -48,4 +53,26 @@ a {
 
 .button-daftar:hover {
   background-color: $color2;
+}
+
+// media query
+// large screen
+@media (max-width: 1200px) {
+}
+
+/* small screen */
+@media (max-width: 992px) {
+  .link-kategori {
+    font-size: 1em;
+  }  
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  
+
+}
+
+/* phone */
+@media (max-width: 576px) {
 }

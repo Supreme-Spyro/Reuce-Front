@@ -43,6 +43,12 @@ export const editUserProfile = (value, event, id) => (dispatch) =>{
     return axios
     .put(uriUsers,value)
     .then((response)=>{
+<<<<<<< HEAD
         console.log(response) 
+=======
+        if(response.data.password === value.password){
+            dispatch(editUserProfile(response.data))
+            
+>>>>>>> 6242bcf61d9bfeee7bdcf74d692019a37ada3f3b
         }
     )}
