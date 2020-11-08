@@ -53,7 +53,7 @@ function App() {
           <NavbarBootstrap />
           <ProductDetails />
         </Route>
-        <Route path="/shoppingcart">
+        <Route path="/shopcart">
           <NavbarBootstrap />
           <ShoppingCart />
         </Route>

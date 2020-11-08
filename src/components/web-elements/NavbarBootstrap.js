@@ -55,6 +55,9 @@ export default function NavbarBootstrap() {
   const pushHome = () => {
     document.location.href = "/";
   };
+  const toProfile = () => {
+    document.location.href = `/profile/${decodedToken._id}`;
+  };
 
   // loading modal variables
   const [showLoading, setShowLoading] = useState(false);
@@ -64,7 +67,12 @@ export default function NavbarBootstrap() {
 
   return (
     <div>
-      <Navbar className="lato shadowNavbar" fixed="top" bg="light" expand="lg">
+      <Navbar
+        className="navlink lato shadowNavbar"
+        fixed="top"
+        bg="light"
+        expand="lg"
+      >
         {/* loading modal */}
         <Modal
           style={{ position: "fixed", left: "25%", top: "25%" }}
@@ -102,10 +110,14 @@ export default function NavbarBootstrap() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link className="link-kategori">Kategori</Nav.Link>
+              <Nav.Link className="link-kategori">
+                <NavLink to="/category">Kategori</NavLink>
+              </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link className="link-kategori">Artikel</Nav.Link>
+              <Nav.Link className="link-kategori">
+                <NavLink to="/articles">Artikel</NavLink>
+              </Nav.Link>
             </Nav>
             <Nav className="mx-auto my-1 ">
               <Form
@@ -147,8 +159,9 @@ export default function NavbarBootstrap() {
                       as={Link}
                       onClick={() => {
                         setShowLoading(true);
+                        toProfile();
                       }}
-                      to={`/profile/${decodedToken._id}`}
+                      // to={`/profile/${decodedToken._id}`}
                       className="nunito"
                       // onClick={(event)=>{dispatch(getUserRequestbyId(event,history))}}
                     >
@@ -184,7 +197,7 @@ export default function NavbarBootstrap() {
                   </NavLink>
                 </Nav>
               ) : (
-                <Nav.Link className="button-masuk">
+                <Nav.Link className="button-masuk montserrat">
                   <Link className="text-dark" to="/login">
                     <Button size="sm" variant="light">
                       Masuk
@@ -192,7 +205,7 @@ export default function NavbarBootstrap() {
                   </Link>
                   &nbsp; &nbsp;
                   <Link className="text-dark " to="/register">
-                    <Button size="sm" className="button-daftar pb-lg-2">
+                    <Button size="sm" className="button-daftar">
                       Daftar
                     </Button>
                   </Link>
