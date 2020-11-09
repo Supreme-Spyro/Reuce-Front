@@ -5,7 +5,7 @@ import { Col } from "react-bootstrap";
 import "../../styles/Font.scss";
 import "../../styles/popularHome.scss";
 
-import cardboardImg from "../../../../ScaveX-Front/src/assets/plastic-bottle.jpg";
+import cardboardImg from "../../assets/plastic-bottle.jpg";
 import MyShopCard from "../../components/web-elements/MyshopCard";
 
 export default function MyShopCardSection() {
