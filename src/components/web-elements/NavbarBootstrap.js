@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, Redirect } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { Search, Cart2 } from "react-bootstrap-icons";
@@ -62,7 +62,7 @@ export default function NavbarBootstrap() {
   // loading modal variables
   const [showLoading, setShowLoading] = useState(false);
   const handleClose = () => setShowLoading(false);
-  const handleShow = () => setShowLoading(true);
+  // const handleShow = () => setShowLoading(true);
   // loading modal variables
 
   return (
@@ -111,12 +111,12 @@ export default function NavbarBootstrap() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <Nav.Link className="link-kategori">
-                <NavLink to="/category">Kategori</NavLink>
+                <Link to="/category">Kategori</Link>
               </Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link className="link-kategori">
-                <NavLink to="/articles">Artikel</NavLink>
+                <Link to="/articles">Artikel</Link>
               </Nav.Link>
             </Nav>
             <Nav className="mx-auto my-1 ">

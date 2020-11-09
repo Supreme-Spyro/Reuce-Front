@@ -1,19 +1,19 @@
 import React from 'react'
 
-import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useParams, Link, useHistory } from "react-router-dom";
 
 import {
   Accordion,
   Form,
   Button,
   Container,
-  DropdownButton,
-  Dropdown,
+  // DropdownButton,
+  // Dropdown,
   Row,
   Col,
   Card,
-  Spinner,
+  // Spinner,
 } from "react-bootstrap";
 
 import plasticBottle from '../assets/plastic-bottle.jpg';
@@ -84,6 +84,7 @@ export default function Checkout() {
                 <div className="select-product-content">
                   <div className="img-product">
                       <img 
+                      alt="altimage"
                       src={plasticBottle}
                       width={50}
                       height={50}/>

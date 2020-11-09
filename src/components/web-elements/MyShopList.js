@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import "../../styles/MyShopList.css";
 
 //image testing
@@ -10,7 +10,7 @@ function MyShopList() {
     <div className="MyShopListContainer">
       <Row>
         <Col lg={4}>
-          <img className="ListImage-MyShopList" src={bottle} />
+          <img alt="" className="ListImage-MyShopList" src={bottle} />
         </Col>
         <Col lg={8}>
             <div className='productName-MyShopList'>Botol Pelastik Bekas</div>

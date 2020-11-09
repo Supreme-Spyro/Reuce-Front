@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Form, Button, Row, Col, Spinner } from "react-bootstrap";
-import { CartCheck, TrashFill } from "react-bootstrap-icons";
+import React, { useState } from 'react';
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
+// import { CartCheck, TrashFill } from "react-bootstrap-icons";
 import plasticBottle from '../assets/plastic-bottle.jpg';
 
 import '../styles/ShoppingCart.scss'
@@ -43,6 +43,7 @@ export default function ShoppingCart() {
                       <img 
                       src={plasticBottle}
                       width={50}
+                      alt=""
                       height={50}/>
                   </div>
                   <Form.Text className="product-name">botol plastik</Form.Text>

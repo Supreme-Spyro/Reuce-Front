@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 import { getUserRequestById } from "../redux/actions/getUserData.action";
 import { editUserDataActions } from "../redux/actions/getUserData.action";
@@ -22,7 +22,7 @@ import "../styles/Font.scss";
 import blankAva from "../assets/blank-avatar.png";
 
 //component import
-import MyShopCard from "../components/web-elements/MyshopCard";
+// import MyShopCard from "../components/web-elements/MyshopCard";
 import MyShopCardSection from "../components/web-elements/MyShopCardSection";
 import Footer from "../components/web-elements/Footer";
 
@@ -84,7 +84,7 @@ function Profile() {
               <Col lg={3}>
                 <Container className=" nunito">
                   <Row>
-                    <img src={blankAva} className="blankAva-profile" />
+                    <img alt="" src={blankAva} className="blankAva-profile" />
                   </Row>
                   <Row className="rowAva-profile">
                     <ul className="listAva-profile">

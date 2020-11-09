@@ -1,14 +1,14 @@
 import React from 'react'
-import { useParams, Link, useHistory } from "react-router-dom";
+import {  Link, useHistory } from "react-router-dom";
 import {
-  Accordion,
-  Form,
-  Button,
+  // Accordion,
+  // Form,
+  // Button,
   Container,
   Row,
   Col,
   Card,
-  Spinner,
+  // Spinner,
 } from "react-bootstrap";
 
 import '../styles/Category.scss'

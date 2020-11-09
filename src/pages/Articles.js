@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Carousel, Container } from "react-bootstrap";
+import { Col, Row,  Container } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";

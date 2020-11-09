@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Row, Col, Carousel } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 import NavbarBootstrap from "../components/web-elements/NavbarBootstrap";
 import CarouselHome from "../components/web-elements/Home/CarouselHome";

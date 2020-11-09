@@ -2,12 +2,7 @@ import React from "react";
 import "../../styles/productCard.scss";
 import '../../styles/MyShopCard.css'
 import {
-  Container,
-  Row,
-  Col,
   Card,
-  Spinner,
-  Button,
   Badge,
 } from "react-bootstrap";
 
@@ -19,7 +14,7 @@ export default function MyShopCard(props) {
       <Card.Body className="cardBody">
         <Card.Text className="cardText lato">
           {props.productRole ? (
-            props.productRole == "beli" ? (
+            props.productRole === "beli" ? (
               <Badge variant="warning">Beli</Badge>
             ) : (
               <Badge variant="info">Jual</Badge>
