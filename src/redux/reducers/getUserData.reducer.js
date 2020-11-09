@@ -5,13 +5,11 @@ import {
   EDIT_USER_DATA_PROFILE_SUCCESS,
 } from "../actions/getUserData.action";
 
-
 const initialState = {
   data: [],
   error: null,
   isLoading: false,
 };
-
 
 const getUserDataReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -32,13 +30,13 @@ const getUserDataReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.error,
       };
-      case EDIT_USER_DATA_PROFILE_SUCCESS:
-        return{
-          ...state,
-          data: action.payload,
-        }
-      default:
-          return state
+    case EDIT_USER_DATA_PROFILE_SUCCESS:
+      return {
+        ...state,
+        data: action.payload,
+      };
+    default:
+      return state;
   }
 };
 
