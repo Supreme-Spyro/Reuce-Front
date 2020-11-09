@@ -4,13 +4,6 @@ export const GET_USER_DATA_PROFILE = "GET_USER_DATA_PROFILE";
 export const GET_USER_DATA_PROFILE_SUCCESS = "GET_USER DATA_PROFILE_SUCCESS";
 export const GET_USER_DATA_PROFILE_FAILED = "GET_USER DATA_PROFILE_FAILED";
 export const EDIT_USER_DATA_PROFILE = "EDIT_USER_DATA_PROFILE";
-<<<<<<< HEAD
-export const EDIT_USER_DATA_PROFILE_SUCCESS = "EDIT_USER_DATA_SUCCESS";
-
-
-=======
-
->>>>>>> 91dc4fe1fb0b9d17eafe208a2eed566277e8dfd2
 export const getUserData = () => {
   return {
     type: GET_USER_DATA_PROFILE,
