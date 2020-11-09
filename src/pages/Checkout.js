@@ -35,7 +35,7 @@ export default function Checkout() {
                 <br/>
                 <br/>
                 <Accordion defaultActiveKey="0">
-                    <Card className="jasa-pengiriman">
+                    <Card className="jasa-pengiriman w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="0">
                         Jasa Pengiriman
                         </Accordion.Toggle>
@@ -51,7 +51,7 @@ export default function Checkout() {
                         </Accordion.Collapse>
                     </Card>
                     <br/>
-                    <Card className="payment-method">
+                    <Card className="payment-method w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="1">
                         Metode Pembayaran
                         </Accordion.Toggle>
