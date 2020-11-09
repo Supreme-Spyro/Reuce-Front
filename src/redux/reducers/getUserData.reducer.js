@@ -22,7 +22,7 @@ const getUserDataReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        data: action.payload.Users,
+        data: action.payload,
       };
     case GET_USER_DATA_PROFILE_FAILED:
       return {

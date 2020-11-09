@@ -60,7 +60,7 @@ function App() {
         <Route path="/checkout">
           <Checkout />
         </Route>
-        <Route path="/myshop">
+        <Route path="/myshop/:id">
           <NavbarBootstrap />
           <MyShop />
         </Route>
