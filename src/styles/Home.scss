@@ -11,6 +11,42 @@
 }
 
 // class
+.carousel-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.carousel:hover .carousel-overlay {
+  opacity: 1;
+}
+
+.carouselTitle {
+  font-size: 1em;
+  font-weight: 400;
+}
+.carouselText {
+  font-size: 0.65em;
+  font-weight: 200;
+}
+
+.buttonCarousel {
+  font-size: 1.2em;
+  background-color: #00b99e;
+}
+
+.buttonCarousel:hover {
+  background-color: #007a68;
+}
+
 .popularSection {
   padding: 20px 30px;
   border-radius: 10px;
@@ -47,7 +83,7 @@
 }
 
 .horizontalMenu::-webkit-scrollbar-thumb {
-  background-color: #00CEAF;
+  background-color: #00ceaf;
   border-radius: 20px;
   // width: 20px;
   // height: 30px;
