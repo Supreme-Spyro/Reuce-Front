@@ -41,13 +41,13 @@ export const editUserDataSuccess = (value) => {
 };
 
 export const getUserRequestById = (id) => (dispatch) => {
-  console.log("id", id);
   const uriUser = `https://reuce-back.herokuapp.com/user/${id}`;
   axios
     .get(`${uriUser}`)
     .then((result) => {
-      console.log("res", result)
-      dispatch(getUserDataSuccess(result.data.Users))})
+      console.log("res", result);
+      dispatch(getUserDataSuccess(result.data.Users));
+    })
     .catch((error) => dispatch(getUserDataFailed(error)));
 };
 
