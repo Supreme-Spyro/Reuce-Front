@@ -2,7 +2,7 @@ import React from 'react'
 import {Col, Row, Container} from 'react-bootstrap'
 import '../../styles/NewsTabList.css'
 import TabListExample from '../../assets/carousel-test2.png'
-import TabListExample2 from '../../assets/carousel-test1.png'
+// import TabListExample2 from '../../assets/carousel-test1.png'
 
 
 function NewsTabList() {
@@ -13,6 +13,7 @@ function NewsTabList() {
                 <img 
                 src = {TabListExample}
                 className='tabListImage-articles'
+                alt=""
                 />
                 </Col>
                 <Col lg={8}>

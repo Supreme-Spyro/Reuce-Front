@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Container, Button, Form } from "react-bootstrap";
+import {  Container, Button, Form } from "react-bootstrap";
 import "../styles/EditItem.css";
 function EditItem() {
   return (

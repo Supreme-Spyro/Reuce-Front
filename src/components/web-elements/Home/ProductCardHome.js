@@ -2,15 +2,7 @@ import React from "react";
 
 import "../../../styles/productCard.scss";
 import "../../../styles/Font.scss";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Spinner,
-  Button,
-  Badge,
-} from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 
 export default function ProductCard(props) {
   return (
@@ -19,7 +11,7 @@ export default function ProductCard(props) {
       <Card.Body className="cardBody">
         <Card.Text className="cardText lato">
           {props.productRole ? (
-            props.productRole == "beli" ? (
+            props.productRole === "beli" ? (
               <Badge variant="warning">Beli</Badge>
             ) : (
               <Badge variant="info">Jual</Badge>

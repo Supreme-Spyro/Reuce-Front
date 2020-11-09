@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import "../../../styles/Home.scss";
-import { Container, Row, Col, Carousel, Button } from "react-bootstrap";
+import {  Carousel, Button } from "react-bootstrap";
 
 import plasticSun from "../../../assets/plastic-seasun.jpg";
 import moneySweep from "../../../assets/money-sweep.jpg";

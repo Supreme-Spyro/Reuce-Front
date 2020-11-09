@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 import { getUserRequestById } from "../redux/actions/getUserData.action";
 import { editUserDataActions } from "../redux/actions/getUserData.action";
@@ -22,7 +22,7 @@ import "../styles/Font.scss";
 import blankAva from "../assets/blank-avatar.png";
 
 //component import
-import MyShopCard from "../components/web-elements/MyshopCard";
+// import MyShopCard from "../components/web-elements/MyshopCard";
 import MyShopCardSection from "../components/web-elements/MyShopCardSection";
 import Footer from "../components/web-elements/Footer";
 
@@ -30,25 +30,19 @@ function Profile() {
   //requirement
   const history = useHistory();
   const dispatch = useDispatch();
-
-  //get data from navbar redux
-  const userToken = localStorage.getItem("token");
-  const decodedToken = userToken ? jwtDecode(userToken) : "none";
-  console.log("decoded token", decodedToken);
+  const { id } = useParams();
 
   //get data from reducer
   const userData = useSelector((state) => state.getUserDataReducer.data);
-  
-  
+
   console.log("userData", userData);
 
   //useState
   const [profileState, setProfileState] = useState({
-    username: userData.username,
-    fullname: userData.fullname,
-    email: userData.email,
-    // password: userData.password,
-    address: userData.address,
+    username: "",
+    fullname: "",
+    email: "",
+    address: "",
   });
 
   const handleChange = (event) => {
@@ -60,13 +54,17 @@ function Profile() {
 
   // opbtaining user data from redux
   useEffect(() => {
-    dispatch(getUserRequestById(decodedToken._id));
-  }, [dispatch]);
-
-  console.log("userData", userData);
+    if (userData.length === 0) {
+      dispatch(getUserRequestById(id));
+    } else {
+      setProfileState({
+        ...userData,
+      });
+    }
+  }, [dispatch, userData]);
 
   function alertClicked() {
-    history.push(`/myshop/${decodedToken._id}`);
+    history.push(`/myshop/${id}`);
   }
 
   console.log("profileState", profileState);
@@ -86,7 +84,7 @@ function Profile() {
               <Col lg={3}>
                 <Container className=" nunito">
                   <Row>
-                    <img src={blankAva} className="blankAva-profile" />
+                    <img alt="" src={blankAva} className="blankAva-profile" />
                   </Row>
                   <Row className="rowAva-profile">
                     <ul className="listAva-profile">
@@ -128,9 +126,7 @@ function Profile() {
                   autoComplete="off"
                   className="form-profile"
                   onSubmit={(event) => {
-                    dispatch(
-                      editUserDataActions(profileState, event, decodedToken._id)
-                    );
+                    dispatch(editUserDataActions(profileState, event, id));
                   }}
                   // onSubmit={setProfileState.newPassword === setProfileState.confirmNewPassword ? setProfileState.newPassword
                   // }

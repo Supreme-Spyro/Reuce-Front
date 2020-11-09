@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
@@ -31,7 +31,7 @@ function Profile() {
           <Col lg={3}>
             <Container>
               <Row>
-                <img src={blankAva} className="blankAva-profile" />
+                <img alt="altImg" src={blankAva} className="blankAva-profile" />
               </Row>
               <Row className="rowAva-profile">
                 <ul className="listAva-profile">

@@ -1,19 +1,19 @@
 import React from 'react'
 
-import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useParams, Link, useHistory } from "react-router-dom";
 
 import {
   Accordion,
   Form,
   Button,
   Container,
-  DropdownButton,
-  Dropdown,
+  // DropdownButton,
+  // Dropdown,
   Row,
   Col,
   Card,
-  Spinner,
+  // Spinner,
 } from "react-bootstrap";
 
 import plasticBottle from '../assets/plastic-bottle.jpg';
@@ -35,7 +35,7 @@ export default function Checkout() {
                 <br/>
                 <br/>
                 <Accordion defaultActiveKey="0">
-                    <Card className="jasa-pengiriman">
+                    <Card className="jasa-pengiriman w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="0">
                         Jasa Pengiriman
                         </Accordion.Toggle>
@@ -51,7 +51,7 @@ export default function Checkout() {
                         </Accordion.Collapse>
                     </Card>
                     <br/>
-                    <Card className="payment-method">
+                    <Card className="payment-method w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="1">
                         Metode Pembayaran
                         </Accordion.Toggle>
@@ -84,6 +84,7 @@ export default function Checkout() {
                 <div className="select-product-content">
                   <div className="img-product">
                       <img 
+                      alt="altimage"
                       src={plasticBottle}
                       width={50}
                       height={50}/>

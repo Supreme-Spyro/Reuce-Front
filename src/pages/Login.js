@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   Form,
@@ -34,7 +34,7 @@ export default function Login() {
     });
   };
 
-  const loadingLogin = useSelector((state) => state.userReducer.isLoading);
+  // const loadingLogin = useSelector((state) => state.userReducer.isLoading);
 
   // loading modal variables
   const [show, setShow] = useState(false);
