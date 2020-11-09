@@ -21,7 +21,11 @@ export default function Category() {
 
     return (
         <div>
-            <Row>
+          <Container>
+            <br/>
+            <br/>
+            <br/>
+          <Row>
             <Col className="card-col " sm={12} md={12}>
               <Row>
                 <h3 className="my-3">Category: Botol Plastik</h3>
@@ -36,7 +40,7 @@ export default function Category() {
                           onClick={() => {
                             history.push(`/productdetails/`);
                           }}
-                          className="search-card bg-light text-dark mb-3"
+                          className="category-card bg-light text-dark mb-3"
                         >
                           <Card.Img
                             className="card-img"
@@ -56,6 +60,8 @@ export default function Category() {
               </Row>
             </Col>
           </Row>
+          </Container>
+            
         </div>
     )
 }

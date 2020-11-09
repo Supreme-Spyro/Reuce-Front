@@ -25,6 +25,8 @@ export default function ProductDetails() {
       <NavbarBootstrap/>
       <br/>
       <br/>
+      <br/>
+      <Container>
       <Row>
             <Col sm={0} md={2}></Col>
             <Col className="my-4 ml-sm-5" sm={10} md={4}>
@@ -95,6 +97,8 @@ export default function ProductDetails() {
             
             <Col sm={0} md={2}></Col>
       </Row>   
+      </Container>
+      
     </div>
   )
 }

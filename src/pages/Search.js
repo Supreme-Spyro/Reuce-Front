@@ -23,6 +23,10 @@ export default function Search() {
     
     return (
         <div>
+          <Container>
+            <br/>
+            <br/>
+            <br/>
             <Row>
             <Col className="card-col " sm={12} md={12}>
               <Row>
@@ -58,6 +62,8 @@ export default function Search() {
               </Row>
             </Col>
           </Row>
+          </Container>
+            
         </div>
     )
 }
