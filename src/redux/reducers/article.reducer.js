@@ -2,6 +2,7 @@ import {
   GET_ARTICLE_DATA,
   GET_ARTICLE_DATA_SUCCESS,
   GET_ARTICLE_DATA_FAILED,
+
 } from "../actions/article.action";
 
 const initialState = {

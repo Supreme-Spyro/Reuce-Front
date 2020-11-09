@@ -5,12 +5,18 @@ import plasticStop from "../../assets/featuredNews-test1.png";
 //styling
 import "../../styles/FeaturedNewsCard.css";
 
-function FeaturedCard() {
+function FeaturedCard(props) {
   return (
     <div className="featuredCard-articles">
-          <img alt="altImage" src={plasticStop} className="featuredCardPic-articles" />
-          <div><a href='google.com'>link to proceed</a></div>
-          <div className='newsLetterReview-articles'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ... </div>
+      <img
+        alt="altImage"
+        src={plasticStop}
+        className="featuredCardPic-articles"
+      />
+      <div>
+        <a href="google.com">{props.title}</a>
+      </div>
+      <div className="newsLetterReview-articles"> {props.description}</div>
     </div>
   );
 }
