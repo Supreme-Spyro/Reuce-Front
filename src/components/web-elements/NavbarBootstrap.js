@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import LinkContainer from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { Search, Cart2 } from "react-bootstrap-icons";
@@ -95,7 +96,7 @@ export default function NavbarBootstrap() {
               setShowLoading(true);
               window.location.href = `/`;
             }}
-            // to="/"
+            to="/"
           >
             <Navbar.Brand>
               <img
@@ -156,7 +157,6 @@ export default function NavbarBootstrap() {
                     className="link-kategori"
                   >
                     <NavDropdown.Item
-                      as={Link}
                       onClick={() => {
                         setShowLoading(true);
                         toProfile();

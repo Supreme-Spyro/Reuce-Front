@@ -8,7 +8,11 @@ function ArticleGuide(props) {
       <table>
         <tr>
           <td>
-            <img alt="altImage" src={bottle} className="guideListImage-articles" />
+            <img
+              alt="altImage"
+              src={bottle}
+              className="guideListImage-articles"
+            />
           </td>
           <td className="guideListTitle-articles">
             <a href="asd">How to Appropriately Determine your Plastic Price?</a>

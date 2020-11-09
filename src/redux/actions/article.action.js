@@ -49,19 +49,19 @@ export const getArticleDataByIdFailed = (error) =>{
     }
 }
 
-export const getArticleDataForHome = (data) => (dispatch) => {
-    console.log('article data', data);
-    const uriArticle = 'https://reuce-back.herokuapp.com/artikel';
-    axios
-    .get(`${uriArticle}`)
-    .then((result)=> dispatch(getArticleDataSuccess(result.data)))
-    .catch((error)=> dispatch(getArticleDataFailed(error)))
-}
+// export const getArticleDataForHome = (data) => (dispatch) => {
+//     console.log('article data', data);
+//     const uriArticle = 'https://reuce-back.herokuapp.com/artikel';
+//     axios
+//     .get(`${uriArticle}`)
+//     .then((result)=> dispatch(getArticleDataSuccess(result.data)))
+//     .catch((error)=> dispatch(getArticleDataFailed(error)))
+// }
 
 
 export const getArticleDataForHome = (event, id, value, history) => (dispatch) => {
     event.preventDefault()
-    console.log('article data', data);
+    // console.log('article data', data);
     const uriArticle = 'https://reuce-back.herokuapp.com/artikel';
     axios
     .get(`${uriArticle}`)

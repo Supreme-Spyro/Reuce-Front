@@ -61,7 +61,7 @@ function Profile() {
         ...userData,
       });
     }
-  }, [dispatch, userData]);
+  }, [dispatch, userData, id]);
 
   function alertClicked() {
     history.push(`/myshop/${id}`);

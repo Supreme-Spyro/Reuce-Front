@@ -17,7 +17,7 @@ export default function ProductCard(props) {
               <Badge variant="info">Jual</Badge>
             )
           ) : (
-            <div></div>
+            <span></span>
           )}
         </Card.Text>
         <Card.Title className="cardTitle nunito">{props.title}</Card.Title>
