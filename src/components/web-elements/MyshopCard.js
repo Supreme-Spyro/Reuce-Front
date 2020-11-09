@@ -1,21 +1,47 @@
 import React from "react";
-import { Card, Row, Col, Button } from "react-bootstrap";
-import Bottle from '../../assets/plastic-bottle.jpg'
+import "../../styles/productCard.scss";
+import '../../styles/MyShopCard.css'
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Spinner,
+  Button,
+  Badge,
+} from "react-bootstrap";
 
 
-function MyshopCard() {
+export default function MyShopCard(props) {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={Bottle} />
-      <Card.Body>
-        <Card.Title>Botol Air Mineral</Card.Title>
-        <Card.Text>
-          Rp. 7.000,- /Kg
+    <Card className="cardClass lato">
+      <Card.Img className="cardImage" variant="top" src={props.imageSource} />
+      <Card.Body className="cardBody">
+        <Card.Text className="cardText lato">
+          {props.productRole ? (
+            props.productRole == "beli" ? (
+              <Badge variant="warning">Beli</Badge>
+            ) : (
+              <Badge variant="info">Jual</Badge>
+            )
+          ) : (
+            <div></div>
+          )}
         </Card.Text>
-        <Button variant="primary">Edit Item</Button>
+        <Card.Title className="cardTitle nunito">{props.title}</Card.Title>
+        <Card.Text className="cardText lato">{props.text}</Card.Text>
+        {/* <Button
+          style={{ fontSize: "0.8em" }}
+          className="montserrat card-button"
+          onClick={props.buttonOnClick}
+          variant={props.buttonVariant}
+        >
+          {props.buttonText}
+        </Button> */}
+        <button className='editItemButton-MyShopCard'>
+          Edit Item
+        </button>
       </Card.Body>
     </Card>
   );
 }
-
-export default MyshopCard;

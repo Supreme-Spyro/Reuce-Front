@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import jwtDecode from 'jwt-decode'
 
 import {getUserRequestById} from '../redux/actions/getUserData.action'
-
+import {editUserDataActions} from '../redux/actions/getUserData.action'
 // styling
 import "../styles/Profile.css";
 
@@ -14,6 +14,7 @@ import blankAva from "../assets/blank-avatar.png";
 
 //component import
 import MyShopCard from '../components/web-elements/MyshopCard'
+import MyShopCardSection from '../components/web-elements/MyShopCardSection'
 
 function Profile() {
 
@@ -55,6 +56,14 @@ function Profile() {
       [event.target.name] : event.target.value,
     })
   }
+
+
+
+  // const handleSubmit = (event) => {
+  //   if (
+
+  //   )
+  // }
 
   return (
     <div>
@@ -98,7 +107,11 @@ function Profile() {
             </Container>
           </Col>
           <Col lg={9}>
-            <Form className='form-profile'>
+            <Form 
+            className='form-profile'
+            // onSubmit={setProfileState.newPassword === setProfileState.confirmNewPassword ? setProfileState.newPassword
+            // }
+            >
               <Container>
               <Form.Group controlId="username" as={Row}>
                 <Form.Label>username</Form.Label>
@@ -151,12 +164,20 @@ function Profile() {
 
               <Form.Group controlId="newPassword" as={Row}>
                 <Form.Label>new password</Form.Label>
-                <Form.Control type="password" name="newPassword" />
+                <Form.Control 
+                type="password" 
+                name="newPassword"
+                onChange={(event)=>handleChange(event)}
+                />
               </Form.Group>
 
               <Form.Group controlId="confirmNewPassword" as={Row}>
                 <Form.Label>re-type new password</Form.Label>
-                <Form.Control type="password" name="newPassword" />
+                <Form.Control 
+                type="password" 
+                name="newPasswordConfirm"
+                onChange={(event)=>handleChange(event)}
+                />
               </Form.Group>
 
               <Form.Group  as={Row}>
@@ -176,13 +197,12 @@ function Profile() {
           Your Shop
           </Col>
         </Row>
-        <Row className='rowMyShop-profile'>
-          <Col className='colMyShop-profile' lg={12}>
-          <MyShopCard />
-          <MyShopCard />
-          <MyShopCard />
-          <MyShopCard />
-          </Col>
+        <Row className='rowMyShop-profile '>
+          {/* <Col className='colMyShop-profile' lg={12}> */}
+          <Container className=' horizontalMenuProfile'>
+          <MyShopCardSection />
+          </Container>
+          {/* </Col> */}
         </Row>
         <Row className='addMoreItem-profile'>
           <Col lg={12} className='colAddMoreItem-profile'>

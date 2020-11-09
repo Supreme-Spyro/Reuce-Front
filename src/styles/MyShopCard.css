@@ -1,0 +1,23 @@
+.card-MyShopCard{
+  width: 25%;
+}
+
+.img-MyShopCard{
+  width: auto;
+  height: 200px;
+}
+
+.editItemButton-MyShopCard{
+  border:none;
+  background-color:#0d7377;
+  color:white;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .card-MyShopCard{
+      width: 30rem;
+    }
+  }
+  
