@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import LinkContainer from "react-router-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { Search, Cart2 } from "react-bootstrap-icons";
@@ -91,34 +91,45 @@ export default function NavbarBootstrap() {
         {/* loading modal */}
 
         <Container>
-          <Link
+          {/* <Link
+            onClick={() => {
+              setShowLoading(true);
+              window.location.href = `/`;
+            }}
+            to="/"
+          > */}
+          <Navbar.Brand
+            as={Link}
             onClick={() => {
               setShowLoading(true);
               window.location.href = `/`;
             }}
             to="/"
           >
-            <Navbar.Brand>
-              <img
-                src={reuceLogo}
-                width="150"
-                // height="30"
-                className="d-inline-block align-top"
-                alt="React Bootstrap logo"
-              />
-            </Navbar.Brand>{" "}
-          </Link>
+            <img
+              src={reuceLogo}
+              width="150"
+              // height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>{" "}
+          {/* </Link> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link className="link-kategori">
-                <Link to="/category">Kategori</Link>
+              {/* <LinkContainer to="/category"> */}
+              <Nav.Link as={Link} to="/category" className="link-kategori">
+                Kategori
               </Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link className="link-kategori">
-                <Link to="/articles">Artikel</Link>
+              {/* </LinkContainer> */}
+            {/* </Nav> */}
+            {/* <Nav> */}
+              {/* <LinkContainer to="/articles"> */}
+              <Nav.Link as={Link} to="/articles" className="link-kategori">
+                Artikel
               </Nav.Link>
+              {/* </LinkContainer> */}
             </Nav>
             <Nav className="mx-auto my-1 ">
               <Form
@@ -198,17 +209,22 @@ export default function NavbarBootstrap() {
                 </Nav>
               ) : (
                 <Nav.Link className="button-masuk montserrat">
-                  <Link className="text-dark" to="/login">
-                    <Button size="sm" variant="light">
-                      Masuk
-                    </Button>
-                  </Link>
+                  {/* <LinkContainer className="text-dark" to="/login"> */}
+                  <Button as={Link} to="/login" size="sm" variant="light">
+                    Masuk
+                  </Button>
+                  {/* </LinkContainer> */}
                   &nbsp; &nbsp;
-                  <Link className="text-dark " to="/register">
-                    <Button size="sm" className="button-daftar">
-                      Daftar
-                    </Button>
-                  </Link>
+                  {/* <LinkContainer className="text-dark " to="/register"> */}
+                  <Button
+                    as={Link}
+                    to="/register"
+                    size="sm"
+                    className="button-daftar"
+                  >
+                    Daftar
+                  </Button>
+                  {/* </LinkContainer> */}
                 </Nav.Link>
               )}
             </Nav>

@@ -120,13 +120,16 @@ function Profile() {
                 </Container>
               </Col>
               <Col lg={9} className="lato">
-                <h4 className="nunito">Ubah Profil</h4>
+                <hr className="d-lg-none d-md-block" />
+                <h4 className="mt-md-4 mt-4 nunito">Ubah Profil</h4>
                 <hr />
                 <Form
                   autoComplete="off"
                   className="form-profile"
                   onSubmit={(event) => {
-                    dispatch(editUserDataActions(profileState, event, id));
+                    dispatch(
+                      editUserDataActions(profileState, event, id, history)
+                    );
                   }}
                   // onSubmit={setProfileState.newPassword === setProfileState.confirmNewPassword ? setProfileState.newPassword
                   // }

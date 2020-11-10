@@ -51,7 +51,7 @@ export const getUserRequestById = (id) => (dispatch) => {
     .catch((error) => dispatch(getUserDataFailed(error)));
 };
 
-export const editUserDataActions = (value, event, id) => (dispatch) => {
+export const editUserDataActions = (value, event, id, history) => (dispatch) => {
   event.preventDefault();
   console.log("register value", value);
 
@@ -62,6 +62,7 @@ export const editUserDataActions = (value, event, id) => (dispatch) => {
     .then((response) => {
       console.log("res", response);
       dispatch(editUserDataSuccess(response));
+      history.push(`/profile/${id}`)
     })
     .catch((error) => {
       console.log(error);

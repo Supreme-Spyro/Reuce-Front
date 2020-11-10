@@ -1,13 +1,30 @@
-import React from "react";
+import React, {
+  // useEffect, useState
+} from "react";
 import { Col, Row,  Container } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
+import {
+  useSelector, 
+  // useDispatch
+} from 'react-redux'
+// import {useHistory, useParams} from 'react-router-dom'
 //styling
 import "../styles/Articles.css";
 
 function Articles() {
+
+  // const history = useHistory();
+  // const dispatch = useDispatch();
+
+  //get article from data
+  const articleData = useSelector ((state)=> state)
+  console.log('articleData',articleData)
+
+
+
   return (
     <div>
       <Row className="carouselRow-articles">
