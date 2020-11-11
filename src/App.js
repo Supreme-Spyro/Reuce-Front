@@ -15,10 +15,12 @@ import Checkout from "./pages/Checkout";
 import MyShop from "./pages/MyShop";
 import EditItem from "./pages/EditItem";
 import NewsLetter from "./pages/NewsLetter";
-import Admin from "./pages/Admin";
+import Admin from "./pages/Admin/Admin";
+import UserAdmin from "./pages/Admin/UserAdmin";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
+import NavAdmin from "../src/components/web-elements/NavAdmin";
 
 import "./styles/App.css";
 function App() {
@@ -73,8 +75,13 @@ function App() {
           <NavbarBootstrap />
           <NewsLetter />
         </Route>
-        <Route path="/admin">
+        <Route exact path="/admin">
+          <NavAdmin />
           <Admin />
+        </Route>
+        <Route path="/admin/users">
+          <NavAdmin />
+          <UserAdmin />
         </Route>
       </Switch>
     </Router>

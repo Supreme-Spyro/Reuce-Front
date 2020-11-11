@@ -52,7 +52,7 @@ export const loginSuccess = (value) => {
 export const loginFailed = (value) => {
   return {
     type: LOGIN_FAILED,
-    payload: value,
+    error: value,
   };
 };
 
@@ -113,4 +113,15 @@ export const loginActions = (value, event, history) => (dispatch) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const getAllUserAction = () => (dispatch) => {
+  const uriUser = `https://reuce-back.herokuapp.com/user`;
+  axios
+    .get(`${uriUser}`)
+    .then((result) => {
+      console.log("result", result);
+      dispatch(getUserSuccess(result.data));
+    })
+    .catch((error) => dispatch(getUserFailed(error)));
 };
