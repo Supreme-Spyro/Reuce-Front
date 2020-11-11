@@ -4,6 +4,7 @@ import plasticStop from "../../assets/featuredNews-test1.png";
 
 //styling
 import "../../styles/FeaturedNewsCard.css";
+import "../../styles/Font.scss";
 
 function FeaturedCard(props) {
   return (
@@ -14,9 +15,9 @@ function FeaturedCard(props) {
         className="featuredCardPic-articles"
       />
       <div>
-        <a href="google.com">{props.title}</a>
+        <h5 className="lato">{props.title}</h5>
       </div>
-      <div className="newsLetterReview-articles"> {props.description}</div>
+      <div className="newsLetterReview-articles"> {props.desc}</div>
     </div>
   );
 }

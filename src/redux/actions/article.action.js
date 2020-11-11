@@ -1,44 +1,37 @@
-import axios from 'axios'
+import axios from "axios";
 
-export const GET_ARTICLE_DATA = 'GET_ARTICLE_DATA'
-export const GET_ARTICLE_DATA_SUCCESS = 'GET_ARTICLE_DATA_SUCCESS'
-export const GET_ARTICLE_DATA_FAILED= 'GET_ARTICLE_DATA_FAILED'
+export const GET_ARTICLE_DATA = "GET_ARTICLE_DATA";
+export const GET_ARTICLE_DATA_SUCCESS = "GET_ARTICLE_DATA_SUCCESS";
+export const GET_ARTICLE_DATA_FAILED = "GET_ARTICLE_DATA_FAILED";
 
+export const getArticleData = () => {
+  return {
+    type: GET_ARTICLE_DATA,
+  };
+};
 
-export const getArticleData = () =>{
-    return {
-        type : GET_ARTICLE_DATA,
-    }
-}
+export const getArticleDataSuccess = (value) => {
+  return {
+    type: GET_ARTICLE_DATA_SUCCESS,
+    payload: value,
+  };
+};
 
-export const getArticleDataSuccess = (value) =>{
-    return {
-        type : GET_ARTICLE_DATA_SUCCESS,
-        payload: value,
-    }
-}
-
-export const getArticleDataFailed = (error) =>{
-    return {
-        type : GET_ARTICLE_DATA_FAILED,
-        error,
-    }
-}
-
-
+export const getArticleDataFailed = (error) => {
+  return {
+    type: GET_ARTICLE_DATA_FAILED,
+    error,
+  };
+};
 
 export const getArticleDataForHome = (data) => (dispatch) => {
-    console.log('article data', data);
-    const uriArticle = 'https://reuce-back.herokuapp.com/artikel';
-    return axios
-    .get(`${uriArticle}`)
-    .then((result)=>{
-        console.log('res',result);
-        dispatch(getArticleDataSuccess(result))
+  console.log("article data", data);
+  const uriArticle = "https://reuce-back.herokuapp.com/artikel";
+  return axios
+    .get(uriArticle)
+    .then((result) => {
+      console.log("res", result);
+      dispatch(getArticleDataSuccess(result.data));
     })
-    .catch((error)=> dispatch(getArticleDataFailed(error)))
-}
-
-
-
-
+    .catch((error) => dispatch(getArticleDataFailed(error)));
+};

@@ -1,29 +1,31 @@
-import React, {
-  // useEffect, useState
-} from "react";
-import { Col, Row,  Container } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Col, Row, Container, Spinner } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
-import {
-  useSelector, 
-  // useDispatch
-} from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 // import {useHistory, useParams} from 'react-router-dom'
+
+// redux
+import { getArticleDataForHome } from "../redux/actions/article.action";
+
 //styling
 import "../styles/Articles.css";
 
 function Articles() {
-
   // const history = useHistory();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   //get article from data
-  const articleData = useSelector ((state)=> state)
-  console.log('articleData',articleData)
+  const articleData = useSelector(
+    (state) => state.articleDataReducer.data.result
+  );
+  console.log("articleData", articleData);
 
-
+  useEffect(() => {
+    dispatch(getArticleDataForHome());
+  }, [dispatch]);
 
   return (
     <div>
@@ -38,15 +40,21 @@ function Articles() {
           Featured News
         </Container>
         <Container className="featuredContainer-articles">
-          <FeaturedCard />
-          <FeaturedCard />
-          <FeaturedCard />
-          <FeaturedCard />
-          <FeaturedCard />
+          {articleData ? (
+            articleData.map((item, index) => (
+              <FeaturedCard
+                key={index}
+                imgSrc={item.image}
+                title={item.title}
+              />
+            ))
+          ) : (
+            <Spinner variant="info" />
+          )}
         </Container>
       </Row>
-       <Container>
-      <Row className="editorPickerRow-articles">
+      <Container>
+        <Row className="editorPickerRow-articles">
           <Col lg={8} md={12}>
             <NewsTabList />
           </Col>
@@ -57,8 +65,8 @@ function Articles() {
             <ArticleGuide />
             <ArticleGuide />
           </Col>
-      </Row>
-         </Container> 
+        </Row>
+      </Container>
     </div>
   );
 }

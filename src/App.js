@@ -14,7 +14,8 @@ import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
 import MyShop from "./pages/MyShop";
 import EditItem from "./pages/EditItem";
-import NewsLetter from './pages/NewsLetter';
+import NewsLetter from "./pages/NewsLetter";
+import Admin from "./pages/Admin";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -71,6 +72,9 @@ function App() {
         <Route path="/newsletter">
           <NavbarBootstrap />
           <NewsLetter />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Switch>
     </Router>
