@@ -28,7 +28,7 @@ export const getSearchActions = (id, event, history) => {
   return async (dispatch) => {
     dispatch(getSearchRequest(id));
     console.log("searchId", id);
-    const urlSearch = "";
+    const urlSearch = "https://reuce-back.herokuapp.com/product/search/";
     const response = await axios.get(`${urlSearch}/${id.name}`);
     console.log("response", response.data.Products);
     dispatch(getSearchSuccess(response.data.Products));
