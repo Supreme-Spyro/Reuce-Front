@@ -4,7 +4,7 @@ import "../../styles/NewsTabList.css";
 import TabListExample from "../../assets/carousel-test2.png";
 // import TabListExample2 from '../../assets/carousel-test1.png'
 
-function NewsTabList() {
+function NewsTabList(props) {
   return (
     <Container className="NewsTabList-articles">
       <Row>
@@ -13,14 +13,13 @@ function NewsTabList() {
         </Col>
         <Col lg={8}>
           <Container className="tabListDateRelease-articles">
-            Tips on November, 1st 2020
+            {props.dateRelease}
           </Container>
           <Container className="tabListNewsTitle-articles">
-            Tips Mengelola Sampah Plastik di Rumah Agar Tidak Menumpuk
+            {props.title}
           </Container>
           <Container className="tabListPharagraphReview-articles">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's ...
+            {props.review}
           </Container>
         </Col>
       </Row>

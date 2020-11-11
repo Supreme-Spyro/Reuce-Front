@@ -1,26 +1,20 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Carousel, Col } from 'react-bootstrap'
 
 //styling
 import '../styles/NewsLetter.css'
 
-function NewsLetter() {
+function NewsLetter(props) {
     return (
         <Container className='container-newsletter'>
             <Row>
-                This will be news letter banner
+                This will be the Carousel banner
             </Row>
             <Row>
-                here will be the place for the title
+                {props.title}
             </Row>
             <Row>
-                Here will be the place for the content
-            </Row>
-            <Row>
-                Here will be the place for the author info
-            </Row>
-            <Row>
-                Here will be the place for navigation button (next article)
+                {props.content}
             </Row>
         </Container>
     )
