@@ -126,7 +126,7 @@ export default function NavbarBootstrap() {
             {/* </Nav> */}
             {/* <Nav> */}
               {/* <LinkContainer to="/articles"> */}
-              <Nav.Link as={Link} to="/articles" className="link-kategori">
+              <Nav.Link as={Link} to="/articles/home" className="link-kategori">
                 Artikel
               </Nav.Link>
               {/* </LinkContainer> */}

@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Spinner } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
-import { useSelector, useDispatch} from "react-redux";
-import {useHistory} from 'react-router-dom'
-import { getArticleDataForHome } from "../redux/actions/article.action";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 
+// redux
+import { getArticleDataForHome } from "../redux/actions/article.action";
+import { getArticleDataByIdForPage } from "../redux/actions/getArticleDataById.action";
 //styling
 import "../styles/Articles.css";
 
@@ -16,18 +18,37 @@ function Articles() {
   const dispatch = useDispatch();
 
   //get article from data
-  const articleData = useSelector((state) => state);
+  const articleData = useSelector(
+    (state) => state.articleDataReducer.data.result
+  );
+
+  const articleDataById = useSelector(
+    (state) => state.articleDataByIdReducer.data.Artikels
+  );
+
+  const linkToArticle = (id) => {
+    history.push(`/articles/${id}`);
+  };
+
+  
   console.log("articleData", articleData);
+  console.log("articleDataById", articleDataById);
 
   useEffect(() => {
     dispatch(getArticleDataForHome());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   dispatch(getArticleDataByIdForPage(`5fa3c3cb9e69757dbf3a08b3`));
+  // }, [dispatch]);
+
   return (
     <div>
       <Row className="carouselRow-articles">
         <Container>
-          <ArticleCarousel />
+          <ArticleCarousel
+          // title1 = {articleDataById.title}
+          />
         </Container>
       </Row>
       <Row className="featuredRow-articles">
@@ -36,11 +57,18 @@ function Articles() {
           Featured News
         </Container>
         <Container className="featuredContainer-articles">
-          <FeaturedCard />
-          <FeaturedCard />
-          <FeaturedCard />
-          <FeaturedCard />
-          <FeaturedCard />
+          {articleData ? (
+            articleData.map((item, index) => (
+              <FeaturedCard
+                key={index}
+                link={()=>history.push(`/articles/${item._id}`)}
+                image={item.image}
+                title={item.title}
+              />
+            ))
+          ) : (
+            <Spinner variant="info" />
+          )}
         </Container>
       </Row>
       <Container>

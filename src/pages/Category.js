@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+
+import { useParams, Link, useHistory } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import {
   // Accordion,
   // Form,
@@ -8,7 +10,7 @@ import {
   Row,
   Col,
   Card,
-  // Spinner,
+  Spinner,
 } from "react-bootstrap";
 
 import "../styles/Font.scss";
@@ -16,58 +18,72 @@ import "../styles/Category.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
 
 export default function Category() {
-  const cardDataDummy = [
-    "data1",
-    "data2",
-    "data3",
-    "data4",
-    "data5",
-    "data6",
-    "data7",
-    "data8",
-    "data9",
-    "data10",
-  ];
-
+  let params = useParams ();
+  let categoryName = decodeURIComponent(params.id);
   const history = useHistory();
+
+  const dataCategory = useSelector((state) => state.getCategoryReducer.data);
+
+  // const cardDataDummy = [
+  //   "data1",
+  //   "data2",
+  //   "data3",
+  //   "data4",
+  //   "data5",
+  //   "data6",
+  //   "data7",
+  //   "data8",
+  //   "data9",
+  //   "data10",
+  // ];
+
 
   return (
     <div>
       <Container>
-        <br />
-        <br />
-        <br />
-        {/* <Row> */}
-        {/* <Col className="card-col " sm={12} md={12}> */}
+        {dataCategory ? (
         <Row>
-          <h4 className="ml-2 my-3 lato">Category: Botol Plastik</h4>
-        </Row>
-        <br />
-        <Row className="justify-content-center mt-4">
-          {cardDataDummy.map((item, index) => (
-            <Col key={index} sm={12} md={4} lg= {3}>
-              <Card
-                onClick={() => {
-                  history.push(`/productdetails/`);
-                }}
-                className="category-card bg-light text-dark mb-3"
-              >
-                <Card.Img
-                  className="card-img"
-                  variant="top"
-                  src={botolplastik}
-                />
-                <Card.Body className="">
-                  <Card.Title>Botol Plastik</Card.Title>
-                  <Card.Text>Grade: A </Card.Text>
-                  <Card.Text>Rp 2.000</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-        {/* </Col> */}
-        {/* </Row> */}
+        <Col className="card-col " sm={12} md={12}>
+          <Row>
+            <h4 className="my-3">Category: {`${categoryName}`}</h4>
+          </Row>
+          <br />
+          <Row className="justify-content-center mt-4">
+            {dataCategory.map((item, index) => (
+              <div key={index}>
+                <Col sm={12} md={4}>
+                  <Link>
+                    <Card
+                      onClick={() => {
+                        history.push(`/product/${item.id}`);
+                      }}
+                      className="Category-card bg-light text-dark mb-3"
+                    >
+                      <Card.Img
+                        className="card-img"
+                        variant="top"
+                        src={item.image || botolplastik}
+                      />
+                      <Card.Body className="">
+                        <Card.Title>{item.name}</Card.Title>
+                        <Card.Text>{item.grade}</Card.Text>
+                        <Card.Text>{item.price}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Link>
+                </Col>
+              </div>
+            ))}
+          </Row>
+        </Col>
+      </Row>
+        ):(
+          <div className="align-item-center text-center mt-5">
+            <br />
+            <br />
+            <Spinner animation="border" variant="warning" size="lg" />
+          </div>
+        )}
       </Container>
     </div>
   );

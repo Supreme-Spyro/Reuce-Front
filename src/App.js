@@ -14,7 +14,8 @@ import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
 import MyShop from "./pages/MyShop";
 import EditItem from "./pages/EditItem";
-import NewsLetter from './pages/NewsLetter';
+import NewsLetter from "./pages/NewsLetter";
+import Admin from "./pages/Admin";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -37,7 +38,7 @@ function App() {
           <NavbarBootstrap />
           <Profile />
         </Route>
-        <Route path="/articles">
+        <Route path="/articles/home">
           <NavbarBootstrap />
           <Articles />
         </Route>
@@ -68,9 +69,12 @@ function App() {
           <NavbarBootstrap />
           <EditItem />
         </Route>
-        <Route path="/newsletter">
+        <Route path="/articles/:id">
           <NavbarBootstrap />
           <NewsLetter />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Switch>
     </Router>
