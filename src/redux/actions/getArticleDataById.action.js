@@ -24,8 +24,8 @@ export const getArticleDataByIdFailed = (error) =>{
     }
 }
 
-export const getArticleDataByIdForPage = (id,history) => (dispatch) => {
-    history.push(`/${id}`)
+export const getArticleDataByIdForPage = (id) => (dispatch) => {
+    
     const uriArticle = `https://reuce-back.herokuapp.com/artikel/${id}`;
     axios
     .get(`${uriArticle}`)

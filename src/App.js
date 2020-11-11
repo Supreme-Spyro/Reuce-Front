@@ -40,7 +40,7 @@ function App() {
           <NavbarBootstrap />
           <Profile />
         </Route>
-        <Route path="/articles">
+        <Route path="/articles/home">
           <NavbarBootstrap />
           <Articles />
         </Route>
@@ -71,7 +71,7 @@ function App() {
           <NavbarBootstrap />
           <EditItem />
         </Route>
-        <Route path="/newsletter">
+        <Route path="/articles/:id">
           <NavbarBootstrap />
           <NewsLetter />
         </Route>

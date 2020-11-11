@@ -1,26 +1,35 @@
-import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Container, Row, Carousel, Col } from 'react-bootstrap'
+import {useParams} from 'react-router'
+import { useSelector, useDispatch } from "react-redux";
+import {getArticleDataByIdForPage} from './../redux/actions/getArticleDataById.action'
 
 //styling
 import '../styles/NewsLetter.css'
 
 function NewsLetter() {
+    const {id} = useParams();
+    const dispatch = useDispatch()
+    const articleByIdData = useSelector((state)=> state.articleDataByIdReducer.data.Artikels)
+    const authorData = useSelector((state)=> state.articleDataByIdReducer.admin)
+    console.log('articleByIdData',articleByIdData)
+    console.log('authorData',authorData)
+
+
+    useEffect(()=>{
+        dispatch(getArticleDataByIdForPage(id));
+    },[dispatch])
+
     return (
         <Container className='container-newsletter'>
             <Row>
-                This will be news letter banner
+                <img className='image-newsLetter' src={`http://reuce-back.herokuapp.com/${articleByIdData.image}`}/>
             </Row>
             <Row>
-                here will be the place for the title
+                {articleByIdData.title}
             </Row>
             <Row>
-                Here will be the place for the content
-            </Row>
-            <Row>
-                Here will be the place for the author info
-            </Row>
-            <Row>
-                Here will be the place for navigation button (next article)
+                {articleByIdData.content}
             </Row>
         </Container>
     )

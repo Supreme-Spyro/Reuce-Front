@@ -2,6 +2,9 @@ import React from "react";
 import bottle from "../../assets/plastic-bottle.jpg";
 import "../../styles/ArticleGuide.css";
 import { Container } from "react-bootstrap";
+
+
+
 function ArticleGuide(props) {
   return (
     <Container>
@@ -15,7 +18,7 @@ function ArticleGuide(props) {
             />
           </td>
           <td className="guideListTitle-articles">
-            <a href="asd">How to Appropriately Determine your Plastic Price?</a>
+            <a href="asd">{props.title}</a>
           </td>
         </tr>
       </table>
