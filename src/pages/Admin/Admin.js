@@ -49,27 +49,26 @@ export default function Admin() {
   //   product: null,
   // };
 
-  // let adminData = userData ===undefined && productData=== undefined ?
-  // ({
-  //      user: "",
-  //       product: ""
-  //     }) :
-  //   ( {
-  //     user: userData.length,
-  //     product: productData.length,
-  //   })
- 
-  
+  let adminData =
+    userData === undefined && productData === undefined
+      ? {
+          user: "",
+          product: "",
+        }
+      : {
+          user: userData.length,
+          product: productData.length,
+        };
 
-  // console.log("userData", userData);
-  // console.log("productData", productData);
+  console.log("userData", userData);
+  console.log("productData", productData);
 
   return (
     <div>
       <br />
       <br />
       <br />
-      {/* <Container>
+      <Container>
         {adminData ? (
           <div className="popularSection">
             <Row className="sectionTitle">
@@ -86,7 +85,7 @@ export default function Admin() {
             <Spinner className="mx-auto" animation="border" variant="info" />
           </Row>
         )}
-      </Container> */}
+      </Container>
     </div>
   );
 }
