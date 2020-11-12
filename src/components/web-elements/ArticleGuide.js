@@ -18,7 +18,7 @@ function ArticleGuide(props) {
             />
           </td>
           <td className="guideListTitle-articles">
-            <a href="asd">{props.title}</a>
+            <a href="asd">ini judulnya</a>
           </td>
         </tr>
       </table>

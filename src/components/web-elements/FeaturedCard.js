@@ -11,6 +11,7 @@ function FeaturedCard(props) {
   return (
     <div className="featuredCard-articles">
       <img
+      style={{maxHeight:"40vh"}}
         alt="altImage"
         src={`http://reuce-back.herokuapp.com/${props.image}`}
         className="featuredCardPic-articles"

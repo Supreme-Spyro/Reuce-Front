@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Row, Carousel, Col } from "react-bootstrap";
+import { Container, Row, Carousel, Col, Spinner } from "react-bootstrap";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticleDataByIdForPage } from "./../redux/actions/getArticleDataById.action";
@@ -22,23 +22,30 @@ function NewsLetter() {
   }, [dispatch]);
 
   return (
-    <Container className="container-newsletter">
-      <Row>
+    <div className="container-newsletter">
+      {articleByIdData ? (
         <Container>
-          <Col>
+          <Row>
             <img
-              className="image-newsLetter"
+              width="80%"
+              className="image-newsLetter mx-auto"
               src={`http://reuce-back.herokuapp.com/${articleByIdData.image}`}
             />
-          </Col>
+          </Row>
+          <Row>
+            <h4>{articleByIdData.title}</h4>
+          </Row>
+          <br />
+          <Row>
+            <p>{articleByIdData.content}</p>
+          </Row>
         </Container>
-      </Row>
-      <Row >
-          <div className='title-newsLetter lato'>
-          {articleByIdData.title}
-        </div></Row>
-      <Row>{articleByIdData.content}</Row>
-    </Container>
+      ) : (
+        <div className="text-center">
+          <Spinner variant="info" animation="border" />
+        </div>
+      )}
+    </div>
   );
 }
 

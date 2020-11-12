@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row, Container, Spinner } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 import FeaturedCard from "../components/web-elements/FeaturedCard";
@@ -22,6 +22,20 @@ function Articles() {
     (state) => state.articleDataReducer.data.result
   );
 
+  const [article, setArticle] = useState([])
+  let searchRegex = /lorem ipsum/gi
+
+  let articleGuide = article.filter((item) => {
+    return item.content.match(searchRegex);
+  });
+  
+  console.log("articleGuide", articleGuide);
+
+  //pick article to carousel
+  // const articleForCarousel1 = articleData[5];
+  // const articleForCarousel2 = articleData[7];
+  // const articleForCarousel3 = articleData[8];
+
   const articleDataById = useSelector(
     (state) => state.articleDataByIdReducer.data.Artikels
   );
@@ -30,13 +44,16 @@ function Articles() {
     history.push(`/articles/${id}`);
   };
 
-  
   console.log("articleData", articleData);
-  console.log("articleDataById", articleDataById);
+  // console.log("articleDataById", articleDataById);
 
   useEffect(() => {
-    dispatch(getArticleDataForHome());
-  }, [dispatch]);
+    if (articleData === undefined) {
+      dispatch(getArticleDataForHome());
+    } else {setArticle(articleData)}
+  }, [dispatch,articleData]);
+
+  console.log('article',article)
 
   // useEffect(() => {
   //   dispatch(getArticleDataByIdForPage(`5fa3c3cb9e69757dbf3a08b3`));
@@ -47,7 +64,8 @@ function Articles() {
       <Row className="carouselRow-articles">
         <Container>
           <ArticleCarousel
-          // title1 = {articleDataById.title}
+          // title1 = {articleForCarousel1.title}
+          // pic1 = {articleForCarousel1.image}
           />
         </Container>
       </Row>
@@ -61,7 +79,7 @@ function Articles() {
             articleData.map((item, index) => (
               <FeaturedCard
                 key={index}
-                link={()=>history.push(`/articles/${item._id}`)}
+                link={() => history.push(`/articles/${item._id}`)}
                 image={item.image}
                 title={item.title}
               />
@@ -79,9 +97,10 @@ function Articles() {
           <Col lg={4} md={12} className="sellerGuideCol-articles">
             <Container className="sellerGuideContainer-articles">
               Guide for seller and buyer
+              <ArticleGuide />
+              <ArticleGuide />
+
             </Container>
-            <ArticleGuide />
-            <ArticleGuide />
           </Col>
         </Row>
       </Container>

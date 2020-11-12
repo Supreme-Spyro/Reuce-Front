@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
+// import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { Search, Cart2 } from "react-bootstrap-icons";
