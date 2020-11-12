@@ -3,7 +3,7 @@ import "../../styles/admin.scss";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUserAction } from "../../redux/actions/user.action";
+import { getAllProductActions } from "../../redux/actions/product.action";
 
 import { Container, Row, Table, Col, Spinner } from "react-bootstrap";
 
@@ -17,7 +17,7 @@ export default function ProductAdmin() {
   const productLength = productGet !== undefined ? productGet.length : null;
 
   useEffect(() => {
-    dispatch(getAllUserAction());
+    dispatch(getAllProductActions());
   }, [dispatch]);
 
   console.log("productGet", productGet);
@@ -37,7 +37,7 @@ export default function ProductAdmin() {
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Table hover="true" responsive="lg">
+                  <Table hover="true" responsive>
                     <thead>
                       <tr>
                         <th>#</th>

@@ -35,3 +35,41 @@ export const getArticleDataForHome = (data) => (dispatch) => {
     })
     .catch((error) => dispatch(getArticleDataFailed(error)));
 };
+
+export const postArticleActions = (value, event, history) => (dispatch) => {
+  event.preventDefault();
+  const uriArticle = "https://reuce-back.herokuapp.com/artikel";
+  return axios
+    .post(uriArticle, value)
+    .then((result) => {
+      console.log("res", result);
+      window.location.href = "/admin/articles";
+    })
+    .catch((error) => console.log(error));
+};
+
+export const updateArticleActions = (value, event, history, id) => (
+  dispatch
+) => {
+  event.preventDefault();
+  const uriArticle = `https://reuce-back.herokuapp.com/artikel/${id}`;
+  return axios
+    .put(uriArticle, value)
+    .then((result) => {
+      console.log("res", result);
+      history.push("/admin/articles");
+    })
+    .catch((error) => console.log(error));
+};
+
+export const deleteArticleActions = (id, event, history) => (dispatch) => {
+  event.preventDefault();
+  const uriArticle = `https://reuce-back.herokuapp.com/artikel/${id}`;
+  return axios
+    .delete(uriArticle)
+    .then((result) => {
+      console.log("res", result);
+      window.location.href = "/admin/articles";
+    })
+    .catch((error) => console.log(error));
+};

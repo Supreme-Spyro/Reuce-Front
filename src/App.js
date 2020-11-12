@@ -19,7 +19,8 @@ import Admin from "./pages/Admin/Admin";
 import UserAdmin from "./pages/Admin/UserAdmin";
 import ProductAdmin from "./pages/Admin/ProductAdmin";
 import ArticlesAdmin from "./pages/Admin/ArticlesAdmin";
-
+import AddArticlesAdmin from "./pages/Admin/AddArticlesAdmin";
+import EditArticlesAdmin from "./pages/Admin/EditArticlesAdmin";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -90,9 +91,17 @@ function App() {
           <NavAdmin />
           <ProductAdmin />
         </Route>
-        <Route path="/admin/articles">
+        <Route exact path="/admin/articles">
           <NavAdmin />
           <ArticlesAdmin />
+        </Route>
+        <Route path="/admin/articles/add">
+          <NavAdmin />
+          <AddArticlesAdmin />
+        </Route>
+        <Route path="/admin/articles/edit/:id">
+          <NavAdmin />
+          <EditArticlesAdmin />
         </Route>
       </Switch>
     </Router>

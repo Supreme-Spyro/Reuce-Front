@@ -113,7 +113,7 @@ export default function NavbarBootstrap() {
                 Article
               </Nav.Link>
             </Nav>
-            <Nav className="ml-5 justify-content-end text-right">
+            <Nav className="ml-md-5 justify-content-end text-right">
               <Nav.Link>
                 <Button
                   className="button-daftar nunito justify-content-end"
