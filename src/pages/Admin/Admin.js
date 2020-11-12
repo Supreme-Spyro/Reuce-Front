@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../styles/admin.scss";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUserAction } from "../../redux/actions/user.action";
 import { getAllProductActions } from "../../redux/actions/product.action";
+import { getArticleDataForHome } from "../../redux/actions/article.action";
 
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 
@@ -15,53 +16,35 @@ export default function Admin() {
   const productData = useSelector(
     (state) => state.getProductReducer.data.result
   );
+  const articleData = useSelector(
+    (state) => state.articleDataReducer.data.result
+  );
 
   useEffect(() => {
     dispatch(getAllUserAction());
     dispatch(getAllProductActions());
+    dispatch(getArticleDataForHome());
   }, [dispatch]);
 
-  // const [adminData, setAdminData] = useState({
-  //   user: null,
-  //   product: null,
-  // });
-
-  // useEffect(() => {
-  //   if (userData === undefined && productData === undefined) {
-  //     dispatch(getAllUserAction());
-  //     dispatch(getAllProductActions());
-  //   } else {
-  //     setAdminData({
-  //       user: userData,
-  //       product: productData,
-  //     });
-  //   }
-  // }, [dispatch, adminData, userData, productData]);
-
-  // console.log(adminData, "adminData");
-
-  // useEffect(() => {
-  //   dispatch(getAllProductActions());
-  // }, [dispatch]);
-
-  // let adminData = {
-  //   user: null,
-  //   product: null,
-  // };
-
   let adminData =
-    userData === undefined && productData === undefined
+    userData !== undefined &&
+    productData !== undefined &&
+    articleData !== undefined
       ? {
-          user: "",
-          product: "",
-        }
-      : {
           user: userData.length,
           product: productData.length,
+          article: articleData.length,
+          isLoading: false,
+        }
+      : {
+          user: null,
+          product: null,
+          article: null,
+          isLoading: true,
         };
 
   console.log("userData", userData);
-  console.log("productData", productData);
+  console.log("articleData", articleData);
 
   return (
     <div>
@@ -69,21 +52,25 @@ export default function Admin() {
       <br />
       <br />
       <Container>
-        {adminData ? (
+        {adminData.isLoading === false ? (
           <div className="popularSection">
             <Row className="sectionTitle">
-              <h3>Admin homepage</h3>
-              <br />
-              <h5>Users: {adminData.user}</h5>
-              <br />
-              <h5>Product: {adminData.product}</h5>
+              <Col xs={12}>
+                <h3>Overview</h3>
+                <hr />
+                <h5>Users: {adminData.user}</h5>
+                <h5>Products: {adminData.product}</h5>
+                <h5>Article: {adminData.article}</h5>
+              </Col>
             </Row>
           </div>
         ) : (
-          <Row>
-            <br />
-            <Spinner className="mx-auto" animation="border" variant="info" />
-          </Row>
+          <div className="popularSection">
+            <Row>
+              <br />
+              <Spinner className="mx-auto" animation="border" variant="info" />
+            </Row>
+          </div>
         )}
       </Container>
     </div>

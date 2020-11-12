@@ -23,24 +23,6 @@ import reucelite from "../../assets/reuce-lite.png";
 
 export default function NavbarBootstrap() {
   const history = useHistory();
-  //   const dispatch = useDispatch();
-
-  //   const userToken = localStorage.getItem("token");
-  //   const decodedToken = userToken ? jwtDecode(userToken) : null;
-
-  // const userData = useSelector((state) => state.userProfileReducer);
-  // console.log("userId", userData);
-
-  //   const [searchState, setSearchState] = useState({
-  // name: "",
-  //   });
-
-  //   const changeSearch = (event) => {
-  //     setSearchState({
-  //       ...searchState,
-  //       [event.target.name]: event.target.value,
-  //     });
-  //   };
 
   const logoutFunction = (event, history) => {
     event.preventDefault();
@@ -51,9 +33,6 @@ export default function NavbarBootstrap() {
   const pushHome = () => {
     document.location.href = "/";
   };
-  //   const toProfile = () => {
-  //     document.location.href = `/profile/${decodedToken._id}`;
-  //   };
 
   // loading modal variables
   const [showLoading, setShowLoading] = useState(false);
@@ -119,52 +98,34 @@ export default function NavbarBootstrap() {
               </Nav.Link>
               {/* </Nav> */}
               {/* <Nav> */}
-              <Nav.Link as={Link} to="/admin/product" className="link-kategori">
+              <Nav.Link
+                as={Link}
+                to="/admin/products"
+                className="link-kategori"
+              >
                 Product
               </Nav.Link>
-              <Nav.Link as={Link} to="/admin/article" className="link-kategori">
+              <Nav.Link
+                as={Link}
+                to="/admin/articles"
+                className="link-kategori"
+              >
                 Article
               </Nav.Link>
             </Nav>
-            {/* <Nav className="mx-auto my-1 ">
-              <Form
-                autoComplete="off"
-                onSubmit={(event) => {
-                  setShowLoading(true);
-                  dispatch(getSearchActions(searchState, event, history));
-                }}
-                inline
-              >
-                <InputGroup className="search-group">
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>
-                      <Search size={15} />
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl
-                    size="sm"
-                    className="input-search nunito"
-                    name="name"
-                    type="text"
-                    placeholder=""
-                    //   className="mr-sm-2"
-                    onChange={(event) => changeSearch(event)}
-                    value={searchState.name}
-                  />
-                </InputGroup>
-              </Form>
-            </Nav> */}
-            <Nav>
-              <Button
-                className="button-daftar nunito"
-                size="sm"
-                onClick={(event) => {
-                  setShowLoading(true);
-                  logoutFunction(event, history);
-                }}
-              >
-                Logout
-              </Button>
+            <Nav className="ml-5 justify-content-end text-right">
+              <Nav.Link>
+                <Button
+                  className="button-daftar nunito justify-content-end"
+                  size="sm"
+                  onClick={(event) => {
+                    setShowLoading(true);
+                    logoutFunction(event, history);
+                  }}
+                >
+                  Logout
+                </Button>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

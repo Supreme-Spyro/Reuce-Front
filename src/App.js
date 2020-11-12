@@ -17,6 +17,9 @@ import EditItem from "./pages/EditItem";
 import NewsLetter from "./pages/NewsLetter";
 import Admin from "./pages/Admin/Admin";
 import UserAdmin from "./pages/Admin/UserAdmin";
+import ProductAdmin from "./pages/Admin/ProductAdmin";
+import ArticlesAdmin from "./pages/Admin/ArticlesAdmin";
+
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -82,6 +85,14 @@ function App() {
         <Route path="/admin/users">
           <NavAdmin />
           <UserAdmin />
+        </Route>
+        <Route path="/admin/products">
+          <NavAdmin />
+          <ProductAdmin />
+        </Route>
+        <Route path="/admin/articles">
+          <NavAdmin />
+          <ArticlesAdmin />
         </Route>
       </Switch>
     </Router>
