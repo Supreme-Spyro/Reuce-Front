@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useParams, Link, useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   // Accordion,
   // Form,
@@ -13,16 +13,36 @@ import {
   Spinner,
 } from "react-bootstrap";
 
+import { getAllCategory, getCategoryId } from '../redux/actions/category.action'
+
 import "../styles/Font.scss";
 import "../styles/Category.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
 
 export default function Category() {
+  const dispatch = useDispatch();
   let params = useParams ();
   let categoryName = decodeURIComponent(params.id);
   const history = useHistory();
 
   const dataCategory = useSelector((state) => state.getCategoryReducer.data);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    if (dataCategory.length === 0){
+      dispatch(getAllCategory());
+    } else {
+      setProduct(dataCategory)
+    }
+  }, [dispatch, dataCategory]);
+  // console.log(product);
+
+  // useEffect(() => {
+  //   dispatch(getCategoryId());
+  // }, [dispatch]);
+
+  // console.log("data", dataCategory)
+
 
   // const cardDataDummy = [
   //   "data1",
@@ -41,21 +61,21 @@ export default function Category() {
   return (
     <div>
       <Container>
-        {dataCategory ? (
+        {product.result !== undefined ? (
         <Row>
         <Col className="card-col " sm={12} md={12}>
           <Row>
-            <h4 className="my-3">Category: {`${categoryName}`}</h4>
+            <h4 className="name mt-5">Category: {`${categoryName}`}</h4>
           </Row>
           <br />
           <Row className="justify-content-center mt-4">
-            {dataCategory.map((item, index) => (
+            {product.result.map((item, index) => (
               <div key={index}>
                 <Col sm={12} md={4}>
                   <Link>
                     <Card
                       onClick={() => {
-                        history.push(`/product/${item.id}`);
+                        history.push(`/productdetails/${item.id}`);
                       }}
                       className="Category-card bg-light text-dark mb-3"
                     >
@@ -81,7 +101,7 @@ export default function Category() {
           <div className="align-item-center text-center mt-5">
             <br />
             <br />
-            <Spinner animation="border" variant="warning" size="lg" />
+            <Spinner animation="border" variant="success" size="lg" />
           </div>
         )}
       </Container>
