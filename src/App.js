@@ -48,7 +48,7 @@ function App() {
           <NavbarBootstrap />
           <Articles />
         </Route>
-        <Route path="/searchresult">
+        <Route path="/search/:id">
           <NavbarBootstrap />
           <Search />
         </Route>
@@ -56,7 +56,7 @@ function App() {
           <NavbarBootstrap />
           <Category />
         </Route>
-        <Route path="/productdetails">
+        <Route path="/product/:id">
           <NavbarBootstrap />
           <ProductDetails />
         </Route>

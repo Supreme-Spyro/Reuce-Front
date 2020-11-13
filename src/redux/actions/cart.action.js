@@ -33,7 +33,7 @@ export const getDataOrderItem = (value, event, history, id) => (dispatch) => {
 
   axios
     .get(
-      ""
+      "https://reuce-back.herokuapp.com/order-item"
     )
     .then((result) => dispatch(getOrderItemSuccess(result.data)))
     .catch((error) => dispatch(getOrderItemFailed(error)));
@@ -41,7 +41,7 @@ export const getDataOrderItem = (value, event, history, id) => (dispatch) => {
 
 export const deleteDataOrderItem = (id) => (dispatch) => {
     axios
-    .delete(`/${id}`)
+    .delete(`https://reuce-back.herokuapp.com/order-item/${id}`)
     .then((response) => {
         console.log(response);
         dispatch(getDataOrderItem())
@@ -50,7 +50,7 @@ export const deleteDataOrderItem = (id) => (dispatch) => {
 
 export const updateDataOrderItem =  (id, data) => (dispatch) =>{
     axios
-    .put(`/${id}`, { quantity: data})
+    .put(`https://reuce-back.herokuapp.com/order-item/${id}`, { quantity: data})
     .then((response)=>{
         console.log(response)
         dispatch(getDataOrderItem())
@@ -61,7 +61,7 @@ export const postOrderItem = (data, e) => (dispatch) => {
     
     
       axios
-        .post(``, {
+        .post(`https://reuce-back.herokuapp.com/order-item`, {
           product_id: data,
           quantity:1
         })
