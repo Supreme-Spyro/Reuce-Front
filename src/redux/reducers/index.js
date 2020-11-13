@@ -7,6 +7,7 @@ import articleDataReducer from "./article.reducer";
 import articleDataByIdReducer from "./getArticleDataById.reducer";
 import getProductReducer from "./product.reducer";
 import getCategoryReducer from "./category.reducer";
+import showDataOrder from "./checkout.reducers";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   articleDataByIdReducer,
   getProductReducer,
   getCategoryReducer,
+  showDataOrder
 });
 
 export default rootReducer;
