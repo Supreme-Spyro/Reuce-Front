@@ -135,8 +135,10 @@ export default function NavbarBootstrap() {
               <Form
                 autoComplete="off"
                 onSubmit={(event) => {
-                  setShowLoading(true);
-                  dispatch(getSearchActions(searchState, event, history));
+                  event.preventDefault();
+                  // setShowLoading(true);
+                  history.push(`/search/${searchState.name}`)
+                  // dispatch(getSearchActions(searchState, event, history));
                 }}
                 inline
               >

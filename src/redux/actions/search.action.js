@@ -24,7 +24,7 @@ export const getSearchFailed = (error) => {
 };
 
 export const getSearchActions = (id, event, history) => {
-  event.preventDefault();
+  // event.preventDefault();
   console.log("hasil event", event)
   return async (dispatch) => {
     dispatch(getSearchRequest(id));
@@ -33,6 +33,6 @@ export const getSearchActions = (id, event, history) => {
     const response = await axios.get(`${urlSearch}/${id}`);
     console.log("response", response.data.Products);
     dispatch(getSearchSuccess(response.data.Products));
-    history.push(`/search/${id.name}`);
+    // history.push(`/search/${id.name}`);
   };
 };
