@@ -62,51 +62,38 @@ export default function ProductDetails() {
         <br />
         <br />
         {detailProductData ? (
-          <Row>
-            <Col sm={0} md={2}></Col>
-            <Col className="my-4 ml-sm-5" sm={10} md={4}>
+          <Row className="popularSection mt-3">
+            <Col className="my-4 colDetailLeft" sm={12} md={6}>
               {/* gambar */}
               <img
+                className="prodDetailImage"
                 alt="product-img"
                 src={`http://reuce-back.herokuapp.com/${detailProductData.image}`}
-                width={200}
-                height={200}
               />
               <br />
               <br />
-              <Row>
-                <div>
-                  {/* detailproduk */}
-                  <h4>Detail Produk</h4>
-                  {/* grade barang */}
-                  <p>{`${detailProductData.grade.name}`}</p>
-                  {/* kategori barang */}
-                  <p>{`${detailProductData.category.name}`}</p>
-                  {/* <p>Conditon: Bersih</p> */}
-                  {/* berat */}
-                  <p>{`${detailProductData.weight}`}</p>
-                </div>
-              </Row>
+              <div className="text-left">
+                <p>
+                  {`Category: ${detailProductData.category.name}`} <br />
+                  {`Berat: ${detailProductData.weight} Kg`}
+                </p>
+              </div>
             </Col>
-            <Col className="my-4 ml-sm-5" sm={10} md={4}>
-              {/* Nama barang */}
-              <Row>
-                <h3>{`${detailProductData.name}`}</h3>
-              </Row>
-              {/* deskripsi barang */}
-              <Row>
-                <p>{`${detailProductData.description}`}</p>
-              </Row>
-              {/* harga */}
-              <Row>
-                <strong>
-                  <h3>{`${detailProductData.price}`}</h3>
-                </strong>
-              </Row>
-              <div className="container-counter-quantity">
+            <Col className="mt-md-4 mt-0 " sm={12} md={6}>
+              <Container>
+                <Row>
+                  <h3>{`${detailProductData.name}`}</h3>
+                  <br />
+                  <p>{`${detailProductData.description}`}</p>
+                  <br />
+                  <strong>
+                    <h4>{`Rp ${detailProductData.price}`}</h4>
+                  </strong>
+                </Row>
+                {/* <div className="container-counter-quantity">
                 <Button
                   onClick={() => decrement(id, num)}
-                  className="button"
+                  className="button-details"
                   variant="secondary"
                 >
                   -
@@ -119,32 +106,26 @@ export default function ProductDetails() {
                 >
                   +
                 </Button>
-              </div>
-              <Row>
+              </div> */}
                 <Form
                   onSubmit={(event) => {
                     event.preventDefault();
                     dispatch(
-                      postOrderItem(
-                        decodedToken._id,
-                        detailProductData._id
-                      )
+                      postOrderItem(decodedToken._id, detailProductData._id)
                     );
                   }}
                 >
                   <Button
-                    className="addtocart"
+                    className="addtocart w-100"
                     variant="success"
                     type="submit"
                     onClick={() => handleClick(id)}
                   >
-                    <strong>Masukkan ke Keranjang</strong>
+                    <strong>+ Keranjang</strong>
                   </Button>
                 </Form>
-              </Row>
+              </Container>
             </Col>
-
-            <Col sm={0} md={2}></Col>
           </Row>
         ) : (
           <div className="align-item-center text-center mt-5">

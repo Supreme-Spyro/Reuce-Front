@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 
 import { getSearchActions } from "../redux/actions/search.action";
 
+import ProductCard from "../components/web-elements/Home/ProductCardHome";
 import "../styles/Search.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
 
@@ -22,20 +23,8 @@ export default function Search() {
   }, [dispatch]);
 
   const dataSearch = useSelector((state) => state.searchReducer.data);
+  const searchLoading = useSelector((state) => state.searchReducer.isLoading);
   console.log("data", dataSearch);
-
-  // const cardDataDummy = [
-  //   "data1",
-  //   "data2",
-  //   "data3",
-  //   "data4",
-  //   "data5",
-  //   "data6",
-  //   "data7",
-  //   "data8",
-  //   "data9",
-  //   "data10",
-  // ];
 
   return (
     <div>
@@ -43,47 +32,49 @@ export default function Search() {
       <br />
       <br />
       <Container>
-        {dataSearch !== undefined ? (
-          <Row>
-            <Col className="card-col " sm={12} md={12}>
-              <Row>
-                <h4 className="my-3">Search: {`${searchName}`}</h4>
-              </Row>
-              <br />
-              <Row className="justify-content-center mt-4">
-                {dataSearch.map((item, index) => (
-                  <Col key={index} sm={12} md={4}>
-                    col
-                    <Card
-                      onClick={() => {
-                        history.push(`/product/${item._id}`);
-                      }}
-                      className="search-card bg-light text-dark mb-3"
-                    >
-                      <Card.Img
-                        className="card-img"
-                        variant="top"
-                        src={
-                          `http://reuce-back.herokuapp.com/${item.image}` ||
-                          botolplastik
-                        }
-                      />
-                      <Card.Body className="">
-                        <Card.Title>{item.name}</Card.Title>
-                        <Card.Text>{item.grade.name}</Card.Text>
-                        <Card.Text>{item.price}</Card.Text>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
+        {searchLoading === false ? (
+          <div>
+            <Row>
+              <h4 className="mt-3 ml-4">Search: {`${searchName}`}</h4>
+            </Row>
+            <Row className="mx-auto justify-content-center align-item-center mx-auto">
+              {dataSearch.map((item, index) => (
+                <Col
+                  className="px-sm-4 colStyle align-item-center justify-content-center"
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={index}
+                >
+                  <Link to={`/product/${item._id}`}>
+                    <ProductCard
+                      // propsClassName="mx-auto ml-4"
+                      imageSource={
+                        `http://reuce-back.herokuapp.com/${item.image}` ||
+                        botolplastik
+                      }
+                      title={item.name}
+                      text={`Rp ${item.price}`}
+                      productRole={item.role}
+                    />
+                  </Link>
+                </Col>
+              ))}
+            </Row>
+          </div>
         ) : (
-          <div className="align-item-center text-center mt-5">
+          <div className="align-item-center mx-auto text-center mt-5">
             <br />
             <br />
-            <Spinner animation="border" variant="warning" size="lg" />
+            <Row>
+              <Spinner
+                className="mx-auto"
+                animation="border"
+                variant="info"
+                size="lg"
+              />
+            </Row>
           </div>
         )}
       </Container>

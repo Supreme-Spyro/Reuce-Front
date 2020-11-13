@@ -123,8 +123,8 @@ export default function NavbarBootstrap() {
                 Kategori
               </Nav.Link>
               {/* </LinkContainer> */}
-            {/* </Nav> */}
-            {/* <Nav> */}
+              {/* </Nav> */}
+              {/* <Nav> */}
               {/* <LinkContainer to="/articles"> */}
               <Nav.Link as={Link} to="/articles/home" className="link-kategori">
                 Artikel
@@ -136,8 +136,9 @@ export default function NavbarBootstrap() {
                 autoComplete="off"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  // setShowLoading(true);
-                  history.push(`/search/${searchState.name}`)
+                  setShowLoading(true);
+                  window.location.href = `/search/${searchState.name}`;
+                  // history.push(`/search/${searchState.name}`)
                   // dispatch(getSearchActions(searchState, event, history));
                 }}
                 inline
