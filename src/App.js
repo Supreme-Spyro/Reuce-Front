@@ -60,11 +60,11 @@ function App() {
           <NavbarBootstrap />
           <ProductDetails />
         </Route>
-        <Route path="/shopcart">
+        <Route path="/shopcart/:id">
           <NavbarBootstrap />
           <ShoppingCart />
         </Route>
-        <Route path="/checkout">
+        <Route path="/checkout/:id">
           <Checkout />
         </Route>
         <Route path="/myshop/:id">

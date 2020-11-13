@@ -99,7 +99,7 @@ export default function Category() {
           <div className="align-item-center text-center mt-5">
             <br />
             <br />
-            <Spinner animation="border" variant="success" size="lg" />
+            <Spinner animation="border" variant="info" size="lg" />
           </div>
         )}
       </Container>

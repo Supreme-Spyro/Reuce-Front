@@ -62,7 +62,7 @@ export default function ProductDetails() {
         <br />
         <br />
         {detailProductData ? (
-          <Row className="popularSection mt-3">
+          <Row className="popularSection mt-3 pb-5">
             <Col className="my-4 colDetailLeft" sm={12} md={6}>
               {/* gambar */}
               <img
@@ -72,20 +72,25 @@ export default function ProductDetails() {
               />
               <br />
               <br />
-              <div className="text-left">
+              <div className="text-left ml-2">
                 <p>
-                  <strong>Category: </strong>{`${detailProductData.category.name}`} <br />
-                  <strong>Berat: </strong>{`${detailProductData.weight} Kg`}
+                  <strong>Penjual: </strong>
+                  {`${detailProductData.user.fullname}`} <br />
+                  <strong>Category: </strong>
+                  {`${detailProductData.category.name}`} <br />
+                  <strong>Berat: </strong>
+                  {`${detailProductData.weight} Kg`}
                 </p>
               </div>
             </Col>
-            <Col className="mt-md-4 mt-0 " sm={12} md={6}>
+            <Col className="mt-md-4 mt-0 details-right" sm={12} md={6}>
               <Container>
-                <div className="pl-3 mb-4">
+                <div className="ml-2 mb-4">
                   <Row>
                     <h3>{`${detailProductData.name}`}</h3>
                   </Row>
-                  <Row>
+                  <Row className="p-2">
+                    <strong>Deskripsi:</strong>
                     <p>{`${detailProductData.description}`}</p>
                   </Row>
                   <Row>
