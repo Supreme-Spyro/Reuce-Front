@@ -39,9 +39,9 @@ export default function Search() {
 
   return (
     <div>
-    <br/>
-    <br/>
-    <br/>
+      <br />
+      <br />
+      <br />
       <Container>
         {dataSearch !== undefined ? (
           <Row>
@@ -51,9 +51,9 @@ export default function Search() {
               </Row>
               <br />
               <Row className="justify-content-center mt-4">
-              {dataSearch.map((item,index)=> (
-                <Col key={index} sm={12} md={4}>
-                col
+                {dataSearch.map((item, index) => (
+                  <Col key={index} sm={12} md={4}>
+                    col
                     <Card
                       onClick={() => {
                         history.push(`/product/${item._id}`);
@@ -63,7 +63,10 @@ export default function Search() {
                       <Card.Img
                         className="card-img"
                         variant="top"
-                        src={item.image || botolplastik}
+                        src={
+                          `http://reuce-back.herokuapp.com/${item.image}` ||
+                          botolplastik
+                        }
                       />
                       <Card.Body className="">
                         <Card.Title>{item.name}</Card.Title>
@@ -72,7 +75,7 @@ export default function Search() {
                       </Card.Body>
                     </Card>
                   </Col>
-              ))}
+                ))}
               </Row>
             </Col>
           </Row>

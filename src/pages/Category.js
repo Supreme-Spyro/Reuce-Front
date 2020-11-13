@@ -61,14 +61,14 @@ export default function Category() {
   return (
     <div>
       <Container>
+      <br/>
         {product.result !== undefined ? (
         <Row>
         <Col className="card-col " sm={12} md={12}>
           <Row>
-            <h4 className="name mt-5">Category: all</h4>
+            <h4 className="name ml-2 mt-5">Category</h4>
           </Row>
-          <br />
-          <Row className="justify-content-center mt-4">
+          <Row className="justify-content-center mt-3">
             {product.result.map((item, index) => (
                 <Col key={index} sm={12} md={4}>
                   <Link>
