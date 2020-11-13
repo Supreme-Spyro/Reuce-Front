@@ -40,6 +40,9 @@ export default function AddArticlesAdmin() {
           <hr />
           <Row className="px-4">
             <Form
+              // action="/article"
+              // encType="multipart/form-data"
+              // method="post"
               autoComplete="off"
               className="form-profile"
               onSubmit={(event) => {

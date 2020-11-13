@@ -6,7 +6,7 @@ import { Card, Badge } from "react-bootstrap";
 
 export default function ProductCard(props) {
   return (
-    <Card className="cardClass lato">
+    <Card className="cardClass lato" className={`cardClass lato ${props.propsClassName}`} onClick={props.propsOnClick}>
       <Card.Img className="cardImage" variant="top" src={props.imageSource} />
       <Card.Body className="cardBody">
         <Card.Text className="cardText lato">

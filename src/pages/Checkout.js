@@ -23,6 +23,10 @@ export default function Checkout() {
     const jasaPengirimanDummy = ["Dijemput Pengepul", "JNE", "Tiki", "Pos Indonesia", "Wahana"]
     const paymentMethodDummy = ["COD", "OVO", "Mandiri", "BRI", "BNI"]
 
+    // const handleClick = (id) => {
+    //   dispatch(postOrderItem(id));
+    // };
+
     return (
         <div>
             <br/>

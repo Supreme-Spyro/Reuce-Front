@@ -50,20 +50,18 @@ export const deleteDataOrderItem = (id) => (dispatch) => {
 
 export const updateDataOrderItem =  (id, data) => (dispatch) =>{
     axios
-    .put(`https://reuce-back.herokuapp.com/order-item/${id}`, { quantity: data})
+    .put(`https://reuce-back.herokuapp.com/order-item/${id}`, { num: data})
     .then((response)=>{
         console.log(response)
         dispatch(getDataOrderItem())
     })
 };
 
-export const postOrderItem = (data, e) => (dispatch) => {
-    
-    
+export const postOrderItem = (user_id, product_id) => (dispatch) => {
       axios
         .post(`https://reuce-back.herokuapp.com/order-item`, {
-          product_id: data,
-          quantity:1
+          user: user_id,
+          product: product_id,
         })
         .then((response) => {
           console.log("response", response);
