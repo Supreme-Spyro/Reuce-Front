@@ -74,22 +74,26 @@ export default function ProductDetails() {
               <br />
               <div className="text-left">
                 <p>
-                  {`Category: ${detailProductData.category.name}`} <br />
-                  {`Berat: ${detailProductData.weight} Kg`}
+                  <strong>Category: </strong>{`${detailProductData.category.name}`} <br />
+                  <strong>Berat: </strong>{`${detailProductData.weight} Kg`}
                 </p>
               </div>
             </Col>
             <Col className="mt-md-4 mt-0 " sm={12} md={6}>
               <Container>
-                <Row>
-                  <h3>{`${detailProductData.name}`}</h3>
-                  <br />
-                  <p>{`${detailProductData.description}`}</p>
-                  <br />
-                  <strong>
-                    <h4>{`Rp ${detailProductData.price}`}</h4>
-                  </strong>
-                </Row>
+                <div className="pl-3 mb-4">
+                  <Row>
+                    <h3>{`${detailProductData.name}`}</h3>
+                  </Row>
+                  <Row>
+                    <p>{`${detailProductData.description}`}</p>
+                  </Row>
+                  <Row>
+                    <strong>
+                      <h4>{`Rp ${detailProductData.price}`}</h4>
+                    </strong>
+                  </Row>
+                </div>
                 {/* <div className="container-counter-quantity">
                 <Button
                   onClick={() => decrement(id, num)}
