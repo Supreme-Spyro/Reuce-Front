@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import { getDataOrderItem, deleteDataOrderItem, updateDataOrderItem } from '../redux/actions/cart.action'
+import { getDataOrderItem, deleteDataOrderItem, updateDataOrderItem, postOrderItem } from '../redux/actions/cart.action'
 import { useDispatch, useSelector } from 'react-redux'
+// import { Link } from 'react-router-dom'
+import jwtDecode from "jwt-decode";
 // import { CartCheck, TrashFill } from "react-bootstrap-icons";
 import plasticBottle from '../assets/plastic-bottle.jpg';
 
@@ -10,11 +12,14 @@ import '../styles/ShoppingCart.scss'
 
 export default function ShoppingCart() {
   //redux
+
+  const userToken = localStorage.getItem("token");
+  const decodedToken = userToken ? jwtDecode(userToken) : null;
+
   const dataOrderItem = useSelector((state) => state.showDataOrderItem);
   const state = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   useEffect(() => {
     dispatch(getDataOrderItem());
@@ -61,8 +66,8 @@ export default function ShoppingCart() {
                           alt=""
                           height={50}/>
                       </div>
-                      <Form.Text className="product-name">botol plastik</Form.Text>
-                      <Form.Text className="price">Rp 2.000</Form.Text>
+                      <Form.Text className="product-name">{dataOrderItem.name}</Form.Text>
+                      <Form.Text className="price">{dataOrderItem.price}</Form.Text>
                       <div className="container-counter-quantity">
                         <Button
                           onClick={decrement}
@@ -80,11 +85,24 @@ export default function ShoppingCart() {
                           +
                         </Button>
                       </div>
-                      <Form.Text className="amount">Rp 2.000</Form.Text>
-                      <button className="delete-product">x</button>
+                      <Form.Text className="amount">{dataOrderItem.amount}</Form.Text>
+                      <Button className="delete-product" variant="danger">
+                      <strong>x</strong>
+                      </Button>
                     </div>
                   </Form.Group>
                   <Row>
+                  <Form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    dispatch(
+                      postOrderItem(
+                        decodedToken._id,
+                        dataOrderItem._id
+                      )
+                    );
+                  }}
+                >
                     <Button
                     className="buy-now"
                     variant="success"
@@ -92,6 +110,7 @@ export default function ShoppingCart() {
                     >
                     <strong>Beli</strong>
                     </Button>
+                    </Form>
                   </Row>
                   </Col>
                 </Row>  
