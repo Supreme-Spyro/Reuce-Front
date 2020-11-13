@@ -1,19 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-import { useParams, Link, useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useParams, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
+
+import {getSearchActions} from '../redux/actions/search.action'
 
 import "../styles/Search.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
 
 export default function Search() {
   let params = useParams ();
+  let dispatch = useDispatch();
   let searchName = decodeURIComponent(params.id);
+  console.log("hasil", searchName)
   const history = useHistory();
 
+  useEffect(() => {
+    dispatch(getSearchActions(searchName));
+  }, [dispatch]);
+
   const dataSearch = useSelector((state) => state.searchReducer.data);
+  console.log("data", dataSearch)
+
+
 
   // const cardDataDummy = [
   //   "data1",
@@ -33,7 +44,7 @@ export default function Search() {
   return (
     <div>
       <Container>
-        {dataSearch ? (
+        {dataSearch !== undefined ? (
           <Row>
           <Col className="card-col " sm={12} md={12}>
             <Row>
@@ -42,9 +53,7 @@ export default function Search() {
             <br />
             <Row className="justify-content-center mt-4">
               {dataSearch.map((item, index) => (
-                <div key={index}>
-                  <Col sm={12} md={4}>
-                    <Link>
+                  <Col key={index} sm={12} md={4}>
                       <Card
                         onClick={() => {
                           history.push(`/product/${item.id}`);
@@ -62,9 +71,7 @@ export default function Search() {
                           <Card.Text>{item.price}</Card.Text>
                         </Card.Body>
                       </Card>
-                    </Link>
                   </Col>
-                </div>
               ))}
             </Row>
           </Col>

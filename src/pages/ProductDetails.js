@@ -4,23 +4,24 @@ import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch} from 'react-redux';
 import { getProductActions } from '../redux/actions/product.action'
 import { postOrderItem, updateDataOrderItem } from '../redux/actions/cart.action'
-import plasticBottle from "../assets/plastic-bottle.jpg";
+// import plasticBottle from "../assets/plastic-bottle.jpg";
 // import NavbarBootstrap from "../components/web-elements/NavbarBootstrap";
 
 import "../styles/ProductDetails.scss";
 
 export default function ProductDetails() {
-  let params = useParams();
+  let { id } = useParams();
   const dispatch = useDispatch();
-
-  let productId = params.id;
-
-  useEffect(() => {
-    dispatch(getProductActions(productId));
-  }, [dispatch]);
 
   const detailProductData = useSelector(
     (state) => state.getProductReducer.data.Products);
+    console.log("detail produk", detailProductData)
+  // let productId = params.id;
+  // console.log("productid", productId)
+
+    useEffect(() => {
+      dispatch(getProductActions(id));
+    }, [dispatch]);
 
   let [num, setNum] = useState(1);
 
@@ -102,12 +103,14 @@ export default function ProductDetails() {
               </Button>
             </div>
             <Row>
+            <Link to="/checkout">
               <Button className="addtocart" variant="success" type="submit"
               onClick={() => handleClick(detailProductData._id)}
               >
-                <Link to="/checkout"></Link>
                 <strong>Masukkan ke Keranjang</strong>
               </Button>
+            </Link>
+
             </Row>
           </Col>
 
@@ -117,7 +120,7 @@ export default function ProductDetails() {
           <div className="align-item-center text-center mt-5">
             <br />
             <br />
-            <Spinner animation="border" variant="warning" size="lg" />
+            <Spinner animation="border" variant="success" size="lg" />
           </div>
         )}
         
