@@ -45,24 +45,26 @@ export const getUserRequestById = (id) => (dispatch) => {
   axios
     .get(`${uriUser}`)
     .then((result) => {
-      console.log("res", result);
+      // console.log("res", result);
       dispatch(getUserDataSuccess(result.data.Users));
     })
     .catch((error) => dispatch(getUserDataFailed(error)));
 };
 
-export const editUserDataActions = (value, event, id, history) => (dispatch) => {
+export const editUserDataActions = (value, event, id, history) => (
+  dispatch
+) => {
   event.preventDefault();
-  console.log("register value", value);
+  // console.log("register value", value);
 
   const uriUsers = `https://reuce-back.herokuapp.com/user/${id}`;
 
   return axios
     .put(uriUsers, value)
     .then((response) => {
-      console.log("res", response);
+      // console.log("res", response);
       dispatch(editUserDataSuccess(response));
-      history.push(`/profile/${id}`)
+      window.location.href = `/profile/${id}`;
     })
     .catch((error) => {
       console.log(error);

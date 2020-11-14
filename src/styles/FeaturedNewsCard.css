@@ -1,21 +1,52 @@
 .featuredCard-articles {
   width: 400px;
-  height: 420px;
+  height: 100%;
   margin: 2px;
+  padding: 5px;
+
+  /* -webkit-box-shadow: 1px 1px 13px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 1px 13px 0px rgba(0,0,0,0.75);
+box-shadow: 1px 1px 13px 0px rgba(0,0,0,0.75); */
 }
 
 .featuredCardPic-articles {
   width: 400px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .newsLetterReview-articles {
-  margin-top: 30px;
+  width: 100%;
+  font-size: 15px;
+  margin: 0 0 2px 0;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+
+.buttonFeatured-article {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+  background-color: transparent;
+  color: #00b99e;
+}
+
+.buttonFeatured-article:hover {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+  background-color: transparent;
+  color: #007a68;
 }
 
 @media (max-width: 767px) {
   .featuredCardPic-articles {
-    width: 100%;
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
   }
   .featuredCard-articles {
     width: 95%;

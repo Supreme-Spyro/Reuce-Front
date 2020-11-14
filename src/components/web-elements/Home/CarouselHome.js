@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import "../../../styles/Home.scss";
-import {  Carousel, Button } from "react-bootstrap";
+import { Carousel, Button } from "react-bootstrap";
 
 import plasticSun from "../../../assets/plastic-seasun.jpg";
 import moneySweep from "../../../assets/money-sweep.jpg";
@@ -19,7 +19,7 @@ export default function CarouselHome() {
       caption: `Waktunya kita mengambil tindakan`,
       buttonText: `Pelajari`,
       onClick: () => {
-        history.push(`/articles`);
+        history.push(`/articles/home`);
       },
     },
     {
@@ -28,7 +28,9 @@ export default function CarouselHome() {
       caption: `Maksimalkan potensi dari sekitar anda`,
       buttonText: `Gabung`,
       onClick: () => {
-        userToken ? history.push(`/category`) : history.push(`/register`);
+        userToken
+          ? (window.location.href = `/category`)
+          : history.push(`/register`);
       },
     },
     // {
