@@ -35,8 +35,6 @@ function Profile() {
   //get data from reducer
   const userData = useSelector((state) => state.getUserDataReducer.data);
 
-  console.log("userData", userData);
-
   //useState
   const [profileState, setProfileState] = useState({
     username: "",
@@ -66,8 +64,6 @@ function Profile() {
   function alertClicked() {
     history.push(`/myshop/${id}`);
   }
-
-  console.log("profileState", profileState);
 
   // const handleSubmit = (event) => {
   //   if (

@@ -12,7 +12,11 @@ function ArticleCarousel(props) {
   return (
     <Carousel className="carousel-articles">
       <Carousel.Item interval={1000}>
-        <img className="d-block w-100" src={`http://reuce-back.herokuapp.com/${props.pic1}`} alt="First slide" />
+        <img
+          className="d-block w-100"
+          src={picTest1 || `http://reuce-back.herokuapp.com/${props.pic1}` }
+          alt="First slide"
+        />
         <Carousel.Caption>
           <h3>{props.title1}</h3>
           <p>{props.review1}</p>
@@ -29,9 +33,7 @@ function ArticleCarousel(props) {
         <img className="d-block w-100" src={picTest3} alt="Third slide" />
         <Carousel.Caption>
           <h3>{props.review3}</h3>
-          <p>
-          {props.review3}
-          </p>
+          <p>{props.review3}</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

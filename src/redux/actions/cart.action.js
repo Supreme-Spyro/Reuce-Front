@@ -59,6 +59,7 @@ export const postOrderItem = (user_id, product_id) => (dispatch) => {
     })
     .then((response) => {
       console.log("response", response);
-      dispatch(getDataOrderItem());
+      window.location.href = `/product/${product_id}`;
+      // dispatch(getDataOrderItem(user_id));
     });
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import plasticStop from "../../assets/featuredNews-test1.png";
 import {useHistory} from 'react-router'
-// import { Row, Col, Container, Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 //styling
 import "../../styles/FeaturedNewsCard.css";
@@ -18,7 +18,7 @@ function FeaturedCard(props) {
       />
       <div>
         <h5 className="lato">{props.title}</h5>
-        <button onClick = {props.link}>baca lebih lanjut</button>
+        <Button size="sm" variant="info" onClick = {props.link}>Baca lebih lanjut</Button>
       </div>
       <div className="newsLetterReview-articles"> {props.desc}</div>
     </div>
