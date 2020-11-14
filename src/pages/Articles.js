@@ -6,6 +6,7 @@ import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // redux
 import { getArticleDataForHome } from "../redux/actions/article.action";
@@ -31,10 +32,10 @@ function Articles() {
   
   console.log("articleGuide", articleGuide);
 
-  //pick article to carousel
-  // const articleForCarousel1 = articleData[5];
-  // const articleForCarousel2 = articleData[7];
-  // const articleForCarousel3 = articleData[8];
+  // pick article to carousel
+  const articleForCarousel1 = articleData[5];
+  const articleForCarousel2 = articleData[7];
+  const articleForCarousel3 = articleData[8];
 
   const articleDataById = useSelector(
     (state) => state.articleDataByIdReducer.data.Artikels
@@ -64,14 +65,14 @@ function Articles() {
       <Row className="carouselRow-articles">
         <Container>
           <ArticleCarousel
-          // title1 = {articleForCarousel1.title}
-          // pic1 = {articleForCarousel1.image}
+          title1 = {articleForCarousel1.title}
+          pic1 = {articleForCarousel1.image}
           />
         </Container>
       </Row>
       <Row className="featuredRow-articles">
         <Container className="featuredRowTitle-articles">
-          {" "}
+          
           Featured News
         </Container>
         <Container className="featuredContainer-articles">
@@ -82,6 +83,7 @@ function Articles() {
                 link={() => history.push(`/articles/${item._id}`)}
                 image={item.image}
                 title={item.title}
+                desc={item.content}
               />
             ))
           ) : (
@@ -92,14 +94,38 @@ function Articles() {
       <Container>
         <Row className="editorPickerRow-articles">
           <Col lg={8} md={12}>
-            <NewsTabList />
+          {articleData ? (
+            articleData.map((item, index) => (
+              <NewsTabList
+                key={index}
+                dateRelease={item.admin.updatedAt}
+                admin={item.admin.fullname}
+                link={item._id}
+                image={item.image}
+                title={item.title}
+                review={item.content}
+              />
+            ))
+          ) : (
+            <Spinner variant="info" />
+          )}
           </Col>
           <Col lg={4} md={12} className="sellerGuideCol-articles">
             <Container className="sellerGuideContainer-articles">
               Guide for seller and buyer
-              <ArticleGuide />
-              <ArticleGuide />
-
+              {articleGuide ? (
+            articleGuide.map((item, index) => (
+              <ArticleGuide
+                key={index}
+                dateRelease={item.updatedAt}
+                link={item._id}
+                image={item.image}
+                title={item.title}
+              />
+            ))
+          ) : (
+            <Spinner variant="info" />
+          )}
             </Container>
           </Col>
         </Row>

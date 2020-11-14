@@ -1,17 +1,19 @@
 .carouselPic-articles{
     width:1400px;
-    height:875px;
+    height:100%;
     
 }
 
-.arouselRow-articles{
+.carouselRow-articles{
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
 }
 
-.carousel-articles{
+/* .carousel-articles{
     margin-top: 15%;
-}
+    margin-bottom: 20px;
+    height: 30vh;
+} */
 
