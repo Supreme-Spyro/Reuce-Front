@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 
 function ArticleGuide(props) {
   return (
-    <Container>
+    
       <table>
         <tr>
           <td>
@@ -21,7 +21,7 @@ function ArticleGuide(props) {
           </td>
         </tr>
       </table>
-    </Container>
+    
   );
 }
 

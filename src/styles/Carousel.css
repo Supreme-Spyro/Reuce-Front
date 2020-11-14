@@ -1,6 +1,7 @@
 .carouselPic-articles{
-    width:1400px;
-    height:100%;
+    width:800px;
+    height:600px;
+    object-fit: cover;
     
 }
 
@@ -9,11 +10,14 @@
     align-items: center;
     justify-content: center;
     align-content: center;
+    margin-top: 10%;
 }
 
-/* .carousel-articles{
-    margin-top: 15%;
-    margin-bottom: 20px;
-    height: 30vh;
-} */
 
+
+
+.carouselCaption-articles{
+    background-color: white;
+    color: black;
+    margin-bottom: 20%;
+}
