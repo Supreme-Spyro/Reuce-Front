@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
+import jwtDecode from "jwt-decode";
 // import { useSelector, useDispatch } from "react-redux";
 // import { useParams, Link, useHistory } from "react-router-dom";
+
+// import { getDataOrderItem } from "../redux/actions/cart.action"
 
 import {
   Accordion,
@@ -23,6 +26,19 @@ export default function Checkout() {
     const jasaPengirimanDummy = ["Dijemput Pengepul", "JNE", "Tiki", "Pos Indonesia", "Wahana"]
     const paymentMethodDummy = ["COD", "OVO", "Mandiri", "BRI", "BNI"]
 
+    const userToken = localStorage.getItem("token");
+    const decodedToken = userToken ? jwtDecode(userToken) : null;
+    console.log("data token: ", decodedToken)
+
+  //   const dataCheckout = useSelector((state) => state.showDataOrderItem);
+  //   console.log("data checkout: ", dataCheckout)
+
+  //   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getDataOrderItem());
+  // }, [dispatch]);
+
     // const handleClick = (id) => {
     //   dispatch(postOrderItem(id));
     // };
@@ -34,7 +50,7 @@ export default function Checkout() {
             <Container>
                 <div className="address-container">
                     <h4>Alamat</h4>
-                    <p>jl. Cendana no. 1, Jakarta Pusat</p>
+                    <p>{decodedToken.address}</p>
                 </div>
                 <br/>
                 <br/>
@@ -46,8 +62,8 @@ export default function Checkout() {
                         <Accordion.Collapse eventKey="0">
                         <Card.Body>
                             {jasaPengirimanDummy.map((item, index) => (
-                                <div key={index}>
-                                <p>{item}</p>
+                                <div className="container-list-jasa-pengiriman-checkout" key={index}>
+                                <a>{item}</a>
                                 <hr />
                                 </div>
                             ))}
@@ -62,8 +78,8 @@ export default function Checkout() {
                         <Accordion.Collapse eventKey="1">
                         <Card.Body>
                         {paymentMethodDummy.map((item, index) => (
-                            <div key={index}>
-                            <p>{item}</p>
+                            <div className="container-payment-method-checkout" key={index}>
+                            <a>{item}</a>
                             <hr />
                             </div>
                         ))}

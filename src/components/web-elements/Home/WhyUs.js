@@ -3,7 +3,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 import "../../../styles/Font.scss";
-import recycling from "../../../assets/recycling.svg";
+import recycling from "../../../assets/recycling (2).svg";
 import moneyTree from "../../../assets/moneyTree.svg";
 import ecology from "../../../assets/ecology.svg";
 

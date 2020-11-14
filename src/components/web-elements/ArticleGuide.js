@@ -17,7 +17,7 @@ function ArticleGuide(props) {
             />
           </td>
           <td className="guideListTitle-articles">
-            <Link to={`/articles/${props.id}`}>{props.title}</Link>
+            <Link to={`${props.id}`}>{props.title}</Link>
           </td>
         </tr>
       </table>

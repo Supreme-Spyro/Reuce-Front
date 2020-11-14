@@ -19,6 +19,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 
+import { getUserRequestById } from "../../redux/actions/getUserData.action";
 import { getDataOrderItem } from "../../redux/actions/cart.action";
 
 import "../../styles/navbar.scss";
@@ -35,6 +36,8 @@ export default function NavbarBootstrap() {
   // const userData = useSelector((state) => state.userProfileReducer);
   // console.log("userId", userData);
 
+  const userData = useSelector((state) => state.getUserDataReducer.data);
+
   const [searchState, setSearchState] = useState({
     name: "",
   });
@@ -47,13 +50,14 @@ export default function NavbarBootstrap() {
     });
   };
 
-  useEffect(() => {
-    dispatch(getDataOrderItem(userId));
-  }, [dispatch]);
-
   const dataOrder = useSelector(
     (state) => state.showDataOrderItem.data.OrderItemsUser
   );
+
+  useEffect(() => {
+    dispatch(getUserRequestById(userId));
+    dispatch(getDataOrderItem(userId));
+  }, [dispatch]);
 
   const logoutFunction = (event, history) => {
     event.preventDefault();
@@ -117,7 +121,6 @@ export default function NavbarBootstrap() {
             <img
               src={reuceLogo}
               width="150"
-              // height="30"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
@@ -126,18 +129,12 @@ export default function NavbarBootstrap() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              {/* <LinkContainer to="/category"> */}
-              <Nav.Link as={Link} to="/category" className="link-kategori">
+              <Nav.Link href="/category" className="link-kategori">
                 Kategori
               </Nav.Link>
-              {/* </LinkContainer> */}
-              {/* </Nav> */}
-              {/* <Nav> */}
-              {/* <LinkContainer to="/articles"> */}
               <Nav.Link as={Link} to="/articles/home" className="link-kategori">
                 Artikel
               </Nav.Link>
-              {/* </LinkContainer> */}
             </Nav>
             <Nav className="mx-auto my-1 ">
               <Form
@@ -171,10 +168,14 @@ export default function NavbarBootstrap() {
               </Form>
             </Nav>
             <Nav>
-              {decodedToken ? (
+              {userData && decodedToken ? (
                 <Nav className="lato">
                   <NavDropdown
-                    title={`${decodedToken.username}`}
+                    title={
+                      userData.username !== undefined
+                        ? `${userData.username}`
+                        : "Loading"
+                    }
                     id="profile-nav-dropdown"
                     className="link-kategori"
                   >
@@ -199,16 +200,16 @@ export default function NavbarBootstrap() {
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>
-                  {dataOrder !== undefined ? (
-                    dataOrder.length > 0 ? (
-                      <NavLink to={`/shopcart/${decodedToken._id}`}>
-                        <Cart2 className="ml-1 text-dark mt-2" size={26} />
+                  <NavLink to={`/shopcart/${decodedToken._id}`}>
+                    <Cart2 className="ml-1 text-dark mt-2" size={26} />
+                    {dataOrder !== undefined ? (
+                      dataOrder.length > 0 ? (
                         <Badge variant="danger">{dataOrder.length}</Badge>
-                      </NavLink>
-                    ) : null
-                  ) : (
-                    ""
-                  )}
+                      ) : null
+                    ) : (
+                      ""
+                    )}
+                  </NavLink>
                 </Nav>
               ) : (
                 <Nav.Link className="button-masuk montserrat">

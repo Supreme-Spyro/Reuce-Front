@@ -30,7 +30,7 @@ export const getArticleDataForHome = (data) => (dispatch) => {
   return axios
     .get(uriArticle)
     .then((result) => {
-      console.log("res", result);
+      // console.log("res", result);
       dispatch(getArticleDataSuccess(result.data));
     })
     .catch((error) => dispatch(getArticleDataFailed(error)));
@@ -42,7 +42,7 @@ export const postArticleActions = (value, event, history) => (dispatch) => {
   return axios
     .post(uriArticle, value)
     .then((result) => {
-      console.log("res", result);
+      // console.log("res", result);
       window.location.href = "/admin/articles";
     })
     .catch((error) => console.log(error));
@@ -56,7 +56,7 @@ export const updateArticleActions = (value, event, history, id) => (
   return axios
     .put(uriArticle, value)
     .then((result) => {
-      console.log("res", result);
+      // console.log("res", result);
       history.push("/admin/articles");
     })
     .catch((error) => console.log(error));
@@ -68,7 +68,7 @@ export const deleteArticleActions = (id, event, history) => (dispatch) => {
   return axios
     .delete(uriArticle)
     .then((result) => {
-      console.log("res", result);
+      // console.log("res", result);
       window.location.href = "/admin/articles";
     })
     .catch((error) => console.log(error));

@@ -24,22 +24,27 @@ function NewsLetter() {
   return (
     <div className="container-newsletter">
       {articleByIdData ? (
-        <Container>
+        <div>
           <Row>
             <img
-              width="80%"
+              width="100%"
+              style={{ maxHeight: "80vh" }}
               className="image-newsLetter mx-auto"
               src={`http://reuce-back.herokuapp.com/${articleByIdData.image}`}
             />
           </Row>
-          <Row>
-            <h4>{articleByIdData.title}</h4>
-          </Row>
-          <br />
-          <Row>
-            <p>{articleByIdData.content}</p>
-          </Row>
-        </Container>
+          <Container>
+            <br />
+            <Row>
+              <h4>{articleByIdData.title}</h4>
+            </Row>
+            <p>Oleh: {articleByIdData.admin.username}</p>
+            <br />
+            <Row className="px-5">
+              <p>{articleByIdData.content}</p>
+            </Row>
+          </Container>
+        </div>
       ) : (
         <div className="text-center">
           <Spinner variant="info" animation="border" />

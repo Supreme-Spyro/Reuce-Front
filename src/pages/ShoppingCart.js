@@ -4,19 +4,21 @@ import {
   Spinner,
   Table,
   Container,
-  Form,
   Button,
   Row,
-  Col,
+  // Col,
 } from "react-bootstrap";
 import {
   getDataOrderItem,
   deleteDataOrderItem,
-  updateDataOrderItem,
-  postOrderItem,
+  // updateDataOrderItem,
+  // postOrderItem,
 } from "../redux/actions/cart.action";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import {
+  // Link,
+  useParams,
+} from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
 import { CartCheck, TrashFill } from "react-bootstrap-icons";
@@ -32,7 +34,6 @@ export default function ShoppingCart() {
   const dataOrderItem = useSelector(
     (state) => state.showDataOrderItem.data.OrderItemsUser
   );
-  const state = useSelector((state) => state);
 
   console.log("dataOrderItem", dataOrderItem);
 
@@ -40,33 +41,33 @@ export default function ShoppingCart() {
     dispatch(getDataOrderItem(id));
   }, [dispatch, id]);
 
-  let [num, setNum] = useState(1);
+  // let [num, setNum] = useState(1);
 
-  const increment = (id, quantity) => {
-    setNum((num = quantity + 1));
+  // const increment = (id, quantity) => {
+  //   setNum((num = quantity + 1));
 
-    dispatch(updateDataOrderItem(id, num));
-  };
+  //   dispatch(updateDataOrderItem(id, num));
+  // };
 
-  const decrement = (id, quantity) => {
-    if (num < 1) {
-      return 1;
-    } else if (num > 1) {
-      setNum((num = quantity - 1));
-    }
-    dispatch(updateDataOrderItem(id, num));
-  };
+  // const decrement = (id, quantity) => {
+  //   if (num < 1) {
+  //     return 1;
+  //   } else if (num > 1) {
+  //     setNum((num = quantity - 1));
+  //   }
+  //   dispatch(updateDataOrderItem(id, num));
+  // };
 
-  const [numberState, setNumberState] = useState({
-    num: null,
-  });
+  // const [numberState, setNumberState] = useState({
+  //   num: null,
+  // });
 
-  const handleChange = (event) => {
-    setNumberState({
-      ...numberState,
-      [event.target.name]: event.target.value,
-    });
-  };
+  // const handleChange = (event) => {
+  //   setNumberState({
+  //     ...numberState,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
 
   // sisaan sebelumnya
   // dataOrderItem.data.result.map((item, index) => (
@@ -158,8 +159,9 @@ export default function ShoppingCart() {
                       <th>Item</th>
                       <th>Harga</th>
                       <th>Jumlah</th>
+                      <th>Berat (kg)</th>
                       <th>Sub-total</th>
-                      <th>Options</th>
+                      {/* <th></th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -189,6 +191,7 @@ export default function ShoppingCart() {
             /> */}
                           {item.quantity}
                         </td>
+                        <td>{item.product.weight}</td>
                         <td>Rp {item.amount}</td>
                         <td>
                           <Button
