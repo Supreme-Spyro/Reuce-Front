@@ -32,7 +32,7 @@ export default function Register() {
 
   return (
     <div className="outer align-item-center">
-      <Container classname="border-20">
+      <Container className="border-20">
         <br />
         <br />
         <br />

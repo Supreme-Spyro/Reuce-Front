@@ -104,10 +104,17 @@ export const loginActions = (value, event, history) => (dispatch) => {
     .then((response) => {
       console.log(response);
       if (response.data.token !== undefined) {
-        localStorage.setItem("token", response.data.token);
-        dispatch(loginRequest())
-        dispatch(loginSuccess(response.data.token));
-        history.push("/");
+        if (response.data.role === "admin") {
+          localStorage.setItem("token", response.data.token);
+          dispatch(loginRequest());
+          dispatch(loginSuccess(response.data.token));
+          history.push("/admin");
+        } else {
+          localStorage.setItem("token", response.data.token);
+          dispatch(loginRequest());
+          dispatch(loginSuccess(response.data.token));
+          history.push("/");
+        }
       }
     })
     .catch((error) => {

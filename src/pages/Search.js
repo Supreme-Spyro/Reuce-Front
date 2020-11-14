@@ -1,80 +1,80 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useParams, Link, useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useParams, useHistory, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 
+import { getSearchActions } from "../redux/actions/search.action";
+
+import ProductCard from "../components/web-elements/Home/ProductCardHome";
 import "../styles/Search.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
 
 export default function Search() {
-  let params = useParams ();
+  let params = useParams();
+  let dispatch = useDispatch();
   let searchName = decodeURIComponent(params.id);
+  console.log("hasil", searchName);
   const history = useHistory();
 
+  useEffect(() => {
+    dispatch(getSearchActions(searchName));
+  }, [dispatch]);
+
   const dataSearch = useSelector((state) => state.searchReducer.data);
-
-  // const cardDataDummy = [
-  //   "data1",
-  //   "data2",
-  //   "data3",
-  //   "data4",
-  //   "data5",
-  //   "data6",
-  //   "data7",
-  //   "data8",
-  //   "data9",
-  //   "data10",
-  // ];
-
-  
+  const searchLoading = useSelector((state) => state.searchReducer.isLoading);
+  console.log("data", dataSearch);
 
   return (
     <div>
+      <br />
+      <br />
+      <br />
       <Container>
-        {dataSearch ? (
-          <Row>
-          <Col className="card-col " sm={12} md={12}>
+        {searchLoading === false ? (
+          <div>
             <Row>
-              <h4 className="my-3">Search: {`${searchName}`}</h4>
+              <h4 className="mt-3 ml-4">Search: {`${searchName}`}</h4>
             </Row>
-            <br />
-            <Row className="justify-content-center mt-4">
+            <Row className="mx-auto justify-content-center align-item-center mx-auto">
               {dataSearch.map((item, index) => (
-                <div key={index}>
-                  <Col sm={12} md={4}>
-                    <Link>
-                      <Card
-                        onClick={() => {
-                          history.push(`/product/${item.id}`);
-                        }}
-                        className="search-card bg-light text-dark mb-3"
-                      >
-                        <Card.Img
-                          className="card-img"
-                          variant="top"
-                          src={item.image || botolplastik}
-                        />
-                        <Card.Body className="">
-                          <Card.Title>{item.name}</Card.Title>
-                          <Card.Text>{item.grade}</Card.Text>
-                          <Card.Text>{item.price}</Card.Text>
-                        </Card.Body>
-                      </Card>
-                    </Link>
-                  </Col>
-                </div>
+                <Col
+                  className="px-sm-4 colStyle align-item-center justify-content-center"
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={index}
+                >
+                  <Link to={`/product/${item._id}`}>
+                    <ProductCard
+                      // propsClassName="mx-auto ml-4"
+                      imageSource={
+                        `http://reuce-back.herokuapp.com/${item.image}` ||
+                        botolplastik
+                      }
+                      title={item.name}
+                      text={`Rp ${item.price}`}
+                      productRole={item.role}
+                    />
+                  </Link>
+                </Col>
               ))}
             </Row>
-          </Col>
-        </Row>
-
-        ):(
-          <div className="align-item-center text-center mt-5">
+          </div>
+        ) : (
+          <div className="align-item-center mx-auto text-center mt-5">
             <br />
             <br />
-            <Spinner animation="border" variant="warning" size="lg" />
+            <Row>
+              <Spinner
+                className="mx-auto"
+                animation="border"
+                variant="info"
+                size="lg"
+              />
+            </Row>
           </div>
         )}
       </Container>

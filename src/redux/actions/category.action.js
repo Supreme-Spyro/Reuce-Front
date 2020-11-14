@@ -23,16 +23,20 @@ export const getCategoryFailed = (error) => {
   };
 };
 
-export const getCategoryActions = (id, event, history) => {
-  event.preventDefault();
-  return async (dispatch) => {
-    dispatch(getCategoryRequest(id));
-    console.log("categoryId", id);
+export const getAllCategory = () => (dispatch) => {
+    dispatch(getCategoryRequest);
     const urlCategory = "https://reuce-back.herokuapp.com/category";
-    const response = await axios.get(`${urlCategory}/${id.name}`);
-    console.log("response", response.data.Products);
-    dispatch(getCategorySuccess(response.data.Products));
-    history.push(`/search/${id.name}`);
-    // window.location.href = `search/${id}`;
+    axios
+      .get(`${urlCategory}`)
+      .then((result) => dispatch(getCategorySuccess(result.data)))
+      .catch((error) => dispatch(getCategoryFailed(error)));
   };
-};
+
+export const getCategoryId = (id) => (dispatch) => {
+  dispatch(getCategoryRequest)
+  const urlCategory = "https://reuce-back.herokuapp.com/category";
+  axios
+    .get(`${urlCategory}/${id}`)
+    .then((result) => dispatch(getCategorySuccess(result.data)))
+    .catch((error) => dispatch(getCategoryFailed(error)));
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 // import { LinkContainer } from "react-router-bootstrap";
@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { Search, Cart2 } from "react-bootstrap-icons";
 import {
+  Badge,
   Navbar,
   NavDropdown,
   Nav,
@@ -18,7 +19,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 
-import { getSearchActions } from "../../redux/actions/search.action";
+import { getDataOrderItem } from "../../redux/actions/cart.action";
 
 import "../../styles/navbar.scss";
 import reuceLogo from "../../assets/reuce-logo.png";
@@ -29,6 +30,7 @@ export default function NavbarBootstrap() {
 
   const userToken = localStorage.getItem("token");
   const decodedToken = userToken ? jwtDecode(userToken) : null;
+  const userId = decodedToken ? decodedToken._id : null;
 
   // const userData = useSelector((state) => state.userProfileReducer);
   // console.log("userId", userData);
@@ -45,7 +47,13 @@ export default function NavbarBootstrap() {
     });
   };
 
-  const dataOrder = useSelector((state) => state.showDataOrderItem);
+  useEffect(() => {
+    dispatch(getDataOrderItem(userId));
+  }, [dispatch]);
+
+  const dataOrder = useSelector(
+    (state) => state.showDataOrderItem.data.OrderItemsUser
+  );
 
   const logoutFunction = (event, history) => {
     event.preventDefault();
@@ -123,8 +131,8 @@ export default function NavbarBootstrap() {
                 Kategori
               </Nav.Link>
               {/* </LinkContainer> */}
-            {/* </Nav> */}
-            {/* <Nav> */}
+              {/* </Nav> */}
+              {/* <Nav> */}
               {/* <LinkContainer to="/articles"> */}
               <Nav.Link as={Link} to="/articles/home" className="link-kategori">
                 Artikel
@@ -135,8 +143,11 @@ export default function NavbarBootstrap() {
               <Form
                 autoComplete="off"
                 onSubmit={(event) => {
+                  event.preventDefault();
                   setShowLoading(true);
-                  dispatch(getSearchActions(searchState, event, history));
+                  window.location.href = `/search/${searchState.name}`;
+                  // history.push(`/search/${searchState.name}`)
+                  // dispatch(getSearchActions(searchState, event, history));
                 }}
                 inline
               >
@@ -188,24 +199,16 @@ export default function NavbarBootstrap() {
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <NavLink to="/shopcart">
-                    {/* {console.log("data order diluar:",dataOrder)} */}
-                    {dataOrder !== undefined ? (
-                      dataOrder.length > 0 ? (
-                        <Nav.Link>
-                          {/* <div className=""> */}
-                          {/* <span className=""> */}
-                          {dataOrder.length}
-                          {/* {console.log("quantity data: ", dataOrder)} */}
-                          {/* </span> */}
-                          {/* </div> */}
-                        </Nav.Link>
-                      ) : null
-                    ) : (
-                      "loading"
-                    )}
-                    <Cart2 className="ml-1 text-dark mt-2" size={26} />
-                  </NavLink>
+                  {dataOrder !== undefined ? (
+                    dataOrder.length > 0 ? (
+                      <NavLink to={`/shopcart/${decodedToken._id}`}>
+                        <Cart2 className="ml-1 text-dark mt-2" size={26} />
+                        <Badge variant="danger">{dataOrder.length}</Badge>
+                      </NavLink>
+                    ) : null
+                  ) : (
+                    ""
+                  )}
                 </Nav>
               ) : (
                 <Nav.Link className="button-masuk montserrat">

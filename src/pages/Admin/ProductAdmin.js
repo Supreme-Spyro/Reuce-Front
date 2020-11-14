@@ -3,22 +3,24 @@ import "../../styles/admin.scss";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUserAction } from "../../redux/actions/user.action";
+import { getAllProductActions } from "../../redux/actions/product.action";
 
 import { Container, Row, Table, Col, Spinner } from "react-bootstrap";
 
-export default function UserAdmin() {
+export default function ProductAdmin() {
   const dispatch = useDispatch();
 
-  const userGet = useSelector((state) => state.userReducer.data.result);
-  const userLoading = userGet !== undefined ? true : false;
-  const userLength = userGet !== undefined ? userGet.length : null;
+  const productGet = useSelector(
+    (state) => state.getProductReducer.data.result
+  );
+  const productLoading = productGet !== undefined ? true : false;
+  const productLength = productGet !== undefined ? productGet.length : null;
 
   useEffect(() => {
-    dispatch(getAllUserAction());
+    dispatch(getAllProductActions());
   }, [dispatch]);
 
-  console.log("userData", userGet);
+  console.log("productGet", productGet);
 
   return (
     <div>
@@ -27,36 +29,36 @@ export default function UserAdmin() {
       <br />
       <Container>
         <div className="popularSection">
-          {userLoading ? (
+          {productLoading ? (
             <div>
               <Row className="sectionTitle">
-                <h3>Users: {userLength}</h3>
+                <h3>Products: {productLength}</h3>
                 <hr />
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Table hover="true" responsive="lg">
+                  <Table hover="true" responsive>
                     <thead>
                       <tr>
                         <th>#</th>
+                        <th>Name</th>
                         <th>Role</th>
-                        <th>Fullname</th>
-                        <th>Username</th>
-                        <th>E-mail</th>
-                        <th>Address</th>
-                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Seller</th>
+                        <th>Weight</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {userGet.map((item, index) => (
+                      {productGet.map((item, index) => (
                         <tr key={index}>
                           <td>{index + 1}</td>
+                          <td>{item.name}</td>
                           <td>{item.role}</td>
-                          <td>{item.fullname}</td>
-                          <td>{item.username}</td>
-                          <td>{item.email}</td>
-                          <td>{item.address}</td>
-                          <td>{item.product.length}</td>
+                          <td>{item.price}</td>
+                          <td>{item.category.name}</td>
+                          <td>{item.user.username}</td>
+                          <td>{item.weight}</td>
                         </tr>
                       ))}
                     </tbody>

@@ -1,43 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { Container, Button, Row, Col, Spinner } from "react-bootstrap";
-import { useParams, Link } from 'react-router-dom';
-import { useSelector, useDispatch} from 'react-redux';
-import { getProductActions } from '../redux/actions/product.action'
-import { postOrderItem, updateDataOrderItem } from '../redux/actions/cart.action'
-import plasticBottle from "../assets/plastic-bottle.jpg";
+import { Container, Button, Row, Col, Spinner, Form } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductActions } from "../redux/actions/product.action";
+import jwtDecode from "jwt-decode";
+import {
+  postOrderItem,
+  updateDataOrderItem,
+} from "../redux/actions/cart.action";
+// import plasticBottle from "../assets/plastic-bottle.jpg";
 // import NavbarBootstrap from "../components/web-elements/NavbarBootstrap";
 
 import "../styles/ProductDetails.scss";
 
 export default function ProductDetails() {
-  let params = useParams();
+  const userToken = localStorage.getItem("token");
+  const decodedToken = userToken ? jwtDecode(userToken) : null;
+  // console.log("data decode", decodedToken)
+
+  let { id } = useParams();
   const dispatch = useDispatch();
 
-  let productId = params.id;
+  const detailProductData = useSelector(
+    (state) => state.getProductReducer.data.Products
+  );
+  console.log("detail produk", detailProductData);
+  // let productId = params.id;
+  // console.log("productid", productId)
 
   useEffect(() => {
-    dispatch(getProductActions(productId));
+    dispatch(getProductActions(id));
   }, [dispatch]);
 
-  const detailProductData = useSelector(
-    (state) => state.getProductReducer.data.Products);
-
   let [num, setNum] = useState(1);
+  // console.log("data num", num)
 
-  const increment = (id, quantity) => {
-    setNum((num = quantity + 1));
-    
+  const increment = (id, num) => {
+    setNum(num + 1);
+    // console.log("id increment: ", id)
+    // console.log("quantity increment: ", quantity)
+
     dispatch(updateDataOrderItem(id, num));
   };
 
-
-  const decrement = (id, quantity) => {
-    if (num < 0) {
-      return 0;
-    } else if (num > 0) {
-      setNum((num = quantity - 1));
+  const decrement = (id, num) => {
+    if (num < 1) {
+      return 1;
+    } else if (num > 1) {
+      setNum(num - 1);
     }
-    dispatch(updateDataOrderItem(id,num));
   };
 
   const handleClick = (id) => {
@@ -47,80 +58,91 @@ export default function ProductDetails() {
   return (
     <div>
       <Container>
+        <br />
+        <br />
+        <br />
         {detailProductData ? (
-          <Row>
-          <Col sm={0} md={2}></Col>
-          <Col className="my-4 ml-sm-5" sm={10} md={4}>
-            {/* gambar */}
-            <img alt="product-img" src={detailProductData.image} width={200} height={200} />
-            <br />
-            <br />
-            <Row>
-              <div>
-                {/* detailproduk */}
-                <h4>Detail Produk</h4>
-                {/* grade barang */}
-                <p>{`${detailProductData.grade}`}</p>
-                {/* kategori barang */}
-                <p>{`${detailProductData.category}`}</p>
-                {/* <p>Conditon: Bersih</p> */}
-                {/* berat */}
-                <p>{`${detailProductData.weight}`}</p>
+          <Row className="popularSection mt-3 pb-5">
+            <Col className="my-4 colDetailLeft" sm={12} md={6}>
+              {/* gambar */}
+              <img
+                className="prodDetailImage"
+                alt="product-img"
+                src={`http://reuce-back.herokuapp.com/${detailProductData.image}`}
+              />
+              <br />
+              <br />
+              <div className="text-left ml-2">
+                <p>
+                  <strong>Penjual: </strong>
+                  {`${detailProductData.user.fullname}`} <br />
+                  <strong>Category: </strong>
+                  {`${detailProductData.category.name}`} <br />
+                  <strong>Berat: </strong>
+                  {`${detailProductData.weight} Kg`}
+                </p>
               </div>
-            </Row>
-          </Col>
-          <Col className="my-4 ml-sm-5" sm={10} md={4}>
-            {/* Nama barang */}
-            <Row>
-              <h3>{`${detailProductData.name}`}</h3>
-            </Row>
-            {/* deskripsi barang */}
-            <Row>
-              <p>{`${detailProductData.description}`}</p>
-            </Row>
-            {/* harga */}
-            <Row>
-              <strong>
-                <h3>{`${detailProductData.price}`}</h3>
-              </strong>
-            </Row>
-            <div className="container-counter-quantity">
-              <Button
-                onClick={() => decrement()}
-                className="button"
-                variant="secondary"
-              >
-                -
-              </Button>
-              <p className="num">{num}</p>
-              <Button
-                onClick={() => increment()}
-                className="button"
-                variant="secondary"
-              >
-                +
-              </Button>
-            </div>
-            <Row>
-              <Button className="addtocart" variant="success" type="submit"
-              onClick={() => handleClick(detailProductData._id)}
-              >
-                <Link to="/checkout"></Link>
-                <strong>Masukkan ke Keranjang</strong>
-              </Button>
-            </Row>
-          </Col>
-
-          <Col sm={0} md={2}></Col>
-        </Row>
+            </Col>
+            <Col className="mt-md-4 mt-0 details-right" sm={12} md={6}>
+              <Container>
+                <div className="ml-2 mb-4">
+                  <Row>
+                    <h3>{`${detailProductData.name}`}</h3>
+                  </Row>
+                  <Row className="p-2">
+                    <strong>Deskripsi:</strong>
+                    <p>{`${detailProductData.description}`}</p>
+                  </Row>
+                  <Row>
+                    <strong>
+                      <h4>{`Rp ${detailProductData.price}`}</h4>
+                    </strong>
+                  </Row>
+                </div>
+                {/* <div className="container-counter-quantity">
+                <Button
+                  onClick={() => decrement(id, num)}
+                  className="button-details"
+                  variant="secondary"
+                >
+                  -
+                </Button>
+                <p className="num">{num}</p>
+                <Button
+                  onClick={() => increment(id, num)}
+                  className="button"
+                  variant="secondary"
+                >
+                  +
+                </Button>
+              </div> */}
+                <Form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    dispatch(
+                      postOrderItem(decodedToken._id, detailProductData._id)
+                    );
+                  }}
+                >
+                  <Button
+                    className="addtocart w-100"
+                    variant="success"
+                    type="submit"
+                    onClick={() => handleClick(id)}
+                  >
+                    <strong>+ Keranjang</strong>
+                  </Button>
+                </Form>
+              </Container>
+            </Col>
+          </Row>
         ) : (
           <div className="align-item-center text-center mt-5">
             <br />
             <br />
-            <Spinner animation="border" variant="warning" size="lg" />
+            <Spinner animation="border" variant="success" size="lg" />
           </div>
         )}
-        
       </Container>
     </div>
   );

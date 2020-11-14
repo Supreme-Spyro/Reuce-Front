@@ -17,6 +17,10 @@ import EditItem from "./pages/EditItem";
 import NewsLetter from "./pages/NewsLetter";
 import Admin from "./pages/Admin/Admin";
 import UserAdmin from "./pages/Admin/UserAdmin";
+import ProductAdmin from "./pages/Admin/ProductAdmin";
+import ArticlesAdmin from "./pages/Admin/ArticlesAdmin";
+import AddArticlesAdmin from "./pages/Admin/AddArticlesAdmin";
+import EditArticlesAdmin from "./pages/Admin/EditArticlesAdmin";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -44,7 +48,7 @@ function App() {
           <NavbarBootstrap />
           <Articles />
         </Route>
-        <Route path="/searchresult">
+        <Route path="/search/:id">
           <NavbarBootstrap />
           <Search />
         </Route>
@@ -52,15 +56,15 @@ function App() {
           <NavbarBootstrap />
           <Category />
         </Route>
-        <Route path="/productdetails">
+        <Route path="/product/:id">
           <NavbarBootstrap />
           <ProductDetails />
         </Route>
-        <Route path="/shopcart">
+        <Route path="/shopcart/:id">
           <NavbarBootstrap />
           <ShoppingCart />
         </Route>
-        <Route path="/checkout">
+        <Route path="/checkout/:id">
           <Checkout />
         </Route>
         <Route path="/myshop/:id">
@@ -82,6 +86,22 @@ function App() {
         <Route path="/admin/users">
           <NavAdmin />
           <UserAdmin />
+        </Route>
+        <Route path="/admin/products">
+          <NavAdmin />
+          <ProductAdmin />
+        </Route>
+        <Route exact path="/admin/articles">
+          <NavAdmin />
+          <ArticlesAdmin />
+        </Route>
+        <Route path="/admin/articles/add">
+          <NavAdmin />
+          <AddArticlesAdmin />
+        </Route>
+        <Route path="/admin/articles/edit/:id">
+          <NavAdmin />
+          <EditArticlesAdmin />
         </Route>
       </Switch>
     </Router>

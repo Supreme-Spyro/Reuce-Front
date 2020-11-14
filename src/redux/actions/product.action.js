@@ -39,9 +39,9 @@ export function getAllProductActions(){
 export function getProductActions(id) {
     return function (dispatch) {
         dispatch(getProductRequest());
-        const urlProduct = "https://reuce-back.herokuapp.com/product";
+        const urlProductId = `https://reuce-back.herokuapp.com/product/${id}`;
         axios
-            .get(`${urlProduct}/${id}`)
+            .get(`${urlProductId}`)
             .then((result) => dispatch(getProductSuccess(result.data)))
             .catch((error) => dispatch(getProductFailed(error)));
     };
