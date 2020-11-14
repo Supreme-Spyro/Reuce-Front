@@ -101,16 +101,14 @@ function AddProduct() {
             <h4 className="mt-md-4 mt-4 nunito">Tambahkan Produk</h4>
             <hr />
             <Form
-            method="post"
-            enctype="multipart/form-data"
-            action="/product"
+              method="post"
+              enctype="multipart/form-data"
+              action="/product"
               autoComplete="off"
               className="form-profile"
               onSubmit={(event) => {
                 dispatch(postProductActions(addProductState, event, history));
               }}
-              // onSubmit={setProfileState.newPassword === setProfileState.confirmNewPassword ? setProfileState.newPassword
-              // }
             >
               <Container>
                 <Form.Group controlId="username" as={Row}>
@@ -118,8 +116,8 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="name"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.username}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.name}
                   />
                 </Form.Group>
 
@@ -128,8 +126,8 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="price"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.fullname}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.price}
                   />
                 </Form.Group>
 
@@ -138,8 +136,8 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="description"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.email}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.description}
                   />
                 </Form.Group>
 
@@ -148,8 +146,8 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="category"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.address}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.category}
                   />
                 </Form.Group>
                 <Form.Group controlId="grade" as={Row}>
@@ -157,8 +155,8 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="grade"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.address}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.grade}
                   />
                 </Form.Group>
                 <Form.Group controlId="weight" as={Row}>
@@ -166,17 +164,19 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="weight"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.address}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.weight}
                   />
                 </Form.Group>
-                <Form.Group controlId="image" as={Row}>
+                <Form.Group 
+             controlId="image" 
+             as={Row}>
                   <Form.Label>Gambar</Form.Label>
                   <Form.Control
                     type="file"
                     name="image"
-                    // onChange={(event) => handleChange(event)}
-                    // value={profileState.address}
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.image}
                   />
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -187,11 +187,8 @@ function AddProduct() {
                     Tambahkan
                   </Button>
                 </Form.Group>
-                {console.log("data state: ", addProductState)}
               </Container>
             </Form>
-            {/* <MyShopList /> */}
-            {/* <MyShopList /> */}
           </Col>
         </Row>
       </Container>
