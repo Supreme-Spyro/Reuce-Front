@@ -21,6 +21,7 @@ import ProductAdmin from "./pages/Admin/ProductAdmin";
 import ArticlesAdmin from "./pages/Admin/ArticlesAdmin";
 import AddArticlesAdmin from "./pages/Admin/AddArticlesAdmin";
 import EditArticlesAdmin from "./pages/Admin/EditArticlesAdmin";
+import AddProduct from "./pages/AddProduct";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -70,6 +71,10 @@ function App() {
         <Route path="/myshop/:id">
           <NavbarBootstrap />
           <MyShop />
+        </Route>
+        <Route path="/addproduct">
+          <NavbarBootstrap />
+          <AddProduct />
         </Route>
         <Route path="/edititem/:id">
           <NavbarBootstrap />

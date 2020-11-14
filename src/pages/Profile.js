@@ -64,6 +64,10 @@ function Profile() {
   function alertClicked() {
     history.push(`/myshop/${id}`);
   }
+  
+  function toAddProduct() {
+    history.push(`/addproduct`);
+  }
 
   // const handleSubmit = (event) => {
   //   if (
@@ -227,7 +231,7 @@ function Profile() {
             </Row>
             <Row className="addMoreItem-profile">
               <Col lg={12} className="colAddMoreItem-profile">
-                <Button variant="light" className="addMoreItemButton-profile">
+                <Button variant="light" className="addMoreItemButton-profile" onClick={toAddProduct}>
                   + Tambah produk
                 </Button>
               </Col>
