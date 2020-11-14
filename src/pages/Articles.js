@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Col, Row, Container, Spinner } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
 // import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  useHistory,
-  // useParams
-} from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // redux
 import { getArticleDataForHome } from "../redux/actions/article.action";
@@ -36,7 +33,7 @@ function Articles() {
 
   console.log("articleGuide", articleGuide);
 
-  //pick article to carousel
+  // pick article to carousel
   // const articleForCarousel1 = articleData[5];
   // const articleForCarousel2 = articleData[7];
   // const articleForCarousel3 = articleData[8];
@@ -81,58 +78,96 @@ function Articles() {
       <br />
       <br />
       <br />
-      <Row className="carouselRow-articles">
-        <Container>
-          <ArticleCarousel
-          // title1 = {articleForCarousel1.title}
-          // pic1 = {articleForCarousel1.image}
-          />
-        </Container>
-      </Row>
-      <Row className="featuredRow-articles">
-        <Container className="featuredRowTitle-articles">
-          {" "}
-          Featured News
-          <Row className="p-3 flex-row flex-nowrap horizontalMenu">
-            {articleData ? (
-              articleData.map((item, index) => (
-                <Col key={index} xs={12} md={8} lg={4}>
-                  <Link to={`/articles/${item._id}`}>
-                    <ProductCard
-                      propsTitleStyle={{ fontSize: "0.5em" }}
-                      propsClassName="pb-2"
-                      imageSource={`http://reuce-back.herokuapp.com/${item.image}`}
-                      title={truncateString(item.title, 37)}
-                    />
-                    {/* <FeaturedCard
-                key={index}
-                link={() => history.push(`/articles/${item._id}`)}
-                image={item.image}
-                title={item.title}
-              /> */}
-                  </Link>
-                </Col>
-              ))
-            ) : (
-              <Spinner variant="info" />
-            )}
-          </Row>
-        </Container>
-      </Row>
-      <Container>
-        <Row className="editorPickerRow-articles">
-          <Col lg={8} md={12}>
-            <NewsTabList />
-          </Col>
-          <Col lg={4} md={12} className="sellerGuideCol-articles">
-            <Container className="sellerGuideContainer-articles">
-              Guide for seller and buyer
-              <ArticleGuide />
-              <ArticleGuide />
+      {articleData ? (
+        <div>
+          <Row className="carouselRow-articles">
+            <Container>
+              <ArticleCarousel
+                // title1={articleForCarousel1.title}
+                // pic1={articleForCarousel1.image}
+                // title2={articleForCarousel2.title}
+                // pic2={articleForCarousel2.image}
+                // title3={articleForCarousel3.title}
+                // pic3={articleForCarousel3.image}
+              />
             </Container>
-          </Col>
-        </Row>
-      </Container>
+          </Row>
+          <Row className="featuredRow-articles">
+            <Container className="featuredRowTitle-articles">
+              Featured News
+              <Row className="p-3 flex-row flex-nowrap horizontalMenu">
+                {articleData ? (
+                  articleData.map((item, index) => (
+                    <Col key={index} xs={12} md={8} lg={4}>
+                      <Link to={`/articles/${item._id}`}>
+                        <ProductCard
+                          propsTitleStyle={{ fontSize: "0.5em" }}
+                          propsClassName="pb-2"
+                          imageSource={`http://reuce-back.herokuapp.com/${item.image}`}
+                          title={truncateString(item.title, 37)}
+                        />
+                        {/* <FeaturedCard
+          key={index}
+          link={() => history.push(`/articles/${item._id}`)}
+          image={item.image}
+          title={item.title}
+        /> */}
+                      </Link>
+                    </Col>
+                  ))
+                ) : (
+                  <Spinner variant="info" />
+                )}
+              </Row>
+            </Container>
+          </Row>
+          <Container>
+            <Row className="editorPickerRow-articles">
+              <Col lg={8} md={12}>
+                {articleData ? (
+                  articleData.map((item, index) => (
+                    <NewsTabList
+                      key={index}
+                      dateRelease={item.admin.updatedAt}
+                      admin={item.admin.fullname}
+                      link={item._id}
+                      image={item.image}
+                      title={item.title}
+                      review={item.content}
+                    />
+                  ))
+                ) : (
+                  <Spinner variant="info" />
+                )}
+              </Col>
+              <Col lg={4} md={12} className="sellerGuideCol-articles">
+                <Container className="sellerGuideContainer-articles">
+                  Guide for seller and buyer
+                  {articleGuide ? (
+                    articleGuide.map((item, index) => (
+                      <ArticleGuide
+                        key={index}
+                        dateRelease={item.updatedAt}
+                        link={item._id}
+                        image={item.image}
+                        title={item.title}
+                      />
+                    ))
+                  ) : (
+                    <Spinner variant="info" />
+                  )}
+                </Container>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      ) : (
+        <div className="align-item-center text-center mt-5">
+          <br />
+          <br />
+          <Spinner animation="border" variant="info" size="lg" />
+        </div>
+      )}
     </div>
   );
 }

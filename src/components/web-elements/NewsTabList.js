@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import "../../styles/NewsTabList.css";
 import TabListExample from "../../assets/carousel-test2.png";
 // import TabListExample2 from '../../assets/carousel-test1.png'
@@ -8,15 +9,17 @@ function NewsTabList(props) {
   return (
     <Container className="NewsTabList-articles">
       <Row>
-        <Col lg={4}>
-          <img src={TabListExample} className="tabListImage-articles" alt="" />
+        <Col lg={5}>
+          <img 
+           src={`http://reuce-back.herokuapp.com/${props.image}`} 
+          className="tabListImage-articles" alt="" />
         </Col>
-        <Col lg={8}>
-          <Container className="tabListDateRelease-articles">
-            {props.dateRelease}
-          </Container>
+        <Col lg={7}>
           <Container className="tabListNewsTitle-articles">
-            {props.title}
+          <Link to={`/articles/${props.id}`}>{props.title}</Link>
+          <div className="tabListDateRelease-articles">
+            by {props.admin}
+          </div>
           </Container>
           <Container className="tabListPharagraphReview-articles">
             {props.review}
