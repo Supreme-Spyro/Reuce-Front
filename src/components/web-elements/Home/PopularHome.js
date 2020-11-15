@@ -19,9 +19,9 @@ export default function PopularHome() {
   const id = "5fb0a4b244fea22a0ce687b4";
 
   const dataCategory = useSelector(
-    (state) => state.getCategoryReducer.data.Categories.product
+    (state) => state.getCategoryReducer.data.Categories
   );
-  // console.log("dataCategory", dataCategory);
+  console.log("dataCategory", dataCategory);
 
   // const [categoryState, setCategoryState] = useState({
   //   image: "",
@@ -45,7 +45,7 @@ export default function PopularHome() {
   }, [dispatch, id]);
 
   return dataCategory ? (
-    dataCategory.map((item, index) => (
+    dataCategory.product.map((item, index) => (
       <Col
         className="colStyle align-item-center justify-content-center"
         xs={8}
