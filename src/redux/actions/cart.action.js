@@ -42,6 +42,20 @@ export const deleteDataOrderItem = (order_id, user_id) => (dispatch) => {
     });
 };
 
+export const deleteAllDataOrderItem = (user_id) => (dispatch) =>{
+  axios
+  .delete(`https://reuce-back.herokuapp.com/order-item/deleteAll/${user_id}`)
+  .then((result) =>{
+    console.log("result delete all: ", result);
+    setTimeout(()=>{
+      window.location.href = '/';
+    },1500)
+  })
+  .catch((error)=>{
+    console.log("data error delete all: ", error)
+  })
+}
+
 export const updateDataOrderItem = (id, data) => (dispatch) => {
   axios
     .put(`https://reuce-back.herokuapp.com/order-item/${id}`, { num: data })

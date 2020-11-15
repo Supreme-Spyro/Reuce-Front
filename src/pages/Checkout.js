@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-import { getDataOrderItem, deleteDataOrderItem } from "../redux/actions/cart.action"
+import { getDataOrderItem, deleteAllDataOrderItem } from "../redux/actions/cart.action"
 
 
 // import { getDataOrderItem } from "../redux/actions/cart.action"
@@ -220,9 +220,7 @@ export default function Checkout() {
               <Row className="justify-content-end text-right mt-4 mb-2">
                 <Button className="px-5" variant="success" type="submit" onClick={()=>{
                   setShowSuccess(true)
-                  setTimeout(()=>{
-                    history.push('/')
-                  }, 2000)
+                  dispatch(deleteAllDataOrderItem(decodedToken._id))
                 }}>
 
                   <CartCheck size={28} /> &nbsp;
