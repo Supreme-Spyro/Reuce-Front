@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import jwtDecode from "jwt-decode";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useParams, Link, useHistory } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+
+import { getDataOrderItem, deleteDataOrderItem } from "../redux/actions/cart.action"
+
 
 // import { getDataOrderItem } from "../redux/actions/cart.action"
 
@@ -14,10 +18,14 @@ import {
   // DropdownButton,
   // Dropdown,
   Row,
-  Col,
+  // Col,
+  Modal,
   Card,
-  // Spinner,
+  Spinner,
+  Table
 } from "react-bootstrap";
+
+import { CartCheck, BagCheckFill } from "react-bootstrap-icons";
 
 import plasticBottle from '../assets/plastic-bottle.jpg';
 import '../styles/Checkout.scss'
@@ -28,111 +36,219 @@ export default function Checkout() {
 
     const userToken = localStorage.getItem("token");
     const decodedToken = userToken ? jwtDecode(userToken) : null;
-    console.log("data token: ", decodedToken)
 
-  //   const dataCheckout = useSelector((state) => state.showDataOrderItem);
-  //   console.log("data checkout: ", dataCheckout)
+    // console.log("data token: ", decodedToken)
 
-  //   const dispatch = useDispatch();
+    const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
+    console.log("data checkout: ", dataCheckout)
 
-  // useEffect(() => {
-  //   dispatch(getDataOrderItem());
-  // }, [dispatch]);
+    const dispatch = useDispatch();
+    const {id} = useParams()
+    const history = useHistory()
 
-    // const handleClick = (id) => {
-    //   dispatch(postOrderItem(id));
-    // };
+  useEffect(() => {
+    dispatch(getDataOrderItem(id));
+  }, [dispatch, id]);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const handleCloseSuccess = () => setShowSuccess(false);
+  // const handleShowSuccess = (history) => {
+  //   setShowSuccess(true)
+  //   history.push('/')
+  // };
+
+  //   const handleClick = (id) => {
+  //     dispatch(postOrderItem(id));
+  //   };
+
 
     return (
-        <div>
-            <br/>
-            <br/>
-            <Container>
-                <div className="address-container">
-                    <h4>Alamat</h4>
-                    <p>{decodedToken.address}</p>
-                </div>
-                <br/>
-                <br/>
-                <Accordion defaultActiveKey="0">
-                    <Card className="jasa-pengiriman w-50">
-                        <Accordion.Toggle as={Card.Header} eventKey="0">
-                        Jasa Pengiriman
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="0">
-                        <Card.Body>
-                            {jasaPengirimanDummy.map((item, index) => (
-                                <div className="container-list-jasa-pengiriman-checkout" key={index}>
-                                <a>{item}</a>
-                                <hr />
-                                </div>
-                            ))}
-                        </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-                    <br/>
-                    <Card className="payment-method w-50">
-                        <Accordion.Toggle as={Card.Header} eventKey="1">
-                        Metode Pembayaran
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="1">
-                        <Card.Body>
-                        {paymentMethodDummy.map((item, index) => (
-                            <div className="container-payment-method-checkout" key={index}>
-                            <a>{item}</a>
-                            <hr />
-                            </div>
-                        ))}
-                        </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-                </Accordion>
-                <br/>
-                <br/>
-                <Row>
-                <Col md={12}><div className="select-product-profile">
-                <div className="photo-seller"></div>
-                <p>nama seller</p>
-              </div>
-              <Form.Group className="select-product">
-                <div className="select-product-header">
-                  <p className="header-item">item</p>
-                  <p className="header-price">price package</p>
-                  <p className="header-quantity">quantity</p>
-                  <p className="header-amount">amount</p>
-                </div>
-                <div className="select-product-content">
-                  <div className="img-product">
-                      <img 
-                      alt="altimage"
-                      src={plasticBottle}
-                      width={50}
-                      height={50}/>
-                  </div>
-                  <Form.Text className="product-name">botol plastik</Form.Text>
-                  <Form.Text className="price">Rp 2.000</Form.Text>
-                  <div className="container-counter-quantity">
-                    <p className="num">1x</p>
-                  </div>
-                  <Form.Text className="amount">Rp 2.000</Form.Text>
-                </div>
-              </Form.Group>
-                </Col>
-                </Row>
-              <br/>
-              <br/>
-                <Row>
-                    <Button
-                      className="buy-now"
-                      variant="success"
-                      type="submit"
-                    >
-                    <strong>Beli</strong>
-                    </Button>
-                </Row>
-            </Container>
-            
+      <div style={{ marginTop: 50 }}>
+        <br />
+        <br />
+        {/* loading modal */}
+        <Modal
+          style={{ position: "fixed", left: "25%", top: "25%" }}
+          show={show}
+          onHide={handleClose}
+          className="w-50"
+        >
+          <Modal.Header>
+            <Modal.Title className="text-center">Please Wait...</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <Spinner className="mx-auto " animation="border" variant="info" />
+          </Modal.Body>
+        </Modal>
+        {/* loading modal */}
+        <Container>
+          <Row>
+            <Table>
+              <th>
+                <tr>
+                  <h4>Alamat</h4>
+                </tr>
+              </th>
+              <tbody>
+                <td>
+                  <p>{decodedToken.address}</p>
+                </td>
+              </tbody>
+            </Table>
+          </Row>
+          {/* <div className="address-container">
+                    
+                    
+                 </div> */}
+          <hr />
 
-        </div>
-    )
+          <Accordion defaultActiveKey="0">
+            <Card className="jasa-pengiriman w-50">
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                Jasa Pengiriman
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>
+                  {jasaPengirimanDummy.map((item, index) => (
+                    <div
+                      className="container-list-jasa-pengiriman-checkout"
+                      key={index}
+                    >
+                      <a>{item}</a>
+                      <hr />
+                    </div>
+                  ))}
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <br />
+            <Card className="payment-method w-50">
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                Metode Pembayaran
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>
+                  {paymentMethodDummy.map((item, index) => (
+                    <div
+                      className="container-payment-method-checkout"
+                      key={index}
+                    >
+                      <a>{item}</a>
+                      <hr />
+                    </div>
+                  ))}
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+          <br />
+          <br />
+          {dataCheckout ? (
+            <div>
+              <Row>
+                <Table striped bordered hover responsive>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Item</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
+                      <th>Berat (kg)</th>
+                      <th>Sub-total</th>
+                      {/* <th></th> */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dataCheckout.map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <img
+                            className="rounded"
+                            style={{ maxWidth: "200px", maxHeight: "100px" }}
+                            src={`http://reuce-back.herokuapp.com/${item.product.image}`}
+                            alt=""
+                          />
+                          <br />
+                          <br />
+                          {item.product.name}
+                        </td>
+                        <td>Rp {item.product.price}</td>
+                        <td>
+                          {/* <Form.Control
+            style={{width:"40px"}}
+              name="quantity"
+              size="sm"
+              type="number"
+              onChange={(event) => handleChange(event)}
+              value={item.quantity}
+            /> */}
+                          {item.quantity}
+                        </td>
+                        <td>{item.product.weight}</td>
+                        <td>Rp {item.amount}</td>
+                        {/* <td>
+                          <Button
+                            onClick={(event) => {
+                              setShow(true);
+                              dispatch(
+                                deleteDataOrderItem(item._id, decodedToken._id)
+                              );
+                            }}
+                            variant="danger"
+                            size="sm"
+                          >
+                            <TrashFill size={19} />
+                          </Button>
+                        </td> */}
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </Row>
+              <Row className="justify-content-end text-right mt-4 mb-2">
+                <Button className="px-5" variant="success" type="submit" onClick={()=>{
+                  setShowSuccess(true)
+                  setTimeout(()=>{
+                    history.push('/')
+                  }, 2000)
+                }}>
+                  <CartCheck size={28} /> &nbsp;
+                  <strong>Beli</strong>
+                </Button>
+              </Row>
+              {/* success payment modal */}
+              <Modal
+                style={{ position: "fixed", left: "25%", top: "25%" }}
+                show={showSuccess}
+                onHide={handleCloseSuccess}
+                className="w-50"
+              >
+                <Modal.Header>
+                  <Modal.Title className="text-center">
+                    Terimakasih Pembelian Telah Berhasil
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">
+                  <BagCheckFill size={100}/>
+                </Modal.Body>
+              </Modal>
+              {/* success payment modal */}
+            </div>
+          ) : (
+            <Row>
+              <Spinner
+                className="mx-auto"
+                animation="border"
+                variant="info"
+                size="lg"
+              />
+            </Row>
+          )}
+        </Container>
+      </div>
+    );
 }
