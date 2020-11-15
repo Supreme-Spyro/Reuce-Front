@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Container, Spinner } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
+import { Link} from "react-router-dom";
 // import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { Link, NavLink } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 
 // redux
 import { getArticleDataForHome } from "../redux/actions/article.action";
@@ -24,30 +24,6 @@ function Articles() {
     (state) => state.articleDataReducer.data.result
   );
 
-  const [article, setArticle] = useState([]);
-  let searchRegex = /lorem ipsum/gi;
-
-  let articleGuide = article.filter((item) => {
-    return item.content.match(searchRegex);
-  });
-
-  console.log("articleGuide", articleGuide);
-
-  // pick article to carousel
-  // const articleForCarousel1 = articleData[5];
-  // const articleForCarousel2 = articleData[7];
-  // const articleForCarousel3 = articleData[8];
-
-  // const articleDataById = useSelector(
-  //   (state) => state.articleDataByIdReducer.data.Artikels
-  // );
-
-  // const linkToArticle = (id) => {
-  //   history.push(`/articles/${id}`);
-  // };
-
-  console.log("articleData", articleData);
-  // console.log("articleDataById", articleDataById);
 
   useEffect(() => {
     if (articleData === undefined) {
@@ -57,11 +33,18 @@ function Articles() {
     }
   }, [dispatch, articleData]);
 
-  console.log("article", article);
 
-  // useEffect(() => {
-  //   dispatch(getArticleDataByIdForPage(`5fa3c3cb9e69757dbf3a08b3`));
-  // }, [dispatch]);
+  const [article, setArticle] = useState([]);
+  let searchRegex = /lorem ipsum/gi;
+
+  let articleGuide = article.filter((item) => {
+    return item.content.match(searchRegex);
+  });
+
+  console.log("articleGuide", articleGuide);
+  console.log("articleData", articleData);
+
+  console.log("article", article);
 
   function truncateString(str, num) {
     // If the length of str is less than or equal to num
@@ -83,12 +66,6 @@ function Articles() {
           <Row className="carouselRow-articles">
             <Container>
               <ArticleCarousel
-                // title1={articleForCarousel1.title}
-                // pic1={articleForCarousel1.image}
-                // title2={articleForCarousel2.title}
-                // pic2={articleForCarousel2.image}
-                // title3={articleForCarousel3.title}
-                // pic3={articleForCarousel3.image}
               />
             </Container>
           </Row>
@@ -130,7 +107,7 @@ function Articles() {
                       key={index}
                       dateRelease={item.admin.updatedAt}
                       admin={item.admin.fullname}
-                      link={item._id}
+                      id={item._id}
                       image={item.image}
                       title={item.title}
                       review={item.content}
@@ -148,7 +125,7 @@ function Articles() {
                       <ArticleGuide
                         key={index}
                         dateRelease={item.updatedAt}
-                        link={item._id}
+                        id={item._id}
                         image={item.image}
                         title={item.title}
                       />
