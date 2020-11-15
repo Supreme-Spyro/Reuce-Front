@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-// import { useSelector, useDispatch } from "react-redux";
+import jwtDecode from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
 // import { useParams, Link, useHistory } from "react-router-dom";
+
+import { getDataOrderItem, postOrderItem } from "../redux/actions/cart.action"
 
 import {
   Accordion,
@@ -11,10 +14,13 @@ import {
   // DropdownButton,
   // Dropdown,
   Row,
-  Col,
+  // Col,
   Card,
-  // Spinner,
+  Spinner,
+  Table
 } from "react-bootstrap";
+
+import { CartCheck, TrashFill } from "react-bootstrap-icons";
 
 import plasticBottle from '../assets/plastic-bottle.jpg';
 import '../styles/Checkout.scss'
@@ -23,21 +29,43 @@ export default function Checkout() {
     const jasaPengirimanDummy = ["Dijemput Pengepul", "JNE", "Tiki", "Pos Indonesia", "Wahana"]
     const paymentMethodDummy = ["COD", "OVO", "Mandiri", "BRI", "BNI"]
 
-    // const handleClick = (id) => {
-    //   dispatch(postOrderItem(id));
-    // };
+    const userToken = localStorage.getItem("token");
+    const decodedToken = userToken ? jwtDecode(userToken) : null;
+    console.log("data token: ", decodedToken)
+
+    // const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
+    // console.log("data checkout: ", dataCheckout)
+
+  //   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getDataOrderItem());
+  // }, [dispatch]);
+
+  //   const handleClick = (id) => {
+  //     dispatch(postOrderItem(id));
+  //   };
 
     return (
         <div>
             <br/>
             <br/>
             <Container>
-                <div className="address-container">
-                    <h4>Alamat</h4>
-                    <p>jl. Cendana no. 1, Jakarta Pusat</p>
-                </div>
-                <br/>
-                <br/>
+              <Row>
+                <Table>
+                  <th>
+                    <tr><h4>Alamat</h4></tr>
+                  </th>
+                  <tbody>
+                    <td><p>{decodedToken.address}</p></td>
+                  </tbody>
+                </Table>
+              </Row>
+                {/* <div className="address-container">
+                    
+                    
+                 </div> */}
+                <hr/>
                 <Accordion defaultActiveKey="0">
                     <Card className="jasa-pengiriman w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -46,8 +74,8 @@ export default function Checkout() {
                         <Accordion.Collapse eventKey="0">
                         <Card.Body>
                             {jasaPengirimanDummy.map((item, index) => (
-                                <div key={index}>
-                                <p>{item}</p>
+                                <div className="container-list-jasa-pengiriman-checkout" key={index}>
+                                <a>{item}</a>
                                 <hr />
                                 </div>
                             ))}
@@ -62,8 +90,8 @@ export default function Checkout() {
                         <Accordion.Collapse eventKey="1">
                         <Card.Body>
                         {paymentMethodDummy.map((item, index) => (
-                            <div key={index}>
-                            <p>{item}</p>
+                            <div className="container-payment-method-checkout" key={index}>
+                            <a>{item}</a>
                             <hr />
                             </div>
                         ))}
@@ -73,50 +101,65 @@ export default function Checkout() {
                 </Accordion>
                 <br/>
                 <br/>
-                <Row>
-                <Col md={12}><div className="select-product-profile">
-                <div className="photo-seller"></div>
-                <p>nama seller</p>
-              </div>
-              <Form.Group className="select-product">
-                <div className="select-product-header">
-                  <p className="header-item">item</p>
-                  <p className="header-price">price package</p>
-                  <p className="header-quantity">quantity</p>
-                  <p className="header-amount">amount</p>
-                </div>
-                <div className="select-product-content">
-                  <div className="img-product">
-                      <img 
-                      alt="altimage"
-                      src={plasticBottle}
-                      width={50}
-                      height={50}/>
-                  </div>
-                  <Form.Text className="product-name">botol plastik</Form.Text>
-                  <Form.Text className="price">Rp 2.000</Form.Text>
-                  <div className="container-counter-quantity">
-                    <p className="num">1x</p>
-                  </div>
-                  <Form.Text className="amount">Rp 2.000</Form.Text>
-                </div>
-              </Form.Group>
-                </Col>
-                </Row>
-              <br/>
-              <br/>
-                <Row>
-                    <Button
-                      className="buy-now"
-                      variant="success"
-                      type="submit"
-                    >
-                    <strong>Beli</strong>
-                    </Button>
-                </Row>
+                {/* {dataCheckout ? ( */}
+            <div>
+              <Row>
+                <Table striped bordered hover responsive>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Item</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
+                      <th>Berat (kg)</th>
+                      <th>Sub-total</th>
+                      {/* <th></th> */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* {dataCheckout.map((item, index) => ( */}
+                      <tr>
+                        <td></td>
+                        <td>
+                          <img
+                            className="rounded"
+                            style={{ maxWidth: "200px", maxHeight: "100px" }}
+                            src={plasticBottle}
+                            alt=""
+                          />
+                          <br />
+                          <br />
+                          Botol Plastik
+                        </td>
+                        <td>Rp 10.000</td>
+                        <td>
+                          2
+                        </td>
+                        <td>1kg</td>
+                        <td>Rp 20.000</td>
+                      </tr>
+                    </tbody>
+                    </Table>
+              </Row>
+              <Row className="justify-content-end text-right mt-4 mb-2">
+                <Button className="px-5" variant="success" type="submit">
+                  <CartCheck size={28} /> &nbsp;
+                  <strong>Beli</strong>
+                </Button>
+              </Row>
+            </div>
+          {/* ) : (
+            <Row>
+              <Spinner
+                className="mx-auto"
+                animation="border"
+                variant="info"
+                size="lg"
+              />
+            </Row>
+          )}       */}
             </Container>
-            
 
-        </div>
+      </div>
     )
 }
