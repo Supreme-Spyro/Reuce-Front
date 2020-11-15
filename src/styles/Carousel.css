@@ -1,17 +1,23 @@
-.carouselPic-articles {
-  width: 1400px;
-  height: 100%;
+.carouselPic-articles{
+    width:800px;
+    height:600px;
+    object-fit: cover;
+    
 }
 
-.carouselRow-articles {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+.carouselRow-articles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10%;
 }
 
-/* .carousel-articles{
-    margin-top: 15%;
-    margin-bottom: 20px;
-    height: 30vh;
-} */
+
+
+
+.carouselCaption-articles{
+    background-color: white;
+    color: black;
+    margin-bottom: 20%;
+}

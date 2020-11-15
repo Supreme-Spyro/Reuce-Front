@@ -13,10 +13,9 @@ import {
   Spinner,
 } from "react-bootstrap";
 
-import {
-  getAllCategory,
-  getCategoryId,
-} from "../redux/actions/category.action";
+// import gambar1 from "../assets/imageCategory/gambar-botol-plastik-bening.jpg";
+
+import { getAllCategory, getCategoryId } from '../redux/actions/category.action'
 
 import "../styles/Font.scss";
 import "../styles/Category.scss";
@@ -82,7 +81,7 @@ export default function Category() {
                       <Card.Img
                         className="card-img"
                         variant="top"
-                        src={item.image || botolplastik}
+                        src={ botolplastik || require(`../assets/imageCategory/${item.image}.jpg`)}
                       />
                       <Card.Body className="">
                         <Card.Title>{item.name}</Card.Title>
