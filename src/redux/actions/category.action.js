@@ -37,6 +37,6 @@ export const getCategoryId = (id) => (dispatch) => {
   const urlCategory = "https://reuce-back.herokuapp.com/category";
   axios
     .get(`${urlCategory}/${id}`)
-    .then((result) => dispatch(getCategorySuccess(result.data.Categories)))
+    .then((result) => dispatch(getCategorySuccess(result.data)))
     .catch((error) => dispatch(getCategoryFailed(error)));
 }
