@@ -49,7 +49,7 @@ export const deleteAllDataOrderItem = (user_id) => (dispatch) =>{
     console.log("result delete all: ", result);
     setTimeout(()=>{
       window.location.href = '/';
-    },1500)
+    },500)
   })
   .catch((error)=>{
     console.log("data error delete all: ", error)
