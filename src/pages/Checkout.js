@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 
 import jwtDecode from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
-// import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
-import { getDataOrderItem, postOrderItem } from "../redux/actions/cart.action"
+import { getDataOrderItem, deleteDataOrderItem } from "../redux/actions/cart.action"
 
 import {
   Accordion,
@@ -31,16 +31,17 @@ export default function Checkout() {
 
     const userToken = localStorage.getItem("token");
     const decodedToken = userToken ? jwtDecode(userToken) : null;
-    console.log("data token: ", decodedToken)
+    // console.log("data token: ", decodedToken)
 
-    // const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
-    // console.log("data checkout: ", dataCheckout)
+    const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
+    console.log("data checkout: ", dataCheckout)
 
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const {id} = useParams()
 
-  // useEffect(() => {
-  //   dispatch(getDataOrderItem());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getDataOrderItem(id));
+  }, [dispatch]);
 
   //   const handleClick = (id) => {
   //     dispatch(postOrderItem(id));
@@ -117,27 +118,7 @@ export default function Checkout() {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {dataCheckout.map((item, index) => ( */}
-                      <tr>
-                        <td></td>
-                        <td>
-                          <img
-                            className="rounded"
-                            style={{ maxWidth: "200px", maxHeight: "100px" }}
-                            src={plasticBottle}
-                            alt=""
-                          />
-                          <br />
-                          <br />
-                          Botol Plastik
-                        </td>
-                        <td>Rp 10.000</td>
-                        <td>
-                          2
-                        </td>
-                        <td>1kg</td>
-                        <td>Rp 20.000</td>
-                      </tr>
+                  
                     </tbody>
                     </Table>
               </Row>
