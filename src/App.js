@@ -71,6 +71,7 @@ function App() {
           <ShoppingCart />
         </Route>
         <Route path="/checkout/:id">
+        <NavbarBootstrap />
           <Checkout />
         </Route>
         <Route path="/myshop/:id">
