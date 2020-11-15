@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react'
 
 import jwtDecode from "jwt-decode";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useParams, Link, useHistory } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+
+import { getDataOrderItem, deleteDataOrderItem } from "../redux/actions/cart.action"
+
 
 // import { getDataOrderItem } from "../redux/actions/cart.action"
 
@@ -14,10 +18,13 @@ import {
   // DropdownButton,
   // Dropdown,
   Row,
-  Col,
+  // Col,
   Card,
-  // Spinner,
+  Spinner,
+  Table
 } from "react-bootstrap";
+
+import { CartCheck, TrashFill } from "react-bootstrap-icons";
 
 import plasticBottle from '../assets/plastic-bottle.jpg';
 import '../styles/Checkout.scss'
@@ -28,32 +35,46 @@ export default function Checkout() {
 
     const userToken = localStorage.getItem("token");
     const decodedToken = userToken ? jwtDecode(userToken) : null;
-    console.log("data token: ", decodedToken)
 
-  //   const dataCheckout = useSelector((state) => state.showDataOrderItem);
-  //   console.log("data checkout: ", dataCheckout)
+    // console.log("data token: ", decodedToken)
 
-  //   const dispatch = useDispatch();
+    const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
+    console.log("data checkout: ", dataCheckout)
 
-  // useEffect(() => {
-  //   dispatch(getDataOrderItem());
-  // }, [dispatch]);
+    const dispatch = useDispatch();
+    const {id} = useParams()
 
-    // const handleClick = (id) => {
-    //   dispatch(postOrderItem(id));
-    // };
+  useEffect(() => {
+    dispatch(getDataOrderItem(id));
+  }, [dispatch]);
+
+  //   const handleClick = (id) => {
+  //     dispatch(postOrderItem(id));
+  //   };
+
 
     return (
         <div>
             <br/>
             <br/>
             <Container>
-                <div className="address-container">
-                    <h4>Alamat</h4>
-                    <p>{decodedToken.address}</p>
-                </div>
-                <br/>
-                <br/>
+
+              <Row>
+                <Table>
+                  <th>
+                    <tr><h4>Alamat</h4></tr>
+                  </th>
+                  <tbody>
+                    <td><p>{decodedToken.address}</p></td>
+                  </tbody>
+                </Table>
+              </Row>
+                {/* <div className="address-container">
+                    
+                    
+                 </div> */}
+                <hr/>
+
                 <Accordion defaultActiveKey="0">
                     <Card className="jasa-pengiriman w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -89,50 +110,45 @@ export default function Checkout() {
                 </Accordion>
                 <br/>
                 <br/>
-                <Row>
-                <Col md={12}><div className="select-product-profile">
-                <div className="photo-seller"></div>
-                <p>nama seller</p>
-              </div>
-              <Form.Group className="select-product">
-                <div className="select-product-header">
-                  <p className="header-item">item</p>
-                  <p className="header-price">price package</p>
-                  <p className="header-quantity">quantity</p>
-                  <p className="header-amount">amount</p>
-                </div>
-                <div className="select-product-content">
-                  <div className="img-product">
-                      <img 
-                      alt="altimage"
-                      src={plasticBottle}
-                      width={50}
-                      height={50}/>
-                  </div>
-                  <Form.Text className="product-name">botol plastik</Form.Text>
-                  <Form.Text className="price">Rp 2.000</Form.Text>
-                  <div className="container-counter-quantity">
-                    <p className="num">1x</p>
-                  </div>
-                  <Form.Text className="amount">Rp 2.000</Form.Text>
-                </div>
-              </Form.Group>
-                </Col>
-                </Row>
-              <br/>
-              <br/>
-                <Row>
-                    <Button
-                      className="buy-now"
-                      variant="success"
-                      type="submit"
-                    >
-                    <strong>Beli</strong>
-                    </Button>
-                </Row>
+                {/* {dataCheckout ? ( */}
+            <div>
+              <Row>
+                <Table striped bordered hover responsive>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Item</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
+                      <th>Berat (kg)</th>
+                      <th>Sub-total</th>
+                      {/* <th></th> */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+                    </tbody>
+                    </Table>
+              </Row>
+              <Row className="justify-content-end text-right mt-4 mb-2">
+                <Button className="px-5" variant="success" type="submit">
+                  <CartCheck size={28} /> &nbsp;
+                  <strong>Beli</strong>
+                </Button>
+              </Row>
+            </div>
+          {/* ) : (
+            <Row>
+              <Spinner
+                className="mx-auto"
+                animation="border"
+                variant="info"
+                size="lg"
+              />
+            </Row>
+          )}       */}
             </Container>
-            
 
-        </div>
+      </div>
     )
 }
