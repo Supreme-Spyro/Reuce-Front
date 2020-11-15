@@ -1,5 +1,11 @@
 .guideListImage-articles {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     text-align: justify;
+    object-fit: cover;
+  }
+
+  .guideListTitle-articles{
+      padding: 5px;
+      font-size: 13px;
   }

@@ -19,13 +19,17 @@ import {
   // Dropdown,
   Row,
   // Col,
+
   Modal,
+
   Card,
   Spinner,
   Table
 } from "react-bootstrap";
 
+
 import { CartCheck, BagCheckFill } from "react-bootstrap-icons";
+
 
 import plasticBottle from '../assets/plastic-bottle.jpg';
 import '../styles/Checkout.scss'
@@ -44,6 +48,7 @@ export default function Checkout() {
 
     const dispatch = useDispatch();
     const {id} = useParams()
+
     const history = useHistory()
 
   useEffect(() => {
@@ -59,6 +64,7 @@ export default function Checkout() {
   //   setShowSuccess(true)
   //   history.push('/')
   // };
+
 
   //   const handleClick = (id) => {
   //     dispatch(postOrderItem(id));
@@ -147,6 +153,7 @@ export default function Checkout() {
           <br />
           <br />
           {dataCheckout ? (
+
             <div>
               <Row>
                 <Table striped bordered hover responsive>
@@ -162,6 +169,7 @@ export default function Checkout() {
                     </tr>
                   </thead>
                   <tbody>
+
                     {dataCheckout.map((item, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -216,10 +224,12 @@ export default function Checkout() {
                     history.push('/')
                   }, 2000)
                 }}>
+
                   <CartCheck size={28} /> &nbsp;
                   <strong>Beli</strong>
                 </Button>
               </Row>
+
               {/* success payment modal */}
               <Modal
                 style={{ position: "fixed", left: "25%", top: "25%" }}
@@ -239,6 +249,7 @@ export default function Checkout() {
               {/* success payment modal */}
             </div>
           ) : (
+
             <Row>
               <Spinner
                 className="mx-auto"
@@ -247,8 +258,10 @@ export default function Checkout() {
                 size="lg"
               />
             </Row>
+
           )}
         </Container>
       </div>
     );
+
 }
