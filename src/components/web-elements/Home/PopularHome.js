@@ -19,7 +19,7 @@ export default function PopularHome() {
   const id = "5fb0a4b244fea22a0ce687b4";
 
   const dataCategory = useSelector(
-    (state) => state.getCategoryReducer.data.product
+    (state) => state.getCategoryReducer.data.Categories.product
   );
   // console.log("dataCategory", dataCategory);
 
