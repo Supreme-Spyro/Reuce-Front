@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   // Accordion,
@@ -15,7 +15,7 @@ import {
 
 // import gambar1 from "../assets/imageCategory/gambar-botol-plastik-bening.jpg";
 
-import { getAllCategory, getCategoryId } from '../redux/actions/category.action'
+import { getAllCategory } from '../redux/actions/category.action'
 
 import "../styles/Font.scss";
 import "../styles/Category.scss";
@@ -74,8 +74,10 @@ export default function Category() {
                     {/* <Link> */}
                     <Card
                       onClick={() => {
-                        history.push(`/productdetails/${item.id}`);
+                        history.push(`/categoryDetail/${item._id}`);
+                        // console.log("id item: ",item.id)
                       }}
+                      
                       className="Category-card bg-light text-dark mb-3"
                     >
                       <Card.Img
