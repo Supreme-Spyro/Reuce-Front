@@ -32,7 +32,7 @@ function ArticleCarousel() {
     <Carousel className="carousel-articles">
       {articleData ? (
         articleData.map((item, index) => (
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={4000}>
         <img
           className="d-block w-100 carouselPic-articles"
           src={`http://reuce-back.herokuapp.com/${item.image}`}

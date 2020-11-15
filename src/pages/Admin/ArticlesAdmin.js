@@ -32,7 +32,7 @@ export default function ArticlesAdmin() {
     dispatch(getArticleDataForHome());
   }, [dispatch]);
 
-  console.log("userData", articleGet);
+  // console.log("userData", articleGet);
 
   // delete modal
   const [show, setShow] = useState(false);

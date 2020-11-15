@@ -20,7 +20,7 @@ export default function ProductAdmin() {
     dispatch(getAllProductActions());
   }, [dispatch]);
 
-  console.log("productGet", productGet);
+  // console.log("productGet", productGet);
 
   return (
     <div>
@@ -46,7 +46,7 @@ export default function ProductAdmin() {
                         <th>Price</th>
                         <th>Category</th>
                         <th>Seller</th>
-                        <th>Weight</th>
+                        <th>(Kg)</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -56,7 +56,7 @@ export default function ProductAdmin() {
                           <td>{item.name}</td>
                           <td>{item.role}</td>
                           <td>{item.price}</td>
-                          <td>{item.category.name}</td>
+                          <td>{item.category ? item.category.name : "N/A"}</td>
                           <td>{item.user.username}</td>
                           <td>{item.weight}</td>
                         </tr>

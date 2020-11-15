@@ -25,8 +25,21 @@
   transition: 0.4s;
 }
 
+// .homeCarouselImg {
+//   transform: scale(1.3);
+//   transition: 3s;
+// }
+
 .carousel:hover .carousel-overlay {
   opacity: 1;
+}
+
+.carousel:hover {
+  .carouselTitle,
+  .carouselText {
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
 }
 
 .carouselTitle {
