@@ -138,6 +138,15 @@ export default function Checkout() {
                         <td>1kg</td>
                         <td>Rp 20.000</td>
                       </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total</td>
+                        <td>20.000</td>
+
+                      </tr>
                     </tbody>
                     </Table>
               </Row>
