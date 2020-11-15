@@ -41,10 +41,11 @@ export default function Checkout() {
     const userToken = localStorage.getItem("token");
     const decodedToken = userToken ? jwtDecode(userToken) : null;
 
-    // console.log("data token: ", decodedToken)
 
     const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
-    console.log("data checkout: ", dataCheckout)
+    
+
+    const [total, setTotal] = useState(0)
 
     const dispatch = useDispatch();
     const {id} = useParams()
@@ -53,7 +54,23 @@ export default function Checkout() {
 
   useEffect(() => {
     dispatch(getDataOrderItem(id));
+    
   }, [dispatch, id]);
+
+  useEffect(() => {
+    let totalAmount = 0;
+    for(let i=0; i < dataCheckout.length; i++)
+    totalAmount += dataCheckout[i].amount
+    // console.log("data totalAmount dalam: ", totalAmount)
+    // console.log("data checkout dalam: ", dataCheckout)
+    // setTotal(()=>{
+    //   let totalAmount = 0;
+    // for(let i=0; i < dataCheckout.length; i++){
+    //   return totalAmount += dataCheckout[i].amount
+    // }
+    // })
+    setTotal(totalAmount)
+  }, [dataCheckout])
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -213,7 +230,17 @@ export default function Checkout() {
                           </Button>
                         </td> */}
                       </tr>
+                      
                     ))}
+                    
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total</td>
+                        <td>Rp {total}</td>
+                      </tr>
                   </tbody>
                 </Table>
               </Row>
