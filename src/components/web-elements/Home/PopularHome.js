@@ -1,87 +1,75 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { Col } from "react-bootstrap";
+import { Row, Spinner, Col } from "react-bootstrap";
 
 import "../../../styles/Font.scss";
 import "../../../styles/popularHome.scss";
 
+import { getCategoryId } from "../../../redux/actions/category.action";
+
+import placeholder from "../../../assets/placeholder.jpg";
 import trashSack from "../../../assets/trash-sack.jpg";
 import ProductCard from "./ProductCardHome";
 
 export default function PopularHome() {
-  const dummyPopular = [
-    {
-      image: trashSack,
-      title: "Botol Plastik",
-      text: "Rp 10.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: trashSack,
-      title: "Botol Plastik",
-      text: "Rp 10.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "beli",
-    },
-    {
-      image: trashSack,
-      title: "Botol Plastik",
-      text: "Rp 10.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "beli",
-    },
-    {
-      image: trashSack,
-      title: "Botol Plastik",
-      text: "Rp 10.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: trashSack,
-      title: "Botol Plastik",
-      text: "Rp 10.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "beli",
-    },
-    {
-      image: trashSack,
-      title: "Botol Plastik",
-      text: "Rp 10.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "beli",
-    },
-  ];
-  return dummyPopular.map((item, index) => (
-    <Col
-      className="colStyle align-item-center justify-content-center"
-      xs={8}
-      sm={8}
-      md={3}
-      key={index}
-    >
-      <ProductCard
-        imageSource={item.image}
-        title={item.title}
-        text={item.text}
-        buttonOnclick={item.buttonOnclick}
-        buttonText={item.buttonText}
-        variant={item.buttonVariant}
-        productRole={item.productRole}
-      />
-    </Col>
-  ));
+  const dispatch = useDispatch();
+
+  const id = "5faf8821641ac1001799eab5";
+
+  const dataCategory = useSelector(
+    (state) => state.getCategoryReducer.data.product
+  );
+  // console.log("dataCategory", dataCategory);
+
+  // const [categoryState, setCategoryState] = useState({
+  //   image: "",
+  //   name: "",
+  //   price: "",
+  //   role: "",
+  // });
+
+  // useEffect(() => {
+  //   if (dataCategory === undefined) {
+  //     dispatch(getCategoryId(id));
+  //   } else {
+  //     setCategoryState({
+  //       ...categoryState,
+  //     });
+  //   }
+  // }, [dispatch, dataCategory, id]);
+
+  useEffect(() => {
+    dispatch(getCategoryId(id));
+  }, [dispatch, id]);
+
+  return dataCategory ? (
+    dataCategory.map((item, index) => (
+      <Col
+        className="colStyle align-item-center justify-content-center"
+        xs={8}
+        sm={8}
+        md={3}
+        key={index}
+      >
+        <Link to={`/product/${item._id}`}>
+          <ProductCard
+            imageSource={
+              `http://reuce-back.herokuapp.com/${item.image}` || placeholder
+            }
+            title={item.name}
+            text={`Rp ${item.price}`}
+            productRole={item.role}
+          />
+        </Link>
+      </Col>
+    ))
+  ) : (
+    <Row className="justify-content-center text-center">
+      <br />
+      <br />
+      <Spinner className="mx-auto" animation="border" variant="info" />
+    </Row>
+  );
 }
