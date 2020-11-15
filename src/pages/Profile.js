@@ -225,7 +225,7 @@ function Profile() {
             <Row className="rowMyShop-profile ">
               {/* <Col className='colMyShop-profile' lg={12}> */}
               <Container className=" horizontalMenuProfile">
-                <MyShopCardSection />
+                {userData.product.length !== 0 ? <MyShopCardSection /> : <h3 style={{marginLeft:300}}>Toko Anda Masih Kosong</h3>}
               </Container>
               {/* </Col> */}
             </Row>

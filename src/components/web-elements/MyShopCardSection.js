@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Col } from "react-bootstrap";
 
@@ -8,64 +8,82 @@ import "../../styles/popularHome.scss";
 import cardboardImg from "../../assets/plastic-bottle.jpg";
 import MyShopCard from "../../components/web-elements/MyshopCard";
 
+import { getUserRequestById } from "../../redux/actions/getUserData.action";
+
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function MyShopCardSection() {
-  const dummyPopular = [
-    {
-      image: cardboardImg,
-      title: "Kardus bekas bersih",
-      text: "Rp 5.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: cardboardImg,
-      title: "Kardus bekas bersih",
-      text: "Rp 5.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: cardboardImg,
-      title: "Kardus bekas bersih",
-      text: "Rp 5.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: cardboardImg,
-      title: "Kardus bekas bersih",
-      text: "Rp 5.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: cardboardImg,
-      title: "Kardus bekas bersih",
-      text: "Rp 5.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-    {
-      image: cardboardImg,
-      title: "Kardus bekas bersih",
-      text: "Rp 5.000/Kg",
-      buttonOnclick: ``,
-      buttonVariant: `success`,
-      buttonText: `+ Keranjang`,
-      productRole: "jual",
-    },
-  ];
-  return dummyPopular.map((item, index) => (
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const userData = useSelector((state) => state.getUserDataReducer.data);
+  console.log("data user: ", userData)
+
+  useEffect(() => {
+         dispatch(getUserRequestById(id));
+    
+  }, [dispatch, id]);
+
+  // const dummyPopular = [
+  //   {
+  //     image: cardboardImg,
+  //     title: "Kardus bekas bersih",
+  //     text: "Rp 5.000/Kg",
+  //     buttonOnclick: ``,
+  //     buttonVariant: `success`,
+  //     buttonText: `+ Keranjang`,
+  //     productRole: "jual",
+  //   },
+  //   {
+  //     image: cardboardImg,
+  //     title: "Kardus bekas bersih",
+  //     text: "Rp 5.000/Kg",
+  //     buttonOnclick: ``,
+  //     buttonVariant: `success`,
+  //     buttonText: `+ Keranjang`,
+  //     productRole: "jual",
+  //   },
+  //   {
+  //     image: cardboardImg,
+  //     title: "Kardus bekas bersih",
+  //     text: "Rp 5.000/Kg",
+  //     buttonOnclick: ``,
+  //     buttonVariant: `success`,
+  //     buttonText: `+ Keranjang`,
+  //     productRole: "jual",
+  //   },
+  //   {
+  //     image: cardboardImg,
+  //     title: "Kardus bekas bersih",
+  //     text: "Rp 5.000/Kg",
+  //     buttonOnclick: ``,
+  //     buttonVariant: `success`,
+  //     buttonText: `+ Keranjang`,
+  //     productRole: "jual",
+  //   },
+  //   {
+  //     image: cardboardImg,
+  //     title: "Kardus bekas bersih",
+  //     text: "Rp 5.000/Kg",
+  //     buttonOnclick: ``,
+  //     buttonVariant: `success`,
+  //     buttonText: `+ Keranjang`,
+  //     productRole: "jual",
+  //   },
+  //   {
+  //     image: cardboardImg,
+  //     title: "Kardus bekas bersih",
+  //     text: "Rp 5.000/Kg",
+  //     buttonOnclick: ``,
+  //     buttonVariant: `success`,
+  //     buttonText: `+ Keranjang`,
+  //     productRole: "jual",
+  //   },
+  // ];
+  return userData.product.map((item, index) => (
     <Col
       className="colStyle align-item-center justify-content-center"
       xs={8}
@@ -74,13 +92,13 @@ export default function MyShopCardSection() {
       key={index}
     >
       <MyShopCard
-        imageSource={item.image}
-        title={item.title}
-        text={item.text}
-        buttonOnclick={item.buttonOnclick}
-        buttonText={item.buttonText}
-        variant={item.buttonVariant}
-        productRole={item.productRole}
+        imageSource={`http://reuce-back.herokuapp.com/${item.image}`}
+        title={item.name}
+        // text={item.description}
+        // buttonOnclick={item.buttonOnclick}
+        // buttonText={item.buttonText}
+        // variant={item.buttonVariant}
+        productRole={item.role}
       />
     </Col>
   ));
