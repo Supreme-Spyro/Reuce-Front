@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 
 import jwtDecode from "jwt-decode";
-import { useSelector, useDispatch } from "react-redux";
-// import { useParams, Link, useHistory } from "react-router-dom";
 
-import { getDataOrderItem, postOrderItem } from "../redux/actions/cart.action"
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+
+import { getDataOrderItem, deleteDataOrderItem } from "../redux/actions/cart.action"
+
+
+// import { getDataOrderItem } from "../redux/actions/cart.action"
 
 import {
   Accordion,
@@ -31,26 +35,30 @@ export default function Checkout() {
 
     const userToken = localStorage.getItem("token");
     const decodedToken = userToken ? jwtDecode(userToken) : null;
-    console.log("data token: ", decodedToken)
 
-    // const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
-    // console.log("data checkout: ", dataCheckout)
+    // console.log("data token: ", decodedToken)
 
-  //   const dispatch = useDispatch();
+    const dataCheckout = useSelector((state) => state.showDataOrderItem.data.OrderItemsUser);
+    console.log("data checkout: ", dataCheckout)
 
-  // useEffect(() => {
-  //   dispatch(getDataOrderItem());
-  // }, [dispatch]);
+    const dispatch = useDispatch();
+    const {id} = useParams()
+
+  useEffect(() => {
+    dispatch(getDataOrderItem(id));
+  }, [dispatch]);
 
   //   const handleClick = (id) => {
   //     dispatch(postOrderItem(id));
   //   };
+
 
     return (
         <div>
             <br/>
             <br/>
             <Container>
+
               <Row>
                 <Table>
                   <th>
@@ -66,6 +74,7 @@ export default function Checkout() {
                     
                  </div> */}
                 <hr/>
+
                 <Accordion defaultActiveKey="0">
                     <Card className="jasa-pengiriman w-50">
                         <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -147,6 +156,7 @@ export default function Checkout() {
                         <td>20.000</td>
 
                       </tr>
+                  
                     </tbody>
                     </Table>
               </Row>

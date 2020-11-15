@@ -6,7 +6,7 @@ import { Card, Badge } from "react-bootstrap";
 
 export default function ProductCard(props) {
   return (
-    <Card className="cardClass lato" className={`cardClass lato ${props.propsClassName}`} onClick={props.propsOnClick}>
+    <Card  className={`cardClass lato ${props.propsClassName}`} onClick={props.propsOnClick}>
       <Card.Img className="cardImage" variant="top" src={props.imageSource} />
       <Card.Body className="cardBody">
         <Card.Text className="cardText lato">
@@ -20,7 +20,7 @@ export default function ProductCard(props) {
             <span></span>
           )}
         </Card.Text>
-        <Card.Title className="cardTitle nunito">{props.title}</Card.Title>
+        <Card.Title style={props.propsTitleStyle} className="cardTitle nunito">{props.title}</Card.Title>
         <Card.Text className="cardText lato">{props.text}</Card.Text>
         {/* <Button
           style={{ fontSize: "0.8em" }}

@@ -45,4 +45,18 @@ export function getProductActions(id) {
             .then((result) => dispatch(getProductSuccess(result.data)))
             .catch((error) => dispatch(getProductFailed(error)));
     };
-}
+};
+
+export function postProductActions(value, event, history) {
+    return function (dispatch) {
+        console.log("data value: ", value)
+        event.preventDefault();
+        axios
+        .post('https://reuce-back.herokuapp.com/product', value)
+        .then((result) => {
+            console.log("res", result);
+            history.push("/profile");
+          })
+        .catch((error) => console.log(error));
+    }
+} 

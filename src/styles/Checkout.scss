@@ -56,12 +56,12 @@
     right: -67px;
   }
   
-  .button {
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  // .button {
+  //   height: 20px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
   
   .num {
     margin: 10px;
@@ -70,4 +70,12 @@
   .amount {
     position: relative;
     right: -20px;
+  }
+
+  .container-list-jasa-pengiriman-checkout a:hover{
+    cursor: pointer;
+  }
+
+  .container-payment-method-checkout a:hover{
+    cursor: pointer;
   }

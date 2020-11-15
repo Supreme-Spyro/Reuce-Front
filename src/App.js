@@ -21,6 +21,8 @@ import ProductAdmin from "./pages/Admin/ProductAdmin";
 import ArticlesAdmin from "./pages/Admin/ArticlesAdmin";
 import AddArticlesAdmin from "./pages/Admin/AddArticlesAdmin";
 import EditArticlesAdmin from "./pages/Admin/EditArticlesAdmin";
+import AddProduct from "./pages/AddProduct";
+import CategoryDetail from "./pages/CategoryDetail";
 
 //component
 import NavbarBootstrap from "../src/components/web-elements/NavbarBootstrap";
@@ -56,20 +58,28 @@ function App() {
           <NavbarBootstrap />
           <Category />
         </Route>
+        <Route path="/categoryDetail/:id">
+          <NavbarBootstrap />
+          <CategoryDetail />
+        </Route>
         <Route path="/product/:id">
           <NavbarBootstrap />
           <ProductDetails />
         </Route>
-        <Route path="/shopcart">
+        <Route path="/shopcart/:id">
           <NavbarBootstrap />
           <ShoppingCart />
         </Route>
-        <Route path="/checkout">
+        <Route path="/checkout/:id">
           <Checkout />
         </Route>
         <Route path="/myshop/:id">
           <NavbarBootstrap />
           <MyShop />
+        </Route>
+        <Route path="/addproduct">
+          <NavbarBootstrap />
+          <AddProduct />
         </Route>
         <Route path="/edititem/:id">
           <NavbarBootstrap />
