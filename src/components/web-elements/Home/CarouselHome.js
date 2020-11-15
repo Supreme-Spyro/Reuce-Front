@@ -47,7 +47,7 @@ export default function CarouselHome() {
       {carouselItems.map((item, index) => (
         <Carousel.Item className="" key={index}>
           <img
-            className="d-block w-100 rounded-lg"
+            className=" d-block w-100 rounded-lg"
             style={{ height: "60vh" }}
             src={item.img}
             alt="First slide"

@@ -43,8 +43,8 @@ export default function Admin() {
           isLoading: true,
         };
 
-  console.log("userData", userData);
-  console.log("articleData", articleData);
+  // console.log("userData", userData);
+  // console.log("articleData", articleData);
 
   return (
     <div>

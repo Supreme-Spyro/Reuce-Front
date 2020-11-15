@@ -85,7 +85,7 @@ export const registerActions = (value, event, history) => (dispatch) => {
   return axios
     .post(uriUsers, value)
     .then((response) => {
-      console.log("res", response);
+      // console.log("res", response);
       dispatch(registerSuccess(response));
       history.push("/login");
     })
@@ -127,7 +127,7 @@ export const getAllUserAction = () => (dispatch) => {
   axios
     .get(`${uriUser}`)
     .then((result) => {
-      console.log("result", result);
+      // console.log("result", result);
       dispatch(getUserSuccess(result.data));
     })
     .catch((error) => dispatch(getUserFailed(error)));

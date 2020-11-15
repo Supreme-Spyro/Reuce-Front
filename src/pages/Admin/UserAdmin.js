@@ -18,7 +18,7 @@ export default function UserAdmin() {
     dispatch(getAllUserAction());
   }, [dispatch]);
 
-  console.log("userData", userGet);
+  // console.log("userData", userGet);
 
   return (
     <div>

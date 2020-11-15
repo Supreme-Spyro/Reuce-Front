@@ -25,7 +25,7 @@ export const getArticleDataFailed = (error) => {
 };
 
 export const getArticleDataForHome = (data) => (dispatch) => {
-  console.log("article data", data);
+  // console.log("article data", data);
   const uriArticle = "https://reuce-back.herokuapp.com/artikel";
   return axios
     .get(uriArticle)
