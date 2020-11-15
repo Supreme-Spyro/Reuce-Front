@@ -59,4 +59,33 @@ export function postProductActions(value, event, history) {
           })
         .catch((error) => console.log(error));
     }
-} 
+}
+
+export function deleteProductActions  (id, event, history){
+    return function (dispatch) {
+        event.preventDefault();
+        const uri = `https://reuce-back.herokuapp.com/product/${id}`;
+         axios
+          .delete(uri)
+          .then((result) => {
+            // console.log("res", result);
+            dispatch(getProductSuccess(result.data))
+          })
+          .catch((error) => console.log(error));
+      };
+}
+
+export function updateProductActions (value, event, history, id) {
+    return function (dispatch){
+        event.preventDefault();
+    const uri = `https://reuce-back.herokuapp.com/product/${id}`;
+     axios
+      .put(uri, value)
+      .then((result) => {
+        // console.log("res", result);
+        dispatch(getProductSuccess(result.data))
+      })
+      .catch((error) => console.log(error));
+    }
+    
+  };
