@@ -83,7 +83,7 @@ export default function Category() {
                       <Card.Img
                         className="card-img"
                         variant="top"
-                        src={ botolplastik || require(`../assets/imageCategory/${item.image}.jpg`)}
+                        src={ `http://reuce-back.herokuapp.com/${item.image}` || botolplastik}
                       />
                       <Card.Body className="">
                         <Card.Title>{item.name}</Card.Title>
