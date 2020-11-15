@@ -17,6 +17,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   // Link,
+  useHistory,
   useParams,
 } from "react-router-dom";
 import jwtDecode from "jwt-decode";
@@ -27,6 +28,8 @@ import "../styles/ShoppingCart.scss";
 export default function ShoppingCart() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const history = useHistory();
+  
 
   const userToken = localStorage.getItem("token");
   const decodedToken = userToken ? jwtDecode(userToken) : null;
@@ -213,7 +216,10 @@ export default function ShoppingCart() {
                 </Table>
               </Row>
               <Row className="justify-content-end text-right mt-4 mb-2">
-                <Button className="px-5" variant="success" type="submit">
+                <Button className="px-5" variant="success" type="submit" onClick={() => {
+                        history.push(`/checkout/${decodedToken._id}`);
+                        // console.log("id item: ",item.id)
+                      }}>
                   <CartCheck size={28} /> &nbsp;
                   <strong>Beli</strong>
                 </Button>
