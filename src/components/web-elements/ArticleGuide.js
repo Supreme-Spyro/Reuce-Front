@@ -1,28 +1,27 @@
 import React from "react";
 import bottle from "../../assets/plastic-bottle.jpg";
+import { Link, NavLink } from "react-router-dom";
 import "../../styles/ArticleGuide.css";
 import { Container } from "react-bootstrap";
 
-
-
 function ArticleGuide(props) {
   return (
-    <Container>
+    
       <table>
         <tr>
           <td>
             <img
               alt="altImage"
-              src={bottle}
+              src={`http://reuce-back.herokuapp.com/${props.image}`}
               className="guideListImage-articles"
             />
           </td>
           <td className="guideListTitle-articles">
-            <a href="asd">{props.title}</a>
+            <Link to={`${props.id}`}>{props.title}</Link>
           </td>
         </tr>
       </table>
-    </Container>
+    
   );
 }
 

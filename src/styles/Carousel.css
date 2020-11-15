@@ -1,17 +1,23 @@
 .carouselPic-articles{
-    width:1400px;
-    height:875px;
+    width:800px;
+    height:600px;
+    object-fit: cover;
     
 }
 
-.arouselRow-articles{
+.carouselRow-articles{
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
+    margin-top: 10%;
 }
 
-.carousel-articles{
-    margin-top: 15%;
-}
 
+
+
+.carouselCaption-articles{
+    background-color: white;
+    color: black;
+    margin-bottom: 20%;
+}

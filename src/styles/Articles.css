@@ -11,6 +11,7 @@
 .featuredRow-articles {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 .featuredRowTitle-articles {
