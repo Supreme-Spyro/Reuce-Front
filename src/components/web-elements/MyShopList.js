@@ -1,49 +1,56 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import {useHistory} from 'react-router-dom'
 import "../../styles/MyShopList.css";
 
-//image testing
-import bottle from "../../assets/plastic-bottle.jpg";
 
-function MyShopList() {
+function MyShopList(props) {
+    const history = useHistory()
   return (
-    <div className="MyShopListContainer">
+    <div className="MyShopListContainer montserrat">
       <Row>
         <Col lg={4}>
-          <img alt="" className="ListImage-MyShopList" src={bottle} />
+          <img alt="" className="ListImage-MyShopList" src={`http://reuce-back.herokuapp.com/${props.image}`} />
         </Col>
         <Col lg={8}>
-            <div className='productName-MyShopList'>Botol Pelastik Bekas</div>
+            <Row>
+            <div className='productName-MyShopList'>{props.name}</div>
             <table className='table-MyShopList'>
                 <tr>
                     <td className='tdTable-MyShopList'>
-                        Satuan Produk
+                        Berat produk
                     </td>
                     <td>
-                        Kg
+                        {props.weight} Kg
                     </td>
                 </tr>
                 <tr>
                     <td className='tdTable-MyShopList'>
-                        Harga per satuan
+                        Harga
                     </td>
                     <td>
-                        Rp. 7000,- /kg
+                        Rp {props.price}
                     </td>
                 </tr>
                 <tr>
                     <td className='tdTable-MyShopList'>
-                        Alamat Pengiriman
+                        Deskripsi produk :
                     </td>
-                    <td>
-                        Jl. Mangga, Bekasi
+                    <td className='tdTable-MyShopList'>
+         
                     </td>
+                </tr>
+                <tr className='trTable-MyShopList'>
+                
+                {props.description}
                 </tr>
             </table>
-            
 
-            <Button className='buttonEdit-MyShopList' variant='success'>Edit item</Button>
+            </Row>
+            <Row>
+            <Button className='buttonEdit-MyShopList' variant='success' onClick={()=>history.push(`/myshop/${props.id}/edititem`)}>Edit item</Button>
             <Button className='buttonSoldOut-MyShopList' variant='danger'>Item Sold Out</Button>
+            </Row>
             
         </Col>
       </Row>

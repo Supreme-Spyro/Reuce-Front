@@ -82,7 +82,7 @@ function App() {
           <NavbarBootstrap />
           <AddProduct />
         </Route>
-        <Route path="/edititem/:id">
+        <Route path="/edititem">
           <NavbarBootstrap />
           <EditItem />
         </Route>
