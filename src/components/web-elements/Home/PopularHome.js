@@ -16,7 +16,7 @@ import ProductCard from "./ProductCardHome";
 export default function PopularHome() {
   const dispatch = useDispatch();
 
-  const id = "5faf8821641ac1001799eab5";
+  const id = "5fb0a4b244fea22a0ce687b4";
 
   const dataCategory = useSelector(
     (state) => state.getCategoryReducer.data.product
