@@ -34,7 +34,6 @@ function Profile() {
 
   //get data from reducer
   const userData = useSelector((state) => state.getUserDataReducer.data);
-
   //useState
   const [profileState, setProfileState] = useState({
     username: "",

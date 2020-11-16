@@ -29,7 +29,7 @@ function EditItem() {
   const decodedToken = userToken ? jwtDecode(userToken) : "none";
 
   //get data from reducer
-  const productData = useSelector((state) => state.getProductReducer.data);
+  const productData = useSelector((state) => state.getProductReducer.data.Products);
   console.log('productData',productData)
   //useState
   const [productState, setProductState] = useState({
@@ -38,6 +38,8 @@ function EditItem() {
     price: "",
     address: "",
   });
+
+  console.log('productState', productState)
 
   //handleChange
   const handleChange = (event) => {
@@ -60,14 +62,15 @@ function EditItem() {
 
   return (
     <div>
-      {productData._id !== undefined ? (
+      
       <Container className="container-edititem">
         <Form
         autoComplete='off'
         onSubmit={(event) => {
           dispatch(
-            updateProductActions(productState, event, id)
+            updateProductActions(productState, event, id, decodedToken._id)
           );
+          
         }}
         >
           <Form.Group>
@@ -82,7 +85,7 @@ function EditItem() {
                 size="lg"
                 type="text"
                 name='name'
-                value={productData.name}
+                value={productState.name}
                 onChange={(event)=>handleChange(event)}
               />
             </Form.Row>
@@ -94,7 +97,7 @@ function EditItem() {
                 size="lg"
                 type="text"
                 name='weight'
-               value={productData.weight}
+               value={productState.weight}
                onChange={(event)=>handleChange(event)} 
               />
             </Form.Row>
@@ -106,33 +109,29 @@ function EditItem() {
               size="lg" 
               type="number"
               name='price'
-              value={productData.price}
+              value={productState.price}
               onChange={(event)=>handleChange(event)} 
               />
             </Form.Row>
           </Form.Group>
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Row>
               <Form.Label>Alamat pengiriman</Form.Label>
               <Form.Control 
               size="lg" 
               type="text" 
               name='address'
-              value={productData.address}
+              value={productState.user.address}
               onChange={(event)=>handleChange(event)} 
               />
             </Form.Row>
-          </Form.Group>
-          <Link to={`/myshop/edititem/${decodedToken._id}`}>
-          <Button variant="primary" type="submit">
+          </Form.Group> */}
+         
+          <Button variant="primary" type="submit" >
             Submit
           </Button>
-          </Link>
         </Form>
       </Container>
-       ) : (
-        <Spinner className="mx-auto " animation="border" variant="info" />
-      )}
     </div>
   );
 }

@@ -74,7 +74,7 @@ function App() {
         <NavbarBootstrap />
           <Checkout />
         </Route>
-        <Route path="/myshop/:id">
+        <Route exact path="/myshop/:id">
           <NavbarBootstrap />
           <MyShop />
         </Route>
@@ -82,7 +82,7 @@ function App() {
           <NavbarBootstrap />
           <AddProduct />
         </Route>
-        <Route path="/edititem">
+        <Route path="/myshop/:id/edititem">
           <NavbarBootstrap />
           <EditItem />
         </Route>
