@@ -1,10 +1,15 @@
 import React from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useDispatch} from "react-redux";
+
+import { deleteProductActions} from "../../redux/actions/product.action";
 import "../../styles/MyShopList.css";
 
 function MyShopList(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
     <div className="MyShopListContainer montserrat">
       <Row>
@@ -33,8 +38,7 @@ function MyShopList(props) {
                   <td className="tdTable-MyShopList"></td>
                 </tr>
                 <tr className="trTable-MyShopList">{props.description}</tr>
-              </table>* height: 100%; */
-  padding: 10px;
+              </table>
 
             </Container>
           </Row>
@@ -45,10 +49,10 @@ function MyShopList(props) {
                 variant="success"
                 onClick={() => history.push(`/myshop/${props.id}/edititem`)}
               >
-                Edit item
+                Edit Produk
               </Button>
-              <Button className="buttonSoldOut-MyShopList" variant="danger">
-                Item Sold Out
+              <Button className="buttonSoldOut-MyShopList" variant="danger" onClick={(event) => dispatch.deleteProductActions(props.id,event)}>
+                Hapus Produk
               </Button>
             </Container>
           </Row>

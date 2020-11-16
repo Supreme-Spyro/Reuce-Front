@@ -69,7 +69,7 @@ export function deleteProductActions  (id, event, history){
          axios
           .delete(uri)
           .then((result) => {
-            // console.log("res", result);
+            history.push(`/myshop/${id}`)
             dispatch(getProductSuccess(result.data))
           })
           .catch((error) => console.log(error));
