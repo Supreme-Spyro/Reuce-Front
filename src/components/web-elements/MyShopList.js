@@ -5,10 +5,16 @@ import { useDispatch} from "react-redux";
 
 import { deleteProductActions} from "../../redux/actions/product.action";
 import "../../styles/MyShopList.css";
+import plasticBottle from '../../assets/plastic-bottle.jpg';
+
+import jwtDecode from "jwt-decode";
 
 function MyShopList(props) {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const userToken = localStorage.getItem("token");
+  const decodedToken = userToken ? jwtDecode(userToken) : "none";
 
   return (
     <div className="MyShopListContainer montserrat">
@@ -17,7 +23,7 @@ function MyShopList(props) {
           <img
             alt=""
             className="ListImage-MyShopList"
-            src={`http://reuce-back.herokuapp.com/${props.image}`}
+            src={props.image !== undefined ? `http://reuce-back.herokuapp.com/${props.image}` : plasticBottle}
           />
         </Col>
         <Col lg={8}>
@@ -51,7 +57,7 @@ function MyShopList(props) {
               >
                 Edit Produk
               </Button>
-              <Button className="buttonSoldOut-MyShopList" variant="danger" onClick={(event) => dispatch.deleteProductActions(props.id,event)}>
+              <Button className="buttonSoldOut-MyShopList" variant="danger" onClick={(event) => dispatch(deleteProductActions(props.id,decodedToken._id , event, history))}>
                 Hapus Produk
               </Button>
             </Container>

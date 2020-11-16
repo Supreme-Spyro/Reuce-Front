@@ -32,8 +32,8 @@ function AddProduct() {
     name: "",
     price: Number,
     description: "",
-    category:"5fb0a32044fea22a0ce687b2",
-    grade:"5fa404959e69757dbf3a08cc",
+    category:"",
+    grade:"",
     weight:Number,
     user:decodedToken._id,
     image: undefined,
@@ -100,30 +100,18 @@ function AddProduct() {
             <hr className="d-lg-none d-md-block" />
             <h4 className="mt-md-4 mt-4 nunito">Tambahkan Produk</h4>
             <hr />
-            {/* <form
-            method="post"
-            enctype="multipart/form-data"
-            action="/product"
-            onSubmit={(event) => {
-              dispatch(postProductActions(addProductState, event, history));
-            }}
-            >
-              <input type="text" name="name"
-              onChange={(event) => handleChange(event)}
-              value={addProductState.name}/>
-              <input type="file" name="image"
-              onChange={(event) => handleChange(event)}
-              value={addProductState.image}/>
-              <button type="submit"/>
-            </form> */}
             <Form
-              // method="post"
-              // enctype="multipart/form-data"
-              // action="/product"
               autoComplete="off"
               className="form-profile"
               onSubmit={(event) => {
-                dispatch(postProductActions(addProductState, decodedToken._id, event, history));
+                dispatch(
+                  postProductActions(
+                    addProductState,
+                    decodedToken._id,
+                    event,
+                    history
+                  )
+                );
               }}
             >
               <Container>
@@ -157,24 +145,56 @@ function AddProduct() {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="category" as={Row}>
+                <Form.Group  as={Row}>
                   <Form.Label>Kategori</Form.Label>
                   <Form.Control
-                    type="text"
+                    as="select"
+                    className="mr-sm-2"
+                    id="category"
+                    custom
                     name="category"
-                    // onChange={(event) => handleChange(event)}
-                    // value={addProductState.category}
-                  />
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.category}
+                  >
+                    <option value="5fb09dd728e92d24ebf0ac8f">
+                      Botol Plastik Bening
+                    </option>
+                    <option value="5fb09f6caf97d5275a0f4861">
+                      Botol plastik Berwarna
+                    </option>
+                    <option value="5fb0a08344fea22a0ce687a8">Elektronik</option>
+                    <option value="5fb0a11b44fea22a0ce687aa">
+                      Gelas Plastik
+                    </option>
+                    <option value="5fb0a1f744fea22a0ce687ac">Kardus</option>
+                    <option value="5fb0a25144fea22a0ce687ae">Kertas HVS</option>
+                    <option value="5fb0a2a044fea22a0ce687b0">
+                      Plastik Lembaran Bening
+                    </option>
+                    <option value="5fb0a32044fea22a0ce687b2">
+                      Plastik Lembaran Berwarna
+                    </option>
+                    <option value="5fb0a4b244fea22a0ce687b4">Popular</option>
+                  </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="grade" as={Row}>
+
+                <Form.Group  as={Row}>
                   <Form.Label>Grade</Form.Label>
                   <Form.Control
-                    type="text"
+                    as="select"
+                    className="mr-sm-2"
+                    id="grade"
+                    custom
                     name="grade"
-                    // onChange={(event) => handleChange(event)}
-                    // value={addProductState.grade}
-                  />
+                    onChange={(event) => handleChange(event)}
+                    value={addProductState.grade}
+                  >
+                    <option value="5fa0d5708c197d3be61f12ef">A</option>
+                    <option value="5fa4048a9e69757dbf3a08cb">B</option>
+                    <option value="5fa404959e69757dbf3a08cc">C</option>
+                  </Form.Control>
                 </Form.Group>
+
                 <Form.Group controlId="weight" as={Row}>
                   <Form.Label>Berat</Form.Label>
                   <Form.Control
@@ -184,9 +204,7 @@ function AddProduct() {
                     value={addProductState.weight}
                   />
                 </Form.Group>
-                <Form.Group 
-             controlId="image" 
-             as={Row}>
+                <Form.Group controlId="image" as={Row}>
                   <Form.Label>Gambar</Form.Label>
                   <Form.File
                     type="file"
