@@ -106,7 +106,7 @@ export default function Checkout() {
         {/* loading modal */}
         <Container>
           <Row>
-            <Table>
+            <Table className="address w-50">
               <th>
                 <tr>
                   <h4>Alamat</h4>
