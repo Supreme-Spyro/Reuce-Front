@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from 'react-router-dom'
 import "../../styles/productCard.scss";
 import '../../styles/MyShopCard.css'
 import {
@@ -8,6 +9,7 @@ import {
 
 
 export default function MyShopCard(props) {
+  const history = useHistory()
   return (
     <Card className="cardClass lato">
       <Card.Img className="cardImage" variant="top" src={props.imageSource} />
@@ -33,7 +35,7 @@ export default function MyShopCard(props) {
         >
           {props.buttonText}
         </Button> */}
-        <button className='editItemButton-MyShopCard'>
+        <button className='editItemButton-MyShopCard' onClick={()=>{history.push(`/myshop/${props.id}/edititem`)}}>
           Edit Item
         </button>
       </Card.Body>

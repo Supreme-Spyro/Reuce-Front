@@ -99,6 +99,7 @@ export default function MyShopCardSection() {
         // buttonText={item.buttonText}
         // variant={item.buttonVariant}
         productRole={item.role}
+        id = {item._id}
       />
     </Col>
   ));

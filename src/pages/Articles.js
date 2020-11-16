@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Container, Spinner } from "react-bootstrap";
 import ArticleCarousel from "../components/web-elements/ArticleCarousel";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // import FeaturedCard from "../components/web-elements/FeaturedCard";
 import NewsTabList from "../components/web-elements/NewsTabList";
 import ArticleGuide from "../components/web-elements/ArticleGuide";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // redux
 import { getArticleDataForHome } from "../redux/actions/article.action";
@@ -24,7 +24,6 @@ function Articles() {
     (state) => state.articleDataReducer.data.result
   );
 
-
   useEffect(() => {
     if (articleData === undefined) {
       dispatch(getArticleDataForHome());
@@ -32,7 +31,6 @@ function Articles() {
       setArticle(articleData);
     }
   }, [dispatch, articleData]);
-
 
   const [article, setArticle] = useState([]);
   let searchRegex = /lorem ipsum/gi;
@@ -58,15 +56,11 @@ function Articles() {
 
   return (
     <div>
-      <br />
-      <br />
-      <br />
       {articleData ? (
         <div>
           <Row className="carouselRow-articles">
             <Container>
-              <ArticleCarousel
-              />
+              <ArticleCarousel />
             </Container>
           </Row>
           <Row className="featuredRow-articles">

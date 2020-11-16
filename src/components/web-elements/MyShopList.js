@@ -1,50 +1,61 @@
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Container } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { useDispatch} from "react-redux";
+
+import { deleteProductActions} from "../../redux/actions/product.action";
 import "../../styles/MyShopList.css";
 
-//image testing
-import bottle from "../../assets/plastic-bottle.jpg";
+function MyShopList(props) {
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-function MyShopList() {
   return (
-    <div className="MyShopListContainer">
+    <div className="MyShopListContainer montserrat">
       <Row>
         <Col lg={4}>
-          <img alt="" className="ListImage-MyShopList" src={bottle} />
+          <img
+            alt=""
+            className="ListImage-MyShopList"
+            src={`http://reuce-back.herokuapp.com/${props.image}`}
+          />
         </Col>
         <Col lg={8}>
-            <div className='productName-MyShopList'>Botol Pelastik Bekas</div>
-            <table className='table-MyShopList'>
+          <Row>
+            <Container>
+              <div className="productName-MyShopList">{props.name}</div>
+              <table className="table-MyShopList">
                 <tr>
-                    <td className='tdTable-MyShopList'>
-                        Satuan Produk
-                    </td>
-                    <td>
-                        Kg
-                    </td>
+                  <td className="tdTable-MyShopList">Berat produk</td>
+                  <td>{props.weight} Kg</td>
                 </tr>
                 <tr>
-                    <td className='tdTable-MyShopList'>
-                        Harga per satuan
-                    </td>
-                    <td>
-                        Rp. 7000,- /kg
-                    </td>
+                  <td className="tdTable-MyShopList">Harga</td>
+                  <td>Rp {props.price}</td>
                 </tr>
                 <tr>
-                    <td className='tdTable-MyShopList'>
-                        Alamat Pengiriman
-                    </td>
-                    <td>
-                        Jl. Mangga, Bekasi
-                    </td>
+                  <td className="tdTable-MyShopList">Deskripsi produk :</td>
+                  <td className="tdTable-MyShopList"></td>
                 </tr>
-            </table>
-            
+                <tr className="trTable-MyShopList">{props.description}</tr>
+              </table>
 
-            <Button className='buttonEdit-MyShopList' variant='success'>Edit item</Button>
-            <Button className='buttonSoldOut-MyShopList' variant='danger'>Item Sold Out</Button>
-            
+            </Container>
+          </Row>
+          <Row>
+            <Container>
+              <Button
+                className="buttonEdit-MyShopList"
+                variant="success"
+                onClick={() => history.push(`/myshop/${props.id}/edititem`)}
+              >
+                Edit Produk
+              </Button>
+              <Button className="buttonSoldOut-MyShopList" variant="danger" onClick={(event) => dispatch.deleteProductActions(props.id,event)}>
+                Hapus Produk
+              </Button>
+            </Container>
+          </Row>
         </Col>
       </Row>
     </div>

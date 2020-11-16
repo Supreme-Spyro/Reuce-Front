@@ -34,7 +34,6 @@ function Profile() {
 
   //get data from reducer
   const userData = useSelector((state) => state.getUserDataReducer.data);
-
   //useState
   const [profileState, setProfileState] = useState({
     username: "",
@@ -61,9 +60,7 @@ function Profile() {
     }
   }, [dispatch, userData, id]);
 
-  function alertClicked() {
-    history.push(`/myshop/${id}`);
-  }
+
   
   function toAddProduct() {
     history.push(`/addproduct`);
@@ -110,7 +107,9 @@ function Profile() {
                       </ListGroup.Item>
                       <ListGroup.Item
                         action
-                        onClick={alertClicked}
+                        onClick={() => {
+                          history.push(`/myshop/${id}`);
+                        }}
                         className="subListTabMyShop-profile"
                       >
                         Toko Anda
@@ -225,7 +224,11 @@ function Profile() {
             <Row className="rowMyShop-profile ">
               {/* <Col className='colMyShop-profile' lg={12}> */}
               <Container className=" horizontalMenuProfile">
-                {userData.product.length !== 0 ? <MyShopCardSection /> : <h3 style={{marginLeft:300}}>Toko Anda Masih Kosong</h3>}
+                {userData.product.length !== 0 ? 
+                <MyShopCardSection /> 
+                : 
+                <h3 style={{marginLeft:300}}>
+                  Toko Anda Masih Kosong</h3>}
               </Container>
               {/* </Col> */}
             </Row>

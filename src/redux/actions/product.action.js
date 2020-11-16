@@ -38,6 +38,7 @@ export function getAllProductActions(){
 
 export function getProductActions(id) {
     return function (dispatch) {
+        console.log('id',id)
         dispatch(getProductRequest());
         const urlProductId = `https://reuce-back.herokuapp.com/product/${id}`;
         axios
@@ -79,14 +80,14 @@ export function deleteProductActions  (id, event, history){
          axios
           .delete(uri)
           .then((result) => {
-            // console.log("res", result);
+            history.push(`/myshop/${id}`)
             dispatch(getProductSuccess(result.data))
           })
           .catch((error) => console.log(error));
       };
 }
 
-export function updateProductActions (value, event, history, id) {
+export function updateProductActions (value, event, id, userId) {
     return function (dispatch){
         event.preventDefault();
     const uri = `https://reuce-back.herokuapp.com/product/${id}`;
@@ -95,6 +96,7 @@ export function updateProductActions (value, event, history, id) {
       .then((result) => {
         // console.log("res", result);
         dispatch(getProductSuccess(result.data))
+        window.location.href=`/myshop/${userId}`
       })
       .catch((error) => console.log(error));
     }

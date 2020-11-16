@@ -7,11 +7,8 @@ import { useParams, useHistory } from "react-router-dom";
 
 import { getDataOrderItem, deleteAllDataOrderItem } from "../redux/actions/cart.action"
 
-
-// import { getDataOrderItem } from "../redux/actions/cart.action"
-
 import {
-  Accordion,
+  // Accordion,
   Form,
   Button,
   Container,
@@ -109,7 +106,7 @@ export default function Checkout() {
         {/* loading modal */}
         <Container>
           <Row>
-            <Table>
+            <Table className="address w-50">
               <th>
                 <tr>
                   <h4>Alamat</h4>
@@ -128,7 +125,28 @@ export default function Checkout() {
                  </div> */}
           <hr />
 
-          <Accordion defaultActiveKey="0">
+          <Form>
+            <Form.Group className="jasa-pengiriman w-50">
+              <Form.Label>Jasa Pengiriman</Form.Label>
+              <Form.Control as="select" custom>
+                {jasaPengirimanDummy.map((item, index) => (
+                  <option className="container-list-jasa-pengiriman-checkout"
+                  key={index}>{item}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group className="payment-method w-50">
+              <Form.Label>Metode Pembayaran</Form.Label>
+              <Form.Control as="select" custom>
+                {paymentMethodDummy.map((item, index) => (
+                  <option className="container-list-jasa-pengiriman-checkout"
+                  key={index}>{item}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+          </Form>
+          
+          {/* <Accordion defaultActiveKey="0">
             <Card className="jasa-pengiriman w-50">
               <Accordion.Toggle as={Card.Header} eventKey="0">
                 Jasa Pengiriman
@@ -140,7 +158,7 @@ export default function Checkout() {
                       className="container-list-jasa-pengiriman-checkout"
                       key={index}
                     >
-                      <a>{item}</a>
+                      <input type="radio">{item}</input>
                       <hr />
                     </div>
                   ))}
@@ -166,7 +184,7 @@ export default function Checkout() {
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
-          </Accordion>
+          </Accordion> */}
           <br />
           <br />
           {dataCheckout ? (
@@ -238,7 +256,7 @@ export default function Checkout() {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Total</td>
+                        <td><strong>Total</strong></td>
                         <td>Rp {total}</td>
                       </tr>
                   </tbody>
@@ -264,7 +282,7 @@ export default function Checkout() {
               >
                 <Modal.Header>
                   <Modal.Title className="text-center">
-                    Terimakasih Pembelian Telah Berhasil
+                    Terimakasih Telah Ikut Menyelamatkan Bumi 😉
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="text-center">
@@ -290,3 +308,4 @@ export default function Checkout() {
     );
 
 }
+

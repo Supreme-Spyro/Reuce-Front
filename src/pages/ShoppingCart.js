@@ -30,7 +30,6 @@ export default function ShoppingCart() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const history = useHistory();
-  
 
   const userToken = localStorage.getItem("token");
   const decodedToken = userToken ? jwtDecode(userToken) : null;
@@ -154,38 +153,49 @@ export default function ShoppingCart() {
           <h3>Keranjang Belanja</h3>
           <hr />
           {dataOrderItem ? (
-            <div>
-              <Row>
-                <Table striped bordered hover responsive>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Item</th>
-                      <th>Harga</th>
-                      <th>Jumlah</th>
-                      <th>Berat (kg)</th>
-                      <th>Sub-total</th>
-                      {/* <th></th> */}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {dataOrderItem.map((item, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <img
-                            className="rounded"
-                            style={{ maxWidth: "200px", maxHeight: "100px" }}
-                            src={item.product.image !== undefined ? `http://reuce-back.herokuapp.com/${item.product.image}` : botolplastik}
-                            alt=""
-                          />
-                          <br />
-                          <br />
-                          {item.product.name}
-                        </td>
-                        <td>Rp {item.product.price}</td>
-                        <td>
-                          {/* <Form.Control
+
+            dataOrderItem.length === 0 ? (
+              <div>
+                <h5 className="montserrat py-4 text-center">
+                  Keranjang anda kosong, silahkan buat pesanan terlebih dahulu
+                  <br />
+                  {`d(>_・ )`}
+                </h5>
+              </div>
+            ) : (
+              <div>
+                <Row>
+                  <Table striped bordered hover responsive>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Item</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Berat (kg)</th>
+                        <th>Sub-total</th>
+                        {/* <th></th> */}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dataOrderItem.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <img
+                              className="rounded"
+                              style={{ maxWidth: "200px", maxHeight: "100px" }}
+                              src={item.product.image !== undefined ? `http://reuce-back.herokuapp.com/${item.product.image}` : botolplastik}
+                              alt=""
+                            />
+                            <br />
+                            <br />
+                            {item.product.name}
+                          </td>
+                          <td>Rp {item.product.price}</td>
+                          <td>
+                            {/* <Form.Control
+
             style={{width:"40px"}}
               name="quantity"
               size="sm"
@@ -193,39 +203,48 @@ export default function ShoppingCart() {
               onChange={(event) => handleChange(event)}
               value={item.quantity}
             /> */}
-                          {item.quantity}
-                        </td>
-                        <td>{item.product.weight}</td>
-                        <td>Rp {item.amount}</td>
-                        <td>
-                          <Button
-                            onClick={(event) => {
-                              setShow(true);
-                              dispatch(
-                                deleteDataOrderItem(item._id, decodedToken._id)
-                              );
-                            }}
-                            variant="danger"
-                            size="sm"
-                          >
-                            <TrashFill size={19} />
-                          </Button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              </Row>
-              <Row className="justify-content-end text-right mt-4 mb-2">
-                <Button className="px-5" variant="success" type="submit" onClick={() => {
-                        history.push(`/checkout/${decodedToken._id}`);
-                        // console.log("id item: ",item.id)
-                      }}>
-                  <CartCheck size={28} /> &nbsp;
-                  <strong>Beli</strong>
-                </Button>
-              </Row>
-            </div>
+                            {item.quantity}
+                          </td>
+                          <td>{item.product.weight}</td>
+                          <td>Rp {item.amount}</td>
+                          <td>
+                            <Button
+                              onClick={(event) => {
+                                setShow(true);
+                                dispatch(
+                                  deleteDataOrderItem(
+                                    item._id,
+                                    decodedToken._id
+                                  )
+                                );
+                              }}
+                              variant="danger"
+                              size="sm"
+                            >
+                              <TrashFill size={19} />
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Row>
+                <Row className="justify-content-end text-right mt-4 mb-2">
+                  <Button
+                    className="px-5"
+                    variant="success"
+                    type="submit"
+                    onClick={() => {
+                      history.push(`/checkout/${decodedToken._id}`);
+                      // console.log("id item: ",item.id)
+                    }}
+                  >
+                    <CartCheck size={28} /> &nbsp;
+                    <strong>Beli</strong>
+                  </Button>
+                </Row>
+              </div>
+            )
           ) : (
             <Row>
               <Spinner
