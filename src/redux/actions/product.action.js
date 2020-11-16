@@ -73,14 +73,16 @@ export function postProductActions(value, user_id, event, history) {
     }
 }
 
-export function deleteProductActions  (id, event, history){
+export function deleteProductActions  (id,user_id, event, history){
     return function (dispatch) {
+        console.log("data id: ", id)
+        console.log("data event: ", event)
         event.preventDefault();
         const uri = `https://reuce-back.herokuapp.com/product/${id}`;
          axios
           .delete(uri)
           .then((result) => {
-            history.push(`/myshop/${id}`)
+            window.location.href = `/myshop/${user_id}`
             dispatch(getProductSuccess(result.data))
           })
           .catch((error) => console.log(error));
