@@ -24,6 +24,7 @@ import jwtDecode from "jwt-decode";
 
 import { CartCheck, TrashFill } from "react-bootstrap-icons";
 import "../styles/ShoppingCart.scss";
+import botolplastik from "../assets/plastic-bottle.jpg";
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
@@ -152,6 +153,7 @@ export default function ShoppingCart() {
           <h3>Keranjang Belanja</h3>
           <hr />
           {dataOrderItem ? (
+
             dataOrderItem.length === 0 ? (
               <div>
                 <h5 className="montserrat py-4 text-center">
@@ -183,7 +185,7 @@ export default function ShoppingCart() {
                             <img
                               className="rounded"
                               style={{ maxWidth: "200px", maxHeight: "100px" }}
-                              src={`http://reuce-back.herokuapp.com/${item.product.image}`}
+                              src={item.product.image !== undefined ? `http://reuce-back.herokuapp.com/${item.product.image}` : botolplastik}
                               alt=""
                             />
                             <br />
@@ -193,6 +195,7 @@ export default function ShoppingCart() {
                           <td>Rp {item.product.price}</td>
                           <td>
                             {/* <Form.Control
+
             style={{width:"40px"}}
               name="quantity"
               size="sm"

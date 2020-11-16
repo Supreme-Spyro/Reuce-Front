@@ -92,7 +92,7 @@ export default function MyShopCardSection() {
       key={index}
     >
       <MyShopCard
-        imageSource={`http://reuce-back.herokuapp.com/${item.image}`}
+        imageSource={ item.image !== undefined ? `http://reuce-back.herokuapp.com/${item.image}`: cardboardImg}
         title={item.name}
         // text={item.description}
         // buttonOnclick={item.buttonOnclick}

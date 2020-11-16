@@ -48,15 +48,26 @@ export function getProductActions(id) {
     };
 };
 
-export function postProductActions(value, event, history) {
+export function postProductActions(value, user_id, event, history) {
     return function (dispatch) {
         console.log("data value: ", value)
+
         event.preventDefault();
+        // let body = new FormData();
+        // body.append("dataValue",value);
+        // console.log("data body: ", body)
+        // const myurl = 'https://reuce-back.herokuapp.com/product'
+        // axios({
+        //     method: 'POST',
+        //     url: myurl,
+        //     data: value,
+        //     // headers: {'Content-Type': 'multipart/form-data' }
+        //     })
         axios
         .post('https://reuce-back.herokuapp.com/product', value)
         .then((result) => {
             console.log("res", result);
-            history.push("/profile");
+            window.location.href = `/profile/${user_id}`;
           })
         .catch((error) => console.log(error));
     }

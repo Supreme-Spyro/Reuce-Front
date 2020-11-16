@@ -212,7 +212,7 @@ export default function Checkout() {
                           <img
                             className="rounded"
                             style={{ maxWidth: "200px", maxHeight: "100px" }}
-                            src={`http://reuce-back.herokuapp.com/${item.product.image}`}
+                            src={item.product.image !== undefined ? `http://reuce-back.herokuapp.com/${item.product.image}` : plasticBottle}
                             alt=""
                           />
                           <br />
@@ -308,3 +308,4 @@ export default function Checkout() {
     );
 
 }
+
