@@ -24,6 +24,7 @@ import jwtDecode from "jwt-decode";
 
 import { CartCheck, TrashFill } from "react-bootstrap-icons";
 import "../styles/ShoppingCart.scss";
+import botolplastik from "../assets/plastic-bottle.jpg";
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
@@ -175,7 +176,7 @@ export default function ShoppingCart() {
                           <img
                             className="rounded"
                             style={{ maxWidth: "200px", maxHeight: "100px" }}
-                            src={`http://reuce-back.herokuapp.com/${item.product.image}`}
+                            src={item.product.image !== undefined ? `http://reuce-back.herokuapp.com/${item.product.image}` : botolplastik}
                             alt=""
                           />
                           <br />

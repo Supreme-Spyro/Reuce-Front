@@ -21,7 +21,7 @@ import {
   // updateDataOrderItem,
   // getDataOrderItem,
 } from "../redux/actions/cart.action";
-// import plasticBottle from "../assets/plastic-bottle.jpg";
+import plasticBottle from "../assets/plastic-bottle.jpg";
 // import NavbarBootstrap from "../components/web-elements/NavbarBootstrap";
 
 import "../styles/ProductDetails.scss";
@@ -102,7 +102,7 @@ export default function ProductDetails() {
               <img
                 className="prodDetailImage"
                 alt="product-img"
-                src={`http://reuce-back.herokuapp.com/${detailProductData.image}`}
+                src={ detailProductData.image !== undefined ? `http://reuce-back.herokuapp.com/${detailProductData.image}` : plasticBottle}
               />
               <br />
               <br />
