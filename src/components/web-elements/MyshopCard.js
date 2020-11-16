@@ -6,13 +6,14 @@ import {
   Card,
   Badge,
 } from "react-bootstrap";
+import plasticBottle from '../../assets/plastic-bottle.jpg';
 
 
 export default function MyShopCard(props) {
   const history = useHistory()
   return (
     <Card className="cardClass lato">
-      <Card.Img className="cardImage" variant="top" src={props.imageSource} />
+      <Card.Img className="cardImage" variant="top" src={props.imageSource !== undefined ? props.imageSource : plasticBottle} />
       <Card.Body className="cardBody">
         <Card.Text className="cardText lato">
           {props.productRole ? (
