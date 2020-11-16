@@ -30,13 +30,13 @@ function AddProduct() {
    //useState
    const [addProductState, setAddProductState] = useState({
     name: "",
-    price: "",
+    price: Number,
     description: "",
-    category:"",
-    grade:"",
-    weight:"",
+    category:"5fb0a32044fea22a0ce687b2",
+    grade:"5fa404959e69757dbf3a08cc",
+    weight:Number,
     user:decodedToken._id,
-    image: "",
+    image: undefined,
   });
   console.log('addproduct state: ', addProductState)
 
@@ -100,14 +100,30 @@ function AddProduct() {
             <hr className="d-lg-none d-md-block" />
             <h4 className="mt-md-4 mt-4 nunito">Tambahkan Produk</h4>
             <hr />
+            {/* <form
+            method="post"
+            enctype="multipart/form-data"
+            action="/product"
+            onSubmit={(event) => {
+              dispatch(postProductActions(addProductState, event, history));
+            }}
+            >
+              <input type="text" name="name"
+              onChange={(event) => handleChange(event)}
+              value={addProductState.name}/>
+              <input type="file" name="image"
+              onChange={(event) => handleChange(event)}
+              value={addProductState.image}/>
+              <button type="submit"/>
+            </form> */}
             <Form
-              method="post"
-              enctype="multipart/form-data"
-              action="/product"
+              // method="post"
+              // enctype="multipart/form-data"
+              // action="/product"
               autoComplete="off"
               className="form-profile"
               onSubmit={(event) => {
-                dispatch(postProductActions(addProductState, event, history));
+                dispatch(postProductActions(addProductState, decodedToken._id, event, history));
               }}
             >
               <Container>
@@ -124,7 +140,7 @@ function AddProduct() {
                 <Form.Group controlId="price" as={Row}>
                   <Form.Label>Harga</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     name="price"
                     onChange={(event) => handleChange(event)}
                     value={addProductState.price}
@@ -146,8 +162,8 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="category"
-                    onChange={(event) => handleChange(event)}
-                    value={addProductState.category}
+                    // onChange={(event) => handleChange(event)}
+                    // value={addProductState.category}
                   />
                 </Form.Group>
                 <Form.Group controlId="grade" as={Row}>
@@ -155,14 +171,14 @@ function AddProduct() {
                   <Form.Control
                     type="text"
                     name="grade"
-                    onChange={(event) => handleChange(event)}
-                    value={addProductState.grade}
+                    // onChange={(event) => handleChange(event)}
+                    // value={addProductState.grade}
                   />
                 </Form.Group>
                 <Form.Group controlId="weight" as={Row}>
                   <Form.Label>Berat</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     name="weight"
                     onChange={(event) => handleChange(event)}
                     value={addProductState.weight}
@@ -172,11 +188,11 @@ function AddProduct() {
              controlId="image" 
              as={Row}>
                   <Form.Label>Gambar</Form.Label>
-                  <Form.Control
+                  <Form.File
                     type="file"
-                    name="image"
-                    onChange={(event) => handleChange(event)}
-                    value={addProductState.image}
+                    name="images"
+                    // onChange={(event) => handleChange(event)}
+                    // value={addProductState.image}
                   />
                 </Form.Group>
                 <Form.Group as={Row}>
