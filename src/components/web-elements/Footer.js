@@ -18,7 +18,7 @@ export default function Footer() {
 //   };
 
   return (
-    <div  className="footerStyle text-center bg-light">
+    <div  className=" footerStyle text-center bg-light">
       <img className="footerImg" src={reuceLite} alt="" />
       <span className="footerText">&nbsp;© Reuce 2020 Hak Cipta Terpelihara</span>
     </div>

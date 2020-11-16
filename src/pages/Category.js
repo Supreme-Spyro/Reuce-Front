@@ -15,11 +15,12 @@ import {
 
 // import gambar1 from "../assets/imageCategory/gambar-botol-plastik-bening.jpg";
 
-import { getAllCategory } from '../redux/actions/category.action'
+import { getAllCategory } from "../redux/actions/category.action";
 
 import "../styles/Font.scss";
 import "../styles/Category.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
+import Footer from "../components/web-elements/Footer";
 
 export default function Category() {
   const dispatch = useDispatch();
@@ -77,13 +78,15 @@ export default function Category() {
                         history.push(`/categoryDetail/${item._id}`);
                         // console.log("id item: ",item.id)
                       }}
-                      
                       className="Category-card bg-light text-dark mb-3"
                     >
                       <Card.Img
                         className="card-img"
                         variant="top"
-                        src={ `http://reuce-back.herokuapp.com/${item.image}` || botolplastik}
+                        src={
+                          `http://reuce-back.herokuapp.com/${item.image}` ||
+                          botolplastik
+                        }
                       />
                       <Card.Body className="">
                         <Card.Title>{item.name}</Card.Title>

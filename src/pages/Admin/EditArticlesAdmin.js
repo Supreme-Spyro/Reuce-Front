@@ -18,7 +18,7 @@ export default function EditArticlesAdmin() {
   const articleData = useSelector(
     (state) => state.articleDataByIdReducer.data.Artikels
   );
-  console.log("articleData", articleData);
+  // console.log("articleData", articleData);
 
   //useState
   const [editArticleState, setEditArticleState] = useState({

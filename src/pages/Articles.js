@@ -11,9 +11,11 @@ import { useHistory } from "react-router-dom";
 // redux
 import { getArticleDataForHome } from "../redux/actions/article.action";
 // import { getArticleDataByIdForPage } from "../redux/actions/getArticleDataById.action";
+
 //component
 import ProductCard from "../components/web-elements/Home/ProductCardHome";
 import "../styles/Articles.css";
+import Footer from "../components/web-elements/Footer";
 
 function Articles() {
   const history = useHistory();
@@ -39,10 +41,10 @@ function Articles() {
     return item.content.match(searchRegex);
   });
 
-  console.log("articleGuide", articleGuide);
-  console.log("articleData", articleData);
+  // console.log("articleGuide", articleGuide);
+  // console.log("articleData", articleData);
 
-  console.log("article", article);
+  // console.log("article", article);
 
   function truncateString(str, num) {
     // If the length of str is less than or equal to num
@@ -131,6 +133,9 @@ function Articles() {
               </Col>
             </Row>
           </Container>
+          <br/>
+          <br/>
+          <Footer />
         </div>
       ) : (
         <div className="align-item-center text-center mt-5">

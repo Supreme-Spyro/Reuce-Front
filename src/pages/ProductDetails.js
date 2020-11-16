@@ -39,7 +39,7 @@ export default function ProductDetails() {
   const detailProductData = useSelector(
     (state) => state.getProductReducer.data.Products
   );
-  console.log("detail produk", detailProductData);
+  // console.log("detail produk", detailProductData);
   // let productId = params.id;
   // console.log("productid", productId)
 

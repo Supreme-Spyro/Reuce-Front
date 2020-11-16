@@ -14,8 +14,8 @@ function NewsLetter() {
     (state) => state.articleDataByIdReducer.data.Artikels
   );
   const authorData = useSelector((state) => state.articleDataByIdReducer.admin);
-  console.log("articleByIdData", articleByIdData);
-  console.log("authorData", authorData);
+  // console.log("articleByIdData", articleByIdData);
+  // console.log("authorData", authorData);
 
   useEffect(() => {
     dispatch(getArticleDataByIdForPage(id));

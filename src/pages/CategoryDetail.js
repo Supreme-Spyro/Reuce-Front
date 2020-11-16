@@ -19,7 +19,7 @@ export default function CategoryDetail() {
   const categoryByIdData = useSelector(
     (state) => state.getCategoryReducer.data.Categories
   );
-  console.log("data category id: ",categoryByIdData)
+  // console.log("data category id: ",categoryByIdData)
 
   useEffect(() => {
     dispatch(getCategoryId(id));

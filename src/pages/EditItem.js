@@ -30,7 +30,7 @@ function EditItem() {
 
   //get data from reducer
   const productData = useSelector((state) => state.getProductReducer.data.Products);
-  console.log('productData',productData)
+  // console.log('productData',productData)
   //useState
   const [productState, setProductState] = useState({
     name: "",
@@ -39,7 +39,7 @@ function EditItem() {
     address: "",
   });
 
-  console.log('productState', productState)
+  // console.log('productState', productState)
 
   //handleChange
   const handleChange = (event) => {

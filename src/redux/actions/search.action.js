@@ -25,13 +25,13 @@ export const getSearchFailed = (error) => {
 
 export const getSearchActions = (id, event, history) => {
   // event.preventDefault();
-  console.log("hasil event", event)
+  // console.log("hasil event", event)
   return async (dispatch) => {
     dispatch(getSearchRequest(id));
-    console.log("searchId", id);
+    // console.log("searchId", id);
     const urlSearch = "https://reuce-back.herokuapp.com/product/search";
     const response = await axios.get(`${urlSearch}/${id}`);
-    console.log("response", response.data.Products);
+    // console.log("response", response.data.Products);
     dispatch(getSearchSuccess(response.data.Products));
     // history.push(`/search/${id.name}`);
   };

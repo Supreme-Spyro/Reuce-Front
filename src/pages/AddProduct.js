@@ -38,7 +38,7 @@ function AddProduct() {
     user:decodedToken._id,
     image: undefined,
   });
-  console.log('addproduct state: ', addProductState)
+  // console.log('addproduct state: ', addProductState)
 
   function goToProfile() {
     history.push(`/profile/${decodedToken._id}`);

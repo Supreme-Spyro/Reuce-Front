@@ -43,7 +43,7 @@ export const deleteDataOrder = (id) => (dispatch) => {
     axios
     .delete(`https://reuce-back.herokuapp.com/order/${id}`)
     .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch(getDataOrder())
     })
 };

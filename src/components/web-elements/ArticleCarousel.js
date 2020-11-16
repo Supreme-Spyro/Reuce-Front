@@ -38,7 +38,7 @@ function ArticleCarousel() {
           src={`http://reuce-back.herokuapp.com/${item.image}`}
           alt="First slide"
         />
-        <Carousel.Caption className="carouselCaption-articles">
+        <Carousel.Caption className="montserrat carouselCaption-articles px-3">
           <h3>
             <Link to={`${item._id}`}>{item.title}</Link>
           </h3>

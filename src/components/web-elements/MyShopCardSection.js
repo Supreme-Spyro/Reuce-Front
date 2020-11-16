@@ -20,7 +20,7 @@ export default function MyShopCardSection() {
   const { id } = useParams();
 
   const userData = useSelector((state) => state.getUserDataReducer.data);
-  console.log("data user: ", userData)
+  // console.log("data user: ", userData)
 
   useEffect(() => {
          dispatch(getUserRequestById(id));
