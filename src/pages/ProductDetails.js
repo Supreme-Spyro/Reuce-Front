@@ -102,7 +102,7 @@ export default function ProductDetails() {
               <img
                 className="prodDetailImage"
                 alt="product-img"
-                src={ detailProductData.image !== undefined ? `http://reuce-back.herokuapp.com/${detailProductData.image}` : plasticBottle}
+                src={ detailProductData.image !== undefined ? detailProductData.image : plasticBottle}
               />
               <br />
               <br />

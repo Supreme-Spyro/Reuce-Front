@@ -23,7 +23,7 @@ function MyShopList(props) {
           <img
             alt=""
             className="ListImage-MyShopList"
-            src={props.image !== undefined ? `http://reuce-back.herokuapp.com/${props.image}` : plasticBottle}
+            src={props.image !== undefined ? props.image : plasticBottle}
           />
         </Col>
         <Col lg={8}>

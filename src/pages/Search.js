@@ -51,7 +51,7 @@ export default function Search() {
                     <ProductCard
                       // propsClassName="mx-auto ml-4"
                       imageSource={
-                        item.image !== undefined ? `http://reuce-back.herokuapp.com/${item.image}` :
+                        item.image !== undefined ? item.image :
                         botolplastik
                       }
                       title={item.name}

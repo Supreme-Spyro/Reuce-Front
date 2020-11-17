@@ -2,6 +2,7 @@ import React,{ useState } from "react";
 import { Container, Row, Col, ListGroup, Form, Button } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import ReactFilestack from 'filestack-react';
 
 // redux
 import { postProductActions } from "../redux/actions/product.action";
@@ -23,6 +24,7 @@ function AddProduct() {
 
   const { id } = useParams();
   
+  const API_KEY = 'AWTkko3WRFm2oNQLXzLkkz'
   
   const userToken = localStorage.getItem("token");
   const decodedToken = userToken ? jwtDecode(userToken) : "none";
@@ -38,7 +40,7 @@ function AddProduct() {
     user:decodedToken._id,
     image: undefined,
   });
-  // console.log('addproduct state: ', addProductState)
+  console.log('addproduct state: ', addProductState)
 
   function goToProfile() {
     history.push(`/profile/${decodedToken._id}`);
@@ -145,7 +147,7 @@ function AddProduct() {
                   />
                 </Form.Group>
 
-                <Form.Group  as={Row}>
+                <Form.Group as={Row}>
                   <Form.Label>Kategori</Form.Label>
                   <Form.Control
                     as="select"
@@ -156,6 +158,7 @@ function AddProduct() {
                     onChange={(event) => handleChange(event)}
                     value={addProductState.category}
                   >
+                    <option value={undefined}>Pilih Kategori anda</option>
                     <option value="5fb09dd728e92d24ebf0ac8f">
                       Botol Plastik Bening
                     </option>
@@ -175,10 +178,11 @@ function AddProduct() {
                       Plastik Lembaran Berwarna
                     </option>
                     <option value="5fb0a4b244fea22a0ce687b4">Popular</option>
+                    <option value=""></option>
                   </Form.Control>
                 </Form.Group>
 
-                <Form.Group  as={Row}>
+                <Form.Group as={Row}>
                   <Form.Label>Grade</Form.Label>
                   <Form.Control
                     as="select"
@@ -189,6 +193,7 @@ function AddProduct() {
                     onChange={(event) => handleChange(event)}
                     value={addProductState.grade}
                   >
+                    <option value={undefined}>Pilih Grade anda</option>
                     <option value="5fa0d5708c197d3be61f12ef">A</option>
                     <option value="5fa4048a9e69757dbf3a08cb">B</option>
                     <option value="5fa404959e69757dbf3a08cc">C</option>
@@ -206,11 +211,19 @@ function AddProduct() {
                 </Form.Group>
                 <Form.Group controlId="image" as={Row}>
                   <Form.Label>Gambar</Form.Label>
-                  <Form.File
-                    type="file"
-                    name="images"
-                    // onChange={(event) => handleChange(event)}
-                    // value={addProductState.image}
+
+                  <ReactFilestack
+                    name="image"
+                    apikey={API_KEY}
+                    onSuccess={
+                      (res) => {
+                        console.log("ini ada dari response filestack: ",res)
+                        setAddProductState({
+                          ...addProductState,
+                          image : res.filesUploaded[0].url
+                        })
+                      }
+                    }
                   />
                 </Form.Group>
                 <Form.Group as={Row}>

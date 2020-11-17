@@ -56,7 +56,7 @@ export default function PopularHome() {
         <Link to={`/product/${item._id}`}>
           <ProductCard
             imageSource={
-              `http://reuce-back.herokuapp.com/${item.image}` || placeholder
+              item.image || placeholder
             }
             title={item.name}
             text={`Rp ${item.price}`}
