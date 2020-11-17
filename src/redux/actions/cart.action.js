@@ -37,7 +37,7 @@ export const deleteDataOrderItem = (order_id, user_id) => (dispatch) => {
   axios
     .delete(`https://reuce-back.herokuapp.com/order-item/${order_id}`)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       window.location.href = `/shopcart/${user_id}`;
     });
 };
@@ -46,7 +46,7 @@ export const deleteAllDataOrderItem = (user_id) => (dispatch) =>{
   axios
   .delete(`https://reuce-back.herokuapp.com/order-item/deleteAll/${user_id}`)
   .then((result) =>{
-    console.log("result delete all: ", result);
+    // console.log("result delete all: ", result);
     setTimeout(()=>{
       window.location.href = '/';
     },500)
@@ -60,7 +60,7 @@ export const updateDataOrderItem = (id, data) => (dispatch) => {
   axios
     .put(`https://reuce-back.herokuapp.com/order-item/${id}`, { num: data })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       dispatch(getDataOrderItem());
     });
 };
@@ -72,7 +72,7 @@ export const postOrderItem = (user_id, product_id) => (dispatch) => {
       product: product_id,
     })
     .then((response) => {
-      console.log("response", response);
+      // console.log("response", response);
       window.location.href = `/product/${product_id}`;
       // dispatch(getDataOrderItem(user_id));
     });

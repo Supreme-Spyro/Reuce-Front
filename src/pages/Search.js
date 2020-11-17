@@ -15,7 +15,7 @@ export default function Search() {
   let params = useParams();
   let dispatch = useDispatch();
   let searchName = decodeURIComponent(params.id);
-  console.log("hasil", searchName);
+  // console.log("hasil", searchName);
   const history = useHistory();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Search() {
 
   const dataSearch = useSelector((state) => state.searchReducer.data);
   const searchLoading = useSelector((state) => state.searchReducer.isLoading);
-  console.log("data", dataSearch);
+  // console.log("data", dataSearch);
 
   return (
     <div>

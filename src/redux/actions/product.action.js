@@ -38,7 +38,7 @@ export function getAllProductActions(){
 
 export function getProductActions(id) {
     return function (dispatch) {
-        console.log('id',id)
+        // console.log('id',id)
         dispatch(getProductRequest());
         const urlProductId = `https://reuce-back.herokuapp.com/product/${id}`;
         axios
@@ -50,7 +50,7 @@ export function getProductActions(id) {
 
 export function postProductActions(value, user_id, event, history) {
     return function (dispatch) {
-        console.log("data value: ", value)
+        // console.log("data value: ", value)
 
         event.preventDefault();
         // let body = new FormData();
@@ -66,7 +66,7 @@ export function postProductActions(value, user_id, event, history) {
         axios
         .post('https://reuce-back.herokuapp.com/product', value)
         .then((result) => {
-            console.log("res", result);
+            // console.log("res", result);
             window.location.href = `/profile/${user_id}`;
           })
         .catch((error) => console.log(error));

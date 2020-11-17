@@ -78,7 +78,7 @@ export const getUserFailed = (error) => {
 
 export const registerActions = (value, event, history) => (dispatch) => {
   event.preventDefault();
-  console.log("register value", value);
+  // console.log("register value", value);
 
   const uriUsers = "https://reuce-back.herokuapp.com/user/register";
 
@@ -102,7 +102,7 @@ export const loginActions = (value, event, history) => (dispatch) => {
   return axios
     .post(uriLogin, value)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       if (response.data.token !== undefined) {
         if (response.data.role === "admin") {
           localStorage.setItem("token", response.data.token);

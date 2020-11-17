@@ -25,6 +25,7 @@ import jwtDecode from "jwt-decode";
 import { CartCheck, TrashFill } from "react-bootstrap-icons";
 import "../styles/ShoppingCart.scss";
 import botolplastik from "../assets/plastic-bottle.jpg";
+import Footer from "../components/web-elements/Footer";
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export default function ShoppingCart() {
     (state) => state.showDataOrderItem.data.OrderItemsUser
   );
 
-  console.log("dataOrderItem", dataOrderItem);
+  // console.log("dataOrderItem", dataOrderItem);
 
   useEffect(() => {
     dispatch(getDataOrderItem(id));
@@ -153,7 +154,6 @@ export default function ShoppingCart() {
           <h3>Keranjang Belanja</h3>
           <hr />
           {dataOrderItem ? (
-
             dataOrderItem.length === 0 ? (
               <div>
                 <h5 className="montserrat py-4 text-center">
@@ -185,7 +185,9 @@ export default function ShoppingCart() {
                             <img
                               className="rounded"
                               style={{ maxWidth: "200px", maxHeight: "100px" }}
+
                               src={item.product.image !== undefined ? item.product.image : botolplastik}
+
                               alt=""
                             />
                             <br />

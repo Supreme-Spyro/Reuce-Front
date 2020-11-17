@@ -30,7 +30,7 @@ function Profile() {
   const shopData = useSelector((state) => state.getUserDataReducer.data.product);
   const userData = useSelector((state) => state.getUserDataReducer.data);
 
-  console.log("shopData", shopData);
+  // console.log("shopData", shopData);
 
   //usestate
   //useState
@@ -124,6 +124,9 @@ function Profile() {
           </Col>
         </Row>
       </Container>
+      <br/>
+      <br/>
+      <br/>
       <Footer />
     </div>
   );

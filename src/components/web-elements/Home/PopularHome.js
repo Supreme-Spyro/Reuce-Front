@@ -21,7 +21,7 @@ export default function PopularHome() {
   const dataCategory = useSelector(
     (state) => state.getCategoryReducer.data.Categories
   );
-  console.log("dataCategory", dataCategory);
+  // console.log("dataCategory", dataCategory);
 
   // const [categoryState, setCategoryState] = useState({
   //   image: "",
