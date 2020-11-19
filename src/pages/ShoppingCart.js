@@ -185,11 +185,9 @@ export default function ShoppingCart() {
                             <img
                               className="rounded"
                               style={{ maxWidth: "200px", maxHeight: "100px" }}
-                              src={
-                                item.product.image !== undefined
-                                  ? `http://reuce-back.herokuapp.com/${item.product.image}`
-                                  : botolplastik
-                              }
+
+                              src={item.product.image !== undefined ? item.product.image : botolplastik}
+
                               alt=""
                             />
                             <br />

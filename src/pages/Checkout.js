@@ -222,7 +222,7 @@ export default function Checkout() {
                           style={{ maxWidth: "200px", maxHeight: "100px" }}
                           src={
                             item.product.image !== undefined
-                              ? `http://reuce-back.herokuapp.com/${item.product.image}`
+                              ? item.product.image
                               : plasticBottle
                           }
                           alt=""
@@ -234,6 +234,7 @@ export default function Checkout() {
                       <td>Rp {item.product.price}</td>
                       <td>
                         {/* <Form.Control
+
             style={{width:"40px"}}
               name="quantity"
               size="sm"
