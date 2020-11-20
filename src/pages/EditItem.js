@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom'
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
+import ReactFilestack from 'filestack-react';
 
 //get actions redux
 import { getProductActions } from "../redux/actions/product.action";
@@ -23,6 +24,8 @@ function EditItem() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const API_KEY = 'AWTkko3WRFm2oNQLXzLkkz'
 
   //userToken
   const userToken = localStorage.getItem("token");
@@ -37,6 +40,7 @@ function EditItem() {
     weight: "",
     price: "",
     address: "",
+    image:"",
   });
 
   // console.log('productState', productState)
@@ -62,20 +66,30 @@ function EditItem() {
 
   return (
     <div>
-      
       <Container className="container-edititem">
         <Form
-        autoComplete='off'
-        onSubmit={(event) => {
-          dispatch(
-            updateProductActions(productState, event, id, decodedToken._id)
-          );
-          
-        }}
+          autoComplete="off"
+          onSubmit={(event) => {
+            dispatch(
+              updateProductActions(productState, event, id, decodedToken._id)
+            );
+          }}
         >
           <Form.Group>
             <Form.Row>
-              <Form.File id="exampleFormControlFile1" label="Add image" />
+              <Form.Label>Gambar</Form.Label>
+
+              <ReactFilestack
+                name="image"
+                apikey={API_KEY}
+                onSuccess={(res) => {
+                  console.log("ini ada dari response filestack: ", res);
+                  setProductState({
+                    ...productState,
+                    image: res.filesUploaded[0].url,
+                  });
+                }}
+              />
             </Form.Row>
           </Form.Group>
           <Form.Group>
@@ -84,9 +98,9 @@ function EditItem() {
               <Form.Control
                 size="lg"
                 type="text"
-                name='name'
+                name="name"
                 value={productState.name}
-                onChange={(event)=>handleChange(event)}
+                onChange={(event) => handleChange(event)}
               />
             </Form.Row>
           </Form.Group>
@@ -96,21 +110,21 @@ function EditItem() {
               <Form.Control
                 size="lg"
                 type="text"
-                name='weight'
-               value={productState.weight}
-               onChange={(event)=>handleChange(event)} 
+                name="weight"
+                value={productState.weight}
+                onChange={(event) => handleChange(event)}
               />
             </Form.Row>
           </Form.Group>
           <Form.Group>
             <Form.Row>
               <Form.Label>Harga</Form.Label>
-              <Form.Control 
-              size="lg" 
-              type="number"
-              name='price'
-              value={productState.price}
-              onChange={(event)=>handleChange(event)} 
+              <Form.Control
+                size="lg"
+                type="number"
+                name="price"
+                value={productState.price}
+                onChange={(event) => handleChange(event)}
               />
             </Form.Row>
           </Form.Group>
@@ -126,8 +140,8 @@ function EditItem() {
               />
             </Form.Row>
           </Form.Group> */}
-         
-          <Button variant="primary" type="submit" >
+
+          <Button variant="primary" type="submit">
             Submit
           </Button>
         </Form>
