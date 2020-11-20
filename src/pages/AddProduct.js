@@ -178,7 +178,7 @@ function AddProduct() {
                       Plastik Lembaran Berwarna
                     </option>
                     <option value="5fb0a4b244fea22a0ce687b4">Popular</option>
-                    <option value=""></option>
+                    
                   </Form.Control>
                 </Form.Group>
 

@@ -40,7 +40,7 @@ function EditItem() {
     weight: "",
     price: "",
     address: "",
-    image:"",
+    image:undefined,
   });
 
   // console.log('productState', productState)
